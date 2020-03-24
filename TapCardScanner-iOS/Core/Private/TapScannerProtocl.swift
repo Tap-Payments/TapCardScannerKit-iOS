@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/// This class will hold the shared methods/vars between different card scanners. This is to make sure that all are using same interfaces
 internal protocol TapScannerProtocl:NSObject {
     
     
