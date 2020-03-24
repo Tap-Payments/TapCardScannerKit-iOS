@@ -108,6 +108,27 @@ import PayCardsRecognizer
             tapCardScannerDidFinishBlock(scannedCard)
         }
     }
+    
+    /**
+     This method shall be called once the parent app wants to stop the scanning and remove the preview view
+     - Parameter stopCamera: If not set, then camera feed will still be shown in the view but no actual scanning, if set, it will destroy itself
+     */
+    @objc public func pauseScanner(stopCamera:Bool) {
+        
+        if let nonNullScanner = cardScanner {
+            nonNullScanner.pause()
+            if stopCamera {
+                stopScanner()
+            }
+        }
+    }
+    
+    internal func stopScanner() {
+        
+        if let nonNullScanner = cardScanner {
+            nonNullScanner.stopCamera()
+        }
+    }
 }
 
 extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
