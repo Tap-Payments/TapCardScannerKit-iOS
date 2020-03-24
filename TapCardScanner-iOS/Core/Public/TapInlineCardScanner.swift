@@ -28,7 +28,7 @@ import PayCardsRecognizer
     internal var previewView:UIView?
     /// This is the color of scan the card border. Default is green
     internal lazy var scanningBorderColor:UIColor = .green
-    
+    /// This is the backbone of the scanner object
     internal var cardScanner:PayCardsRecognizer?
     /**
      This interface decides whether the scanner can start or not based on camera usage permission granted and camera does exist.
@@ -82,7 +82,6 @@ import PayCardsRecognizer
         }
     }
     
-    
     /// This method is responsible for starting the camera feed logic
     internal func startScanning() {
         cardScanner?.startCamera(with: .portrait)
@@ -98,11 +97,25 @@ import PayCardsRecognizer
             cardScanner = nil
         }
     }
+    
+    /**
+        This is the method responsible for POST action of successful scanning
+     - Parameter scannedCard: Whoever calling, will have to pass the scanned card
+     */
+    internal func scannerScanned(scannedCard:ScannedTapCard) {
+        // Check if the scanned block is initialised, hence, utilise it and send the scannedCard to it
+        if let tapCardScannerDidFinishBlock = tapCardScannerDidFinish {
+            tapCardScannerDidFinishBlock(scannedCard)
+        }
+    }
 }
 
 extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
     public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
-        
+        if result.isCompleted {
+            // Scanner captured semi/complete card details
+            scannerScanned(scannedCard: .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear))
+        }
     }
 }
 
