@@ -1,0 +1,644 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E87C7D432429F418009AD770 /* TapCardScanner_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E87C7D502429F487009AD770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D4F2429F487009AD770 /* AppDelegate.swift */; };
+		E87C7D522429F487009AD770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D512429F487009AD770 /* SceneDelegate.swift */; };
+		E87C7D542429F487009AD770 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D532429F487009AD770 /* ViewController.swift */; };
+		E87C7D572429F487009AD770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87C7D552429F487009AD770 /* Main.storyboard */; };
+		E87C7D592429F489009AD770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E87C7D582429F489009AD770 /* Assets.xcassets */; };
+		E87C7D5C2429F489009AD770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87C7D5A2429F489009AD770 /* LaunchScreen.storyboard */; };
+		E87C7D662429F8DA009AD770 /* Pods_TapCardScannerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */; };
+		E87C7D762429FD5C009AD770 /* TapCardScanner_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */; };
+		E87C7D772429FD5C009AD770 /* TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E87C7D7C2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; };
+		E87C7D7D2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E87C7D6B2429F911009AD770 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E87C7D352429F418009AD770 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E87C7D3D2429F418009AD770;
+			remoteInfo = "TapCardScanner-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E87C7D782429FD5C009AD770 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E87C7D772429FD5C009AD770 /* TapCardScanner_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E87C7D7B2429FDA1009AD770 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E87C7D7D2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05767855CBA3BF2AA8CB1BE1 /* Pods-TapCardScannerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScannerExample.debug.xcconfig"; path = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		23B0902A5A979A77D7DC3A5B /* Pods-TapCardScanner-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScanner-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapCardScanner-iOS/Pods-TapCardScanner-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		40BFAE8309E397529023CCDC /* Pods-TapCardScannerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScannerExample.release.xcconfig"; path = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.release.xcconfig"; sourceTree = "<group>"; };
+		65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScannerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91417D43AF0E31BC48951B3C /* Pods-TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScanner-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapCardScanner-iOS/Pods-TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapCardScanner_iOS.h; sourceTree = "<group>"; };
+		E87C7D422429F418009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E87C7D4D2429F487009AD770 /* TapCardScannerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapCardScannerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87C7D4F2429F487009AD770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E87C7D512429F487009AD770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E87C7D532429F487009AD770 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E87C7D562429F487009AD770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E87C7D582429F489009AD770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E87C7D5B2429F489009AD770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E87C7D5D2429F489009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E87C7D3B2429F418009AD770 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E87C7D7C2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E87C7D4A2429F487009AD770 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E87C7D662429F8DA009AD770 /* Pods_TapCardScannerExample.framework in Frameworks */,
+				E87C7D762429FD5C009AD770 /* TapCardScanner_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11C98F2DA64F8D72FFC3A2B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23B0902A5A979A77D7DC3A5B /* Pods-TapCardScanner-iOS.debug.xcconfig */,
+				91417D43AF0E31BC48951B3C /* Pods-TapCardScanner-iOS.release.xcconfig */,
+				05767855CBA3BF2AA8CB1BE1 /* Pods-TapCardScannerExample.debug.xcconfig */,
+				40BFAE8309E397529023CCDC /* Pods-TapCardScannerExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		807191F1E2717EDA1F211282 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */,
+				65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E87C7D342429F418009AD770 = {
+			isa = PBXGroup;
+			children = (
+				E87C7D402429F418009AD770 /* TapCardScanner-iOS */,
+				E87C7D4E2429F487009AD770 /* TapCardScannerExample */,
+				E87C7D3F2429F418009AD770 /* Products */,
+				11C98F2DA64F8D72FFC3A2B6 /* Pods */,
+				807191F1E2717EDA1F211282 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E87C7D3F2429F418009AD770 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */,
+				E87C7D4D2429F487009AD770 /* TapCardScannerExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E87C7D402429F418009AD770 /* TapCardScanner-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */,
+				E87C7D422429F418009AD770 /* Info.plist */,
+			);
+			path = "TapCardScanner-iOS";
+			sourceTree = "<group>";
+		};
+		E87C7D4E2429F487009AD770 /* TapCardScannerExample */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D4F2429F487009AD770 /* AppDelegate.swift */,
+				E87C7D512429F487009AD770 /* SceneDelegate.swift */,
+				E87C7D532429F487009AD770 /* ViewController.swift */,
+				E87C7D552429F487009AD770 /* Main.storyboard */,
+				E87C7D582429F489009AD770 /* Assets.xcassets */,
+				E87C7D5A2429F489009AD770 /* LaunchScreen.storyboard */,
+				E87C7D5D2429F489009AD770 /* Info.plist */,
+			);
+			path = TapCardScannerExample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E87C7D392429F418009AD770 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E87C7D432429F418009AD770 /* TapCardScanner_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E87C7D3D2429F418009AD770 /* TapCardScanner-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E87C7D462429F418009AD770 /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */;
+			buildPhases = (
+				E3CB73C16865D530207A0E09 /* [CP] Check Pods Manifest.lock */,
+				E87C7D392429F418009AD770 /* Headers */,
+				E87C7D3A2429F418009AD770 /* Sources */,
+				E87C7D3B2429F418009AD770 /* Frameworks */,
+				E87C7D3C2429F418009AD770 /* Resources */,
+				E87C7D7B2429FDA1009AD770 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TapCardScanner-iOS";
+			productName = "TapCardScanner-iOS";
+			productReference = E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E87C7D4C2429F487009AD770 /* TapCardScannerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E87C7D5E2429F489009AD770 /* Build configuration list for PBXNativeTarget "TapCardScannerExample" */;
+			buildPhases = (
+				12736FCA26E68B786CF4653D /* [CP] Check Pods Manifest.lock */,
+				E87C7D492429F487009AD770 /* Sources */,
+				E87C7D4A2429F487009AD770 /* Frameworks */,
+				E87C7D4B2429F487009AD770 /* Resources */,
+				E87C7D782429FD5C009AD770 /* Embed Frameworks */,
+				987B3A1B46CC968EC1D383A0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E87C7D6C2429F911009AD770 /* PBXTargetDependency */,
+			);
+			name = TapCardScannerExample;
+			productName = TapCardScannerExample;
+			productReference = E87C7D4D2429F487009AD770 /* TapCardScannerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E87C7D352429F418009AD770 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Tap Payments";
+				TargetAttributes = {
+					E87C7D3D2429F418009AD770 = {
+						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
+					};
+					E87C7D4C2429F487009AD770 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = E87C7D382429F418009AD770 /* Build configuration list for PBXProject "TapCardScanner-iOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E87C7D342429F418009AD770;
+			productRefGroup = E87C7D3F2429F418009AD770 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E87C7D3D2429F418009AD770 /* TapCardScanner-iOS */,
+				E87C7D4C2429F487009AD770 /* TapCardScannerExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E87C7D3C2429F418009AD770 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E87C7D4B2429F487009AD770 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E87C7D5C2429F489009AD770 /* LaunchScreen.storyboard in Resources */,
+				E87C7D592429F489009AD770 /* Assets.xcassets in Resources */,
+				E87C7D572429F487009AD770 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12736FCA26E68B786CF4653D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TapCardScannerExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		987B3A1B46CC968EC1D383A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3CB73C16865D530207A0E09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TapCardScanner-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E87C7D3A2429F418009AD770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E87C7D492429F487009AD770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E87C7D542429F487009AD770 /* ViewController.swift in Sources */,
+				E87C7D502429F487009AD770 /* AppDelegate.swift in Sources */,
+				E87C7D522429F487009AD770 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E87C7D6C2429F911009AD770 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E87C7D3D2429F418009AD770 /* TapCardScanner-iOS */;
+			targetProxy = E87C7D6B2429F911009AD770 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E87C7D552429F487009AD770 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E87C7D562429F487009AD770 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E87C7D5A2429F489009AD770 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E87C7D5B2429F489009AD770 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E87C7D442429F418009AD770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E87C7D452429F418009AD770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E87C7D472429F418009AD770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23B0902A5A979A77D7DC3A5B /* Pods-TapCardScanner-iOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G46S76PUH4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TapCardScanner-iOS",
+				);
+				INFOPLIST_FILE = "TapCardScanner-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapCardScanner-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E87C7D482429F418009AD770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91417D43AF0E31BC48951B3C /* Pods-TapCardScanner-iOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G46S76PUH4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TapCardScanner-iOS",
+				);
+				INFOPLIST_FILE = "TapCardScanner-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapCardScanner-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E87C7D5F2429F489009AD770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05767855CBA3BF2AA8CB1BE1 /* Pods-TapCardScannerExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G46S76PUH4;
+				INFOPLIST_FILE = TapCardScannerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = company.tap.TapCardScannerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E87C7D602429F489009AD770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40BFAE8309E397529023CCDC /* Pods-TapCardScannerExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G46S76PUH4;
+				INFOPLIST_FILE = TapCardScannerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = company.tap.TapCardScannerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E87C7D382429F418009AD770 /* Build configuration list for PBXProject "TapCardScanner-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E87C7D442429F418009AD770 /* Debug */,
+				E87C7D452429F418009AD770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E87C7D462429F418009AD770 /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E87C7D472429F418009AD770 /* Debug */,
+				E87C7D482429F418009AD770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E87C7D5E2429F489009AD770 /* Build configuration list for PBXNativeTarget "TapCardScannerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E87C7D5F2429F489009AD770 /* Debug */,
+				E87C7D602429F489009AD770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E87C7D352429F418009AD770 /* Project object */;
+}

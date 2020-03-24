@@ -1,0 +1,16 @@
+PODS:
+  - PayCardsRecognizer (1.1.7)
+
+DEPENDENCIES:
+  - PayCardsRecognizer
+
+SPEC REPOS:
+  trunk:
+    - PayCardsRecognizer
+
+SPEC CHECKSUMS:
+  PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
+
+PODFILE CHECKSUM: b36a346f75c6174212dc32de520c3a928abfb6db
+
+COCOAPODS: 1.8.4

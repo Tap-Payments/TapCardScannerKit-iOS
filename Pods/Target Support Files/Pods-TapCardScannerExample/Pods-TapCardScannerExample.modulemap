@@ -1,0 +1,6 @@
+framework module Pods_TapCardScannerExample {
+  umbrella header "Pods-TapCardScannerExample-umbrella.h"
+
+  export *
+  module * { export * }
+}
