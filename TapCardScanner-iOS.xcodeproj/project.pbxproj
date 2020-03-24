@@ -22,6 +22,7 @@
 		E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */; };
 		E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */; };
 		E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */; };
+		E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18844242A39010045A72C /* TapScannerProtocl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapInlineCardScanner.swift; sourceTree = "<group>"; };
 		E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCanScanStatusResult.swift; sourceTree = "<group>"; };
 		E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedTapCard.swift; sourceTree = "<group>"; };
+		E8B18844242A39010045A72C /* TapScannerProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapScannerProtocl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		E87C7D81242A0266009AD770 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
 				E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */,
 				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
 				E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */,

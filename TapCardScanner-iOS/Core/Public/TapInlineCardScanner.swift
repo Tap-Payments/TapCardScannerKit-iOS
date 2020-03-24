@@ -15,7 +15,12 @@ import class UIKit.UIColor
 import PayCardsRecognizer
 
 /// This class represents the tap inline scanner UI controller.
-@objc public class TapInlineCardScanner:NSObject {
+@objc public class TapInlineCardScanner:NSObject,TapScannerProtocl {
+    
+    /// This block fires when the scanner finished scanning
+    var tapCardScannerDidFinish:((ScannedTapCard)->())?
+    /// This block fires when the scanner finished scanning
+    var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())?
     
     /// This is the timeout period for the current scanner, -1 means it doesn't have one and will keep showing until parent app decides not to
     internal lazy var timeOutPeriod:Int = -1
@@ -51,8 +56,10 @@ import PayCardsRecognizer
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
      - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required
+     - Parameter didTimout: A block that will be called after the timeout period
+     - Parameter cardScanned: A block that will be called once a card has been scanned
      */
-    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1) throws {
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((ScannedTapCard)->())? = nil) throws {
         
         // Check if scanner can start first
         guard TapInlineCardScanner.CanScan() == .CanStart else {
@@ -74,6 +81,7 @@ import PayCardsRecognizer
             throw "Preview view is not defined"
         }
     }
+    
     
     /// This method is responsible for starting the camera feed logic
     internal func startScanning() {
