@@ -10,10 +10,21 @@ import Foundation
 import class AVFoundation.AVCaptureDevice
 import struct AVFoundation.AVMediaType
 import class UIKit.UIImagePickerController
+import class UIKit.UIView
+import class UIKit.UIColor
+import PayCardsRecognizer
 
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject {
     
+    /// This is the timeout period for the current scanner, -1 means it doesn't have one and will keep showing until parent app decides not to
+    internal lazy var timeOutPeriod:Int = -1
+    /// This is the UIView that scanner/camera feed will show inside it
+    internal var previewView:UIView?
+    /// This is the color of scan the card border. Default is green
+    internal lazy var scanningBorderColor:UIColor = .green
+    
+    internal var cardScanner:PayCardsRecognizer?
     /**
      This interface decides whether the scanner can start or not based on camera usage permission granted and camera does exist.
      - Returns: TapCanScanStatusResult enum which has three values: .CanStart if all good, .CameraMissing if camera doesn't exist and .CameraPermissionMissing Scanning cannot start as camera usage permission is not granted
@@ -32,6 +43,58 @@ import class UIKit.UIImagePickerController
         }else {
             return .CameraPermissionMissing
         }
+    }
+    
+    
+    /**
+        This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
+     - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
+     - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
+     - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required
+     */
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1) throws {
+        
+        // Check if scanner can start first
+        guard TapInlineCardScanner.CanScan() == .CanStart else {
+            throw TapInlineCardScanner.CanScan().rawValue
+        }
+        
+        // hold the customisations
+        self.previewView = previewView
+        self.scanningBorderColor = scanningBorderColor
+        self.timeOutPeriod = timoutAfter
+        
+        // Configure and restart the recognizer
+        configureScanner()
+        
+        // Double check all is good
+        if let _ = cardScanner {
+            startScanning()
+        }else {
+            throw "Preview view is not defined"
+        }
+    }
+    
+    /// This method is responsible for starting the camera feed logic
+    internal func startScanning() {
+        cardScanner?.startCamera(with: .portrait)
+    }
+    
+    /// This method is responsible for configuring the card scanner object and attach it inside the required view with the needed customisations
+    internal func configureScanner() {
+        
+        // Defensive code to check there is a holding view
+        if let nonNullPreviewView = self.previewView {
+            cardScanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: nonNullPreviewView, frameColor: scanningBorderColor)
+        }else {
+            cardScanner = nil
+        }
+    }
+}
+
+extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
+    public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
+        
     }
 }
 
