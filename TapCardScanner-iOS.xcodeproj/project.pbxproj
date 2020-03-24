@@ -19,6 +19,8 @@
 		E87C7D772429FD5C009AD770 /* TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E87C7D7C2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; };
 		E87C7D7D2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */; };
+		E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		E87C7D582429F489009AD770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E87C7D5B2429F489009AD770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E87C7D5D2429F489009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapInlineCardScanner.swift; sourceTree = "<group>"; };
+		E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCanScanStatusResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 		E87C7D402429F418009AD770 /* TapCardScanner-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E87C7D7E2429FFD2009AD770 /* Core */,
 				E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */,
 				E87C7D422429F418009AD770 /* Info.plist */,
 			);
@@ -158,6 +163,47 @@
 				E87C7D5D2429F489009AD770 /* Info.plist */,
 			);
 			path = TapCardScannerExample;
+			sourceTree = "<group>";
+		};
+		E87C7D7E2429FFD2009AD770 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D83242A03FD009AD770 /* Assets */,
+				E87C7D82242A0276009AD770 /* Public */,
+				E87C7D81242A0266009AD770 /* Private */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E87C7D81242A0266009AD770 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		E87C7D82242A0276009AD770 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D86242A0700009AD770 /* enum */,
+				E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		E87C7D83242A03FD009AD770 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E87C7D86242A0700009AD770 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */,
+			);
+			path = enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
+				E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05767855CBA3BF2AA8CB1BE1 /* Pods-TapCardScannerExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G46S76PUH4;
@@ -592,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40BFAE8309E397529023CCDC /* Pods-TapCardScannerExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G46S76PUH4;
