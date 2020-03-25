@@ -28,6 +28,8 @@ internal class TapFullScreenScannerViewController: UIViewController {
     /// This block fires when the scanner finished scanning
     internal var tapFullCardScannerDimissed:(()->())?
     
+    lazy internal var scannerUICustomization:TapFullScreenUICustomizer = TapFullScreenUICustomizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,8 @@ internal class TapFullScreenScannerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Apply the UI
+        configureUI()
         // Start the scanner
         configureScanner()
     }
@@ -79,8 +83,19 @@ internal class TapFullScreenScannerViewController: UIViewController {
     
     /// This method is responsible for configuring the scanner logic
     internal func configureScanner() {
-        scanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: scanningPreviewView, frameColor: .green)
+        scanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: scanningPreviewView, frameColor: scannerUICustomization.tapFullScreenScanBorderColor)
         scanner?.startCamera()
+    }
+    
+    /// This method is responsible for applying the ui customization for the full screen scanner
+    internal func configureUI() {
+        // Cancel button configuration
+        cancelButton.setTitle(scannerUICustomization.tapFullScreenCancelButtonTitle, for: .normal)
+        cancelButton.setTitleColor(scannerUICustomization.tapFullScreenCancelButtonTitleColor, for: .normal)
+        cancelButton.titleLabel?.font = scannerUICustomization.tapFullScreenCancelButtonFont
+        
+        // Cancel holder configuration
+        cancelButtonViewHolder.backgroundColor = scannerUICustomization.tapFullScreenCancelButtonHolderViewColor
     }
     
     @IBAction func closeClicked(_ sender: Any) {

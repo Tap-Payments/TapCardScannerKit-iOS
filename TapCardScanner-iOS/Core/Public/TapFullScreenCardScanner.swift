@@ -37,6 +37,7 @@ import class UIKit.UIColor
             // Forward the blocks to the controller
             tapFullScreenScanner.tapFullCardScannerDidFinish = tapCardScannerDidFinish
             tapFullScreenScanner.tapFullCardScannerDimissed = tapFullCardScannerDimissed
+            tapFullScreenScanner.scannerUICustomization = scannerUICustomization
             presenter.present(tapFullScreenScanner, animated: true, completion: nil)
         }
     }
