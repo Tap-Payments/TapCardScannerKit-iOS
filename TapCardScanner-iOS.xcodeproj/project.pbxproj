@@ -23,6 +23,9 @@
 		E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */; };
 		E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */; };
 		E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18844242A39010045A72C /* TapScannerProtocl.swift */; };
+		E8B18847242B159E0045A72C /* TapScannerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */; };
+		E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */; };
+		E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCanScanStatusResult.swift; sourceTree = "<group>"; };
 		E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedTapCard.swift; sourceTree = "<group>"; };
 		E8B18844242A39010045A72C /* TapScannerProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapScannerProtocl.swift; sourceTree = "<group>"; };
+		E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapScannerStoryboard.storyboard; sourceTree = "<group>"; };
+		E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenScannerViewController.swift; sourceTree = "<group>"; };
+		E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenCardScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,7 @@
 		E87C7D81242A0266009AD770 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				E8B18848242B15BC0045A72C /* Controllers */,
 				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
 			);
 			path = Private;
@@ -193,6 +200,7 @@
 				E8B1883F242A0D4D0045A72C /* models */,
 				E87C7D86242A0700009AD770 /* enum */,
 				E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */,
+				E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 		E87C7D83242A03FD009AD770 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -218,6 +227,14 @@
 				E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		E8B18848242B15BC0045A72C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B18847242B159E0045A72C /* TapScannerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,10 +420,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */,
 				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
 				E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */,
 				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
 				E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */,
+				E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

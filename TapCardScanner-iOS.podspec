@@ -104,7 +104,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  # spec.resources = "Resources/*.png"
+  spec.resources = "TapCardScanner-iOS/Core/Assets/**/*.{storyboard,xib}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
