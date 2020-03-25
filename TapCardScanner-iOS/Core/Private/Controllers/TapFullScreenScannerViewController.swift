@@ -11,10 +11,14 @@ import class UIKit.UIButton
 import class UIKit.UIViewController
 import PayCardsRecognizer
 
+/// The view controller handling the full screen scanner
 internal class TapFullScreenScannerViewController: UIViewController {
 
+    /// This is the view that holds the cancel button at the bottom
     @IBOutlet weak var cancelButtonViewHolder: UIView!
+    /// This is the cancel button
     @IBOutlet weak var cancelButton: UIButton!
+    /// This is the view that holds the camera feed for the scanner
     @IBOutlet weak var scanningPreviewView: UIView!
     
     var scanner:PayCardsRecognizer?
@@ -32,11 +36,22 @@ internal class TapFullScreenScannerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Start the scanner
         configureScanner()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        scanner?.stopCamera()
+    }
+    
+    /**
+        The method that is responsible for the dismissing logic
+     - Parameter callDismissBlock: A boolean that will indicate based on the contextt of the caller logic flow. If true, then the dismiss block will be called.
+     */
     internal func dismissScanner(callDismissBlock:Bool = true) {
         self.dismiss(animated: true) { [weak self] in
+            // Check if the caller wants to call the dismiss block
             if callDismissBlock {
                 if let dismissBlock = self?.tapFullCardScannerDimissed {
                     dismissBlock()
@@ -45,9 +60,15 @@ internal class TapFullScreenScannerViewController: UIViewController {
         }
     }
     
+    /**
+       The method that is responsible for the passing back the scanning results logic
+    - Parameter result: The result scanned from the scanner
+    */
     internal func cardScannedHandler(result: PayCardsRecognizerResult) {
+        // Create the ScannedTapCard from the scanner result
         let tapCardScanned:ScannedTapCard = .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear)
         
+        // If there is a scanned block then call it with the result
         if let scannedBlock = tapFullCardScannerDidFinish {
             scannedBlock(tapCardScanned)
             dismissScanner(callDismissBlock: false)
@@ -56,6 +77,7 @@ internal class TapFullScreenScannerViewController: UIViewController {
         }
     }
     
+    /// This method is responsible for configuring the scanner logic
     internal func configureScanner() {
         scanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: scanningPreviewView, frameColor: .green)
         scanner?.startCamera()
