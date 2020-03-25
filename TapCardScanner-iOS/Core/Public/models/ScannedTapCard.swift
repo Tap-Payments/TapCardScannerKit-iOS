@@ -12,13 +12,13 @@ import Foundation
 @objc public class ScannedTapCard:NSObject {
     
     /// Represents the scanned card number if any. Otherwise, it will be nil
-    @objc var scannedCardNumber:String?
+    @objc public var scannedCardNumber:String?
     /// Represents the scanned card name if any. Otherwise, it will be nil
-    @objc var scannedCardName:String?
+    @objc public var scannedCardName:String?
     /// Represents the scanned card expiration month MM if any. Otherwise, it will be nil
-    @objc var scannedCardExpiryMonth:String?
+    @objc public var scannedCardExpiryMonth:String?
     /// Represents the scanned card exxpiration year YYYY or YY if any. Otherwise, it will be nil
-    @objc var scannedCardExpiryYear:String?
+    @objc public var scannedCardExpiryYear:String?
     
     /**
      This is the default constructor for creating the ScannedTapCard model

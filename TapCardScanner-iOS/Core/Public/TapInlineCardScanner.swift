@@ -55,9 +55,9 @@ import PayCardsRecognizer
         This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
-     - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required
+     - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required and it will not accept a value less than 20 seconds
      - Parameter didTimout: A block that will be called after the timeout period
-     - Parameter cardScanned: A block that will be called once a card has been scanned
+     - Parameter cardScanned: A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces
      */
     @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((ScannedTapCard)->())? = nil) throws {
         
@@ -69,7 +69,14 @@ import PayCardsRecognizer
         // hold the customisations
         self.previewView = previewView
         self.scanningBorderColor = scanningBorderColor
-        self.timeOutPeriod = timoutAfter
+        self.timeOutPeriod = (timoutAfter == -1) ? -1 : (timoutAfter > 20) ? timoutAfter : 20
+        self.tapCardScannerDidFinish = cardScanned
+        self.tapInlineCardScannerTimedOut = didTimout
+       
+        // Check if the user passed a timeout then he needs to pass timeout block
+        if self.timeOutPeriod > 0 &&  didTimout == nil {
+            throw "When you define a timeout period, you need to define a timeout block"
+        }
         
         // Configure and restart the recognizer
         configureScanner()
@@ -89,7 +96,6 @@ import PayCardsRecognizer
     
     /// This method is responsible for configuring the card scanner object and attach it inside the required view with the needed customisations
     internal func configureScanner() {
-        
         // Defensive code to check there is a holding view
         if let nonNullPreviewView = self.previewView {
             cardScanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: nonNullPreviewView, frameColor: scanningBorderColor)
@@ -114,7 +120,6 @@ import PayCardsRecognizer
      - Parameter stopCamera: If not set, then camera feed will still be shown in the view but no actual scanning, if set, it will destroy itself
      */
     @objc public func pauseScanner(stopCamera:Bool) {
-        
         if let nonNullScanner = cardScanner {
             nonNullScanner.pause()
             if stopCamera {
@@ -123,10 +128,42 @@ import PayCardsRecognizer
         }
     }
     
+    /**
+     This method shall be called once the parent app wants to resume the scanner again.
+     */
+    @objc public func resumeScanner() {
+        if let nonNullScanner = cardScanner {
+            nonNullScanner.resumeRecognizer()
+        }
+    }
+    
     internal func stopScanner() {
-        
         if let nonNullScanner = cardScanner {
             nonNullScanner.stopCamera()
+        }
+    }
+    
+    /**
+     This is a public interface that should be called ONLY once  you get call back from the timeout block
+     */
+    @objc public func resetTimeOutTimer() {
+        
+        // Defensive code to check the user really needs to have a timeout and did not pass it as -1
+        if timeOutPeriod > 0 {
+            // Fire  the block after the  stated period
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(timeOutPeriod)) { [weak self] in
+                if let nonNullSelf = self {
+                    nonNullSelf.dispatchTimeOutBlock()
+                }
+            }
+        }
+        
+    }
+    
+    /// A helper method reponsible for executing the timeout block if exists
+    internal func dispatchTimeOutBlock() {
+        if let timeOutBlock = tapInlineCardScannerTimedOut {
+            timeOutBlock(self)
         }
     }
 }
@@ -136,6 +173,7 @@ extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
         if result.isCompleted {
             // Scanner captured semi/complete card details
             scannerScanned(scannedCard: .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear))
+            pauseScanner(stopCamera: false)
         }
     }
 }
