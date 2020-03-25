@@ -6,7 +6,9 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import class UIKit.UIStoryboard
+import class UIKit.UIViewController
+
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapFullScreenCardScanner:NSObject,TapScannerProtocl {
     
@@ -18,8 +20,8 @@ import UIKit
     @objc public func showModalScreen(presenter:UIViewController) {
         
         let bundle = Bundle(for: type(of: self))
-        if let kitStoryBoard:UIStoryboard = UIStoryboard.init(name: "TapScannerStoryboard", bundle: bundle),
-            let tapFullScreenScanner:TapFullScreenScannerViewController = kitStoryBoard.instantiateViewController(withIdentifier: "TapFullScreenScannerViewController") as? TapFullScreenScannerViewController {
+        let kitStoryBoard:UIStoryboard = UIStoryboard.init(name: "TapScannerStoryboard", bundle: bundle)
+        if let tapFullScreenScanner:TapFullScreenScannerViewController = kitStoryBoard.instantiateViewController(withIdentifier: "TapFullScreenScannerViewController") as? TapFullScreenScannerViewController {
             presenter.present(tapFullScreenScanner, animated: true, completion: nil)
         }
     }

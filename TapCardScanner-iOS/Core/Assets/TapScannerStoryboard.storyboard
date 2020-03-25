@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -13,32 +13,51 @@
             <objects>
                 <viewController storyboardIdentifier="TapFullScreenScannerViewController" id="3Bz-k8-4ba" customClass="TapFullScreenScannerViewController" customModule="TapCardScanner_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HAn-71-NTO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-hK-tPm">
-                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F57-PD-ggA">
-                                <rect key="frame" x="30" y="74" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeClicked:" destination="3Bz-k8-4ba" eventType="touchUpInside" id="hsF-Iy-bg2"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ute-xK-zVV">
+                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZW-ug-gGX">
+                                        <rect key="frame" x="183" y="10" width="48" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="3Bz-k8-4ba" eventType="touchUpInside" id="Gfd-sR-iz5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ly3-lh-D4J"/>
+                                    <constraint firstItem="lZW-ug-gGX" firstAttribute="centerX" secondItem="ute-xK-zVV" secondAttribute="centerX" id="s7p-aj-uAV"/>
+                                    <constraint firstItem="lZW-ug-gGX" firstAttribute="centerY" secondItem="ute-xK-zVV" secondAttribute="centerY" id="u0G-Ww-ktK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKA-SR-emg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="686"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="OGM-hK-tPm" firstAttribute="centerY" secondItem="HAn-71-NTO" secondAttribute="centerY" id="Lvf-oP-ZpD"/>
-                            <constraint firstItem="OGM-hK-tPm" firstAttribute="centerX" secondItem="HAn-71-NTO" secondAttribute="centerX" id="VtJ-ye-ouS"/>
-                            <constraint firstItem="F57-PD-ggA" firstAttribute="leading" secondItem="cFw-3w-E5C" secondAttribute="leading" constant="30" id="hsW-BS-ZPm"/>
-                            <constraint firstItem="F57-PD-ggA" firstAttribute="top" secondItem="cFw-3w-E5C" secondAttribute="top" constant="30" id="nRy-0u-wwO"/>
+                            <constraint firstItem="cFw-3w-E5C" firstAttribute="trailing" secondItem="HKA-SR-emg" secondAttribute="trailing" id="4Ns-Fi-CaY"/>
+                            <constraint firstItem="ute-xK-zVV" firstAttribute="top" secondItem="HKA-SR-emg" secondAttribute="bottom" id="Juu-uO-rXh"/>
+                            <constraint firstAttribute="trailing" secondItem="ute-xK-zVV" secondAttribute="trailing" id="KbE-Ed-WJ9"/>
+                            <constraint firstItem="HKA-SR-emg" firstAttribute="top" secondItem="cFw-3w-E5C" secondAttribute="top" id="R93-JS-bRB"/>
+                            <constraint firstAttribute="bottom" secondItem="ute-xK-zVV" secondAttribute="bottom" id="aZx-aD-02K"/>
+                            <constraint firstItem="ute-xK-zVV" firstAttribute="leading" secondItem="HAn-71-NTO" secondAttribute="leading" id="dEj-mT-XVV"/>
+                            <constraint firstItem="HKA-SR-emg" firstAttribute="leading" secondItem="cFw-3w-E5C" secondAttribute="leading" id="nXR-yi-YRo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cFw-3w-E5C"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="lZW-ug-gGX" id="EXY-jH-4ed"/>
+                        <outlet property="cancelButtonViewHolder" destination="ute-xK-zVV" id="c8e-fj-YSr"/>
+                        <outlet property="scanningPreviewView" destination="HKA-SR-emg" id="Rfq-bG-eBm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WzF-M3-rRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
