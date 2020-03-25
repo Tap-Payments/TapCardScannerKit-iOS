@@ -16,7 +16,9 @@ import PayCardsRecognizer
 
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject,TapScannerProtocl {
-    
+   
+    /// This block fires when the scanner finished scanning
+    var tapFullCardScannerDimissed: (() -> ())?
     /// This block fires when the scanner finished scanning
     var tapCardScannerDidFinish:((ScannedTapCard)->())?
     /// This block fires when the scanner finished scanning

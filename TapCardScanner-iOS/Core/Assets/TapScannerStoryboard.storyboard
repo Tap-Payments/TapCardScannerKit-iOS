@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController storyboardIdentifier="TapFullScreenScannerViewController" id="3Bz-k8-4ba" customClass="TapFullScreenScannerViewController" customModule="TapCardScanner_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HAn-71-NTO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ute-xK-zVV">
-                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="747" width="375" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZW-ug-gGX">
-                                        <rect key="frame" x="183" y="10" width="48" height="30"/>
+                                        <rect key="frame" x="163.66666666666666" y="17.666666666666629" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -31,13 +31,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Ly3-lh-D4J"/>
+                                    <constraint firstAttribute="height" constant="65" id="Ly3-lh-D4J"/>
                                     <constraint firstItem="lZW-ug-gGX" firstAttribute="centerX" secondItem="ute-xK-zVV" secondAttribute="centerX" id="s7p-aj-uAV"/>
                                     <constraint firstItem="lZW-ug-gGX" firstAttribute="centerY" secondItem="ute-xK-zVV" secondAttribute="centerY" id="u0G-Ww-ktK"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKA-SR-emg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="686"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="747"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -46,7 +46,7 @@
                             <constraint firstItem="cFw-3w-E5C" firstAttribute="trailing" secondItem="HKA-SR-emg" secondAttribute="trailing" id="4Ns-Fi-CaY"/>
                             <constraint firstItem="ute-xK-zVV" firstAttribute="top" secondItem="HKA-SR-emg" secondAttribute="bottom" id="Juu-uO-rXh"/>
                             <constraint firstAttribute="trailing" secondItem="ute-xK-zVV" secondAttribute="trailing" id="KbE-Ed-WJ9"/>
-                            <constraint firstItem="HKA-SR-emg" firstAttribute="top" secondItem="cFw-3w-E5C" secondAttribute="top" id="R93-JS-bRB"/>
+                            <constraint firstItem="HKA-SR-emg" firstAttribute="top" secondItem="HAn-71-NTO" secondAttribute="top" id="R93-JS-bRB"/>
                             <constraint firstAttribute="bottom" secondItem="ute-xK-zVV" secondAttribute="bottom" id="aZx-aD-02K"/>
                             <constraint firstItem="ute-xK-zVV" firstAttribute="leading" secondItem="HAn-71-NTO" secondAttribute="leading" id="dEj-mT-XVV"/>
                             <constraint firstItem="HKA-SR-emg" firstAttribute="leading" secondItem="cFw-3w-E5C" secondAttribute="leading" id="nXR-yi-YRo"/>

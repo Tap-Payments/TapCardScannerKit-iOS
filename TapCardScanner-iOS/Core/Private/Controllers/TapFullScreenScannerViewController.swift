@@ -19,6 +19,11 @@ internal class TapFullScreenScannerViewController: UIViewController {
     
     var scanner:PayCardsRecognizer?
     
+    /// This block fires when the scanner finished scanning
+    internal var tapFullCardScannerDidFinish:((ScannedTapCard)->())?
+    /// This block fires when the scanner finished scanning
+    internal var tapFullCardScannerDimissed:(()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,18 +35,41 @@ internal class TapFullScreenScannerViewController: UIViewController {
         configureScanner()
     }
     
+    internal func dismissScanner(callDismissBlock:Bool = true) {
+        self.dismiss(animated: true) { [weak self] in
+            if callDismissBlock {
+                if let dismissBlock = self?.tapFullCardScannerDimissed {
+                    dismissBlock()
+                }
+            }
+        }
+    }
+    
+    internal func cardScannedHandler(result: PayCardsRecognizerResult) {
+        let tapCardScanned:ScannedTapCard = .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear)
+        
+        if let scannedBlock = tapFullCardScannerDidFinish {
+            scannedBlock(tapCardScanned)
+            dismissScanner(callDismissBlock: false)
+        }else {
+            dismissScanner(callDismissBlock: true)
+        }
+    }
+    
     internal func configureScanner() {
         scanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: scanningPreviewView, frameColor: .green)
         scanner?.startCamera()
     }
     
     @IBAction func closeClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismissScanner()
     }
 }
 
 extension TapFullScreenScannerViewController:PayCardsRecognizerPlatformDelegate {
     func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
-        self.closeClicked(result)
+        if result.isCompleted {
+            cardScannedHandler(result: result)
+        }
     }
 }

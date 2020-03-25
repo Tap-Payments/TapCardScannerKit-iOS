@@ -10,18 +10,16 @@ import class UIKit.UIStoryboard
 import class UIKit.UIViewController
 
 /// This class represents the tap inline scanner UI controller.
-@objc public class TapFullScreenCardScanner:NSObject,TapScannerProtocl {
+@objc public class TapFullScreenCardScanner:NSObject {
+   
     
-    /// This block fires when the scanner finished scanning
-    var tapCardScannerDidFinish:((ScannedTapCard)->())?
-    /// This block fires when the scanner finished scanning
-    var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())?
-    
-    @objc public func showModalScreen(presenter:UIViewController) {
+    @objc public func showModalScreen(presenter:UIViewController,tapFullCardScannerDimissed: (() -> ())? = nil,tapCardScannerDidFinish:((ScannedTapCard)->())? = nil) {
         
         let bundle = Bundle(for: type(of: self))
         let kitStoryBoard:UIStoryboard = UIStoryboard.init(name: "TapScannerStoryboard", bundle: bundle)
         if let tapFullScreenScanner:TapFullScreenScannerViewController = kitStoryBoard.instantiateViewController(withIdentifier: "TapFullScreenScannerViewController") as? TapFullScreenScannerViewController {
+            tapFullScreenScanner.tapFullCardScannerDidFinish = tapCardScannerDidFinish
+            tapFullScreenScanner.tapFullCardScannerDimissed = tapFullCardScannerDimissed
             presenter.present(tapFullScreenScanner, animated: true, completion: nil)
         }
     }

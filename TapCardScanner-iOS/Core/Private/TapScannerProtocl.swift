@@ -14,6 +14,8 @@ internal protocol TapScannerProtocl:NSObject {
     
     /// This block fires when the scanner finished scanning
     var tapCardScannerDidFinish:((ScannedTapCard)->())? { get set }
-    /// This block fires when the scanner finished scanning
+    /// This block fires when the inline scanner timesout
     var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())? { get set }
+    /// This block fires when the user cancels the Full screen scanner
+    var tapFullCardScannerDimissed:(()->())? { get set }
 }
