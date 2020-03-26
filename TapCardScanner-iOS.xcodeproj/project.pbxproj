@@ -27,6 +27,7 @@
 		E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */; };
 		E8B1884E242B7CF20045A72C /* TapExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1884D242B7CF20045A72C /* TapExtensions.swift */; };
 		E8BAB6BD242CA1BB000701C4 /* TapFullScannerCustomisationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BAB6BC242CA1BB000701C4 /* TapFullScannerCustomisationTableViewController.swift */; };
+		E8BAB6BF242CAB27000701C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8BAB6BE242CAB27000701C4 /* GoogleService-Info.plist */; };
 		E8CDCCA8242C808B0094F9B7 /* ScannerOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDCCA7242C808B0094F9B7 /* ScannerOptionsTableViewController.swift */; };
 		E8CDCCAA242C95FA0094F9B7 /* InlineScannerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDCCA9242C95FA0094F9B7 /* InlineScannerDemoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenCardScanner.swift; sourceTree = "<group>"; };
 		E8B1884D242B7CF20045A72C /* TapExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapExtensions.swift; sourceTree = "<group>"; };
 		E8BAB6BC242CA1BB000701C4 /* TapFullScannerCustomisationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScannerCustomisationTableViewController.swift; sourceTree = "<group>"; };
+		E8BAB6BE242CAB27000701C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8CDCCA7242C808B0094F9B7 /* ScannerOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerOptionsTableViewController.swift; sourceTree = "<group>"; };
 		E8CDCCA9242C95FA0094F9B7 /* InlineScannerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineScannerDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 		E87C7D4E2429F487009AD770 /* TapCardScannerExample */ = {
 			isa = PBXGroup;
 			children = (
+				E8BAB6BE242CAB27000701C4 /* GoogleService-Info.plist */,
 				E87C7D4F2429F487009AD770 /* AppDelegate.swift */,
 				E87C7D512429F487009AD770 /* SceneDelegate.swift */,
 				E87C7D552429F487009AD770 /* Main.storyboard */,
@@ -352,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BAB6BF242CAB27000701C4 /* GoogleService-Info.plist in Resources */,
 				E87C7D5C2429F489009AD770 /* LaunchScreen.storyboard in Resources */,
 				E87C7D592429F489009AD770 /* Assets.xcassets in Resources */,
 				E87C7D572429F487009AD770 /* Main.storyboard in Resources */,
