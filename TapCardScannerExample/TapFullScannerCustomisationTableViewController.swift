@@ -82,7 +82,7 @@ class TapFullScannerCustomisationTableViewController: UITableViewController {
         case 0:
             // cretea alert control with given title and message
             let ac = UIAlertController(title: title, message: "Cancel title", preferredStyle: .alert)
-            
+            ac.addTextField(configurationHandler: nil)
             // Define what to do when the user fills in the value
             let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac, weak self] _ in
                 let answer = ac.textFields![0]
