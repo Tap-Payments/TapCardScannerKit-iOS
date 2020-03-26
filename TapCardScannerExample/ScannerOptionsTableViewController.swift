@@ -122,22 +122,31 @@ class ScannerOptionsTableViewController: UITableViewController {
     
     
     func showFullScanner(with customiser: TapFullScreenUICustomizer = .init()) {
-        
-        do {
-            try fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { [weak self] (scannedCard) in
-                
-                let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
-                let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
-                    
+        // First grant the authorization to use the camera
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
+            if response {
+                //access granted
+                DispatchQueue.main.async {[weak self] in
+                    do {
+                        try self?.fullScanner.showModalScreen(presenter: self!,tapCardScannerDidFinish: { [weak self] (scannedCard) in
+                            
+                            let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
+                            let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
+                                
+                            }
+                            
+                            alert.addAction(stopAlertAction)
+                            DispatchQueue.main.async { [weak self] in
+                                self?.present(alert, animated: true, completion: nil)
+                            }
+                        },scannerUICustomization: customiser)
+                    }catch{
+                        print(error.localizedDescription)
+                    }
                 }
+            }else {
                 
-                alert.addAction(stopAlertAction)
-                DispatchQueue.main.async { [weak self] in
-                    self?.present(alert, animated: true, completion: nil)
-                }
-            },scannerUICustomization: customiser)
-        }catch{
-            print(error.localizedDescription)
+            }
         }
     }
     
