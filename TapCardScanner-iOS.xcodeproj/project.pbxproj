@@ -27,6 +27,7 @@
 		E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */; };
 		E8B1884E242B7CF20045A72C /* TapExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1884D242B7CF20045A72C /* TapExtensions.swift */; };
 		E8CDCCA8242C808B0094F9B7 /* ScannerOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDCCA7242C808B0094F9B7 /* ScannerOptionsTableViewController.swift */; };
+		E8CDCCAA242C95FA0094F9B7 /* InlineScannerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CDCCA9242C95FA0094F9B7 /* InlineScannerDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		E8B1884B242B16410045A72C /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenCardScanner.swift; sourceTree = "<group>"; };
 		E8B1884D242B7CF20045A72C /* TapExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapExtensions.swift; sourceTree = "<group>"; };
 		E8CDCCA7242C808B0094F9B7 /* ScannerOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerOptionsTableViewController.swift; sourceTree = "<group>"; };
+		E8CDCCA9242C95FA0094F9B7 /* InlineScannerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineScannerDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				E87C7D5A2429F489009AD770 /* LaunchScreen.storyboard */,
 				E87C7D5D2429F489009AD770 /* Info.plist */,
 				E8CDCCA7242C808B0094F9B7 /* ScannerOptionsTableViewController.swift */,
+				E8CDCCA9242C95FA0094F9B7 /* InlineScannerDemoViewController.swift */,
 			);
 			path = TapCardScannerExample;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E87C7D502429F487009AD770 /* AppDelegate.swift in Sources */,
+				E8CDCCAA242C95FA0094F9B7 /* InlineScannerDemoViewController.swift in Sources */,
 				E87C7D522429F487009AD770 /* SceneDelegate.swift in Sources */,
 				E8CDCCA8242C808B0094F9B7 /* ScannerOptionsTableViewController.swift in Sources */,
 			);

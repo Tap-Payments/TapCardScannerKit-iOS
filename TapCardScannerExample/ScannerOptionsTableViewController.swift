@@ -9,6 +9,8 @@
 import UIKit
 import TapCardScanner_iOS
 import SheetyColors
+import AVFoundation
+
 class ScannerOptionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -82,8 +84,23 @@ class ScannerOptionsTableViewController: UITableViewController {
         [UIAlertController.self]).lineBreakMode = .byWordWrapping
     }
     
-    func showInlineScanner(borderColor:UIColor = .green, timeout:Int = 0) {
-        
+    func showInlineScanner(borderColor:UIColor = .green, timeout:Int = -1) {
+        // First grant the authorization to use the camera
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
+            if response {
+                //access granted
+                DispatchQueue.main.async {[weak self] in
+                    if let inlineDemoController:InlineScannerDemoViewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "InlineScannerDemoViewController") as? InlineScannerDemoViewController{
+                        inlineDemoController.scannerBorderColor = borderColor
+                        inlineDemoController.timeout = timeout
+                        self?.navigationController?.pushViewController(inlineDemoController, animated: true)
+                    }
+                }
+                
+            } else {
+                //access denied
+            }
+        }
     }
 
     /*
