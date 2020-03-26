@@ -98,28 +98,16 @@ class ScannerOptionsTableViewController: UITableViewController {
         
         alertControl.addAction(defaultAction)
         
-        let customiseAction:UIAlertAction = .init(title: "Timeout for inactive scanner after 30 seconds of unsuccessufl scanning.\nCustomised border color", style: .default, handler: { [weak self] (_) in
-            // Create a SheetyColors view with your configuration
-            let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: .green, title: "Scanner Border Color", type: .rgb)
-            let sheetyColors = SheetyColorsController(withConfig: config)
-
-            // Add a button to accept the selected color
-            let selectAction = UIAlertAction(title: "Select Color", style: .destructive, handler: { [weak self] _ in
-                self?.showFullScanner()
-            })
-                
-            sheetyColors.addAction(selectAction)
-
-            // Add a cancel button
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {[weak self] _ in
-                self?.showInlineScanner(timeout: 30)
-            })
-            sheetyColors.addAction(cancelAction)
-
-            // Now, present it to the user
-            self?.present(sheetyColors, animated: true, completion: nil)
+        let customiseAction:UIAlertAction = .init(title: "Colors and localisations for full screen customisation", style: .default, handler: { [weak self] (_) in
+            
+            DispatchQueue.main.async {[weak self] in
+                if let fullScreenCustomiseDemoController:TapFullScannerCustomisationTableViewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "TapFullScannerCustomisationTableViewController") as? TapFullScannerCustomisationTableViewController {
+                    fullScreenCustomiseDemoController.delegate = self
+                    self?.navigationController?.pushViewController(fullScreenCustomiseDemoController, animated: true)
+                }
+            }
         })
-       // alertControl.addAction(customiseAction)
+        alertControl.addAction(customiseAction)
         
         let cancelAction:UIAlertAction = .init(title: "Cancel", style: .cancel, handler: nil)
         alertControl.addAction(cancelAction)
@@ -133,12 +121,9 @@ class ScannerOptionsTableViewController: UITableViewController {
     }
     
     
-    func showFullScanner() {
+    func showFullScanner(with customiser: TapFullScreenUICustomizer = .init()) {
         
         do {
-            let scannerUI:TapFullScreenUICustomizer = .init()
-            scannerUI.tapFullScreenScanBorderColor = .red
-            scannerUI.tapFullScreenCancelButtonHolderViewColor = .blue
             try fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { [weak self] (scannedCard) in
                 
                 let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
@@ -150,7 +135,7 @@ class ScannerOptionsTableViewController: UITableViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.present(alert, animated: true, completion: nil)
                 }
-            },scannerUICustomization: scannerUI)
+            },scannerUICustomization: customiser)
         }catch{
             print(error.localizedDescription)
         }
@@ -230,4 +215,11 @@ class ScannerOptionsTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+extension ScannerOptionsTableViewController:TapFullScannerCustomisationDelegate {
+    func customisationDone(with customiser: TapFullScreenUICustomizer) {
+        showFullScanner(with: customiser)
+    }
 }
