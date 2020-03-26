@@ -67,6 +67,30 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Prj-O4-U8L" detailTextLabel="f30-mt-fFw" style="IBUITableViewCellStyleSubtitle" id="al3-Ki-FAr">
+                                        <rect key="frame" x="0.0" y="154" width="414" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="al3-Ki-FAr" id="KnG-bK-dyy">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Full Screen Scanner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Prj-O4-U8L">
+                                                    <rect key="frame" x="20" y="9" width="152.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Ability to scan Visa/Master cards as a full modeal screen." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f30-mt-fFw">
+                                                    <rect key="frame" x="20" y="31.5" width="322.5" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -108,9 +132,9 @@
                         <constraints>
                             <constraint firstItem="GLC-el-9OF" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" constant="20" id="5Mq-O5-0OV"/>
                             <constraint firstItem="GLC-el-9OF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="5z8-4h-LVi"/>
-                            <constraint firstItem="GjP-FE-2eF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="MXR-dJ-RFK"/>
+                            <constraint firstItem="GjP-FE-2eF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="MXR-dJ-RFK"/>
                             <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GLC-el-9OF" secondAttribute="trailing" constant="20" id="Pli-o0-Xnf"/>
-                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GjP-FE-2eF" secondAttribute="trailing" constant="20" id="Uyk-cY-1EM"/>
+                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GjP-FE-2eF" secondAttribute="trailing" constant="20" id="Uyk-cY-1EM"/>
                             <constraint firstItem="GjP-FE-2eF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="gGt-LE-oDl"/>
                             <constraint firstItem="GjP-FE-2eF" firstAttribute="top" secondItem="GLC-el-9OF" secondAttribute="bottom" constant="20" id="mpg-bb-axD"/>
                         </constraints>
