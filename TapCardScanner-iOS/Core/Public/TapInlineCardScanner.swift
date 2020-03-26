@@ -212,8 +212,12 @@ import PayCardsRecognizer
         self.tapInlineCardScannerTimedOut = didTimout
        
         // Check if the user passed a timeout then he needs to pass timeout block
-        if self.timeOutPeriod > 0 &&  didTimout == nil {
-            throw "When you define a timeout period, you need to define a timeout block"
+        if self.timeOutPeriod > 0 {
+            if didTimout == nil {
+                throw "When you define a timeout period, you need to define a timeout block"
+            }else {
+                resetTimeOutTimer()
+            }
         }
         
         // Configure and restart the recognizer

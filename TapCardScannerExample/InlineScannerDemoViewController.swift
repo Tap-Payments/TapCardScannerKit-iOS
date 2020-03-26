@@ -28,7 +28,24 @@ class InlineScannerDemoViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let timeOutBlock:(TapInlineCardScanner) -> () = { [weak self] scanner in
-            
+            let alert:UIAlertController = UIAlertController(title: "TimeOut", message: "The timeout period ended and the scanner didn't get any card from the camera feed :(", preferredStyle: .alert)
+            let stopAlertAction:UIAlertAction = UIAlertAction(title: "Stop Scanning", style: .default) { (_) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.tapInlineScanner.pauseScanner(stopCamera: true)
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+            let scanAgainAlertAction:UIAlertAction = UIAlertAction(title: "Reset Timeout", style: .default) { (_) in
+                DispatchQueue.main.async { [weak self] in
+                    self?.tapInlineScanner.resumeScanner()
+                    self?.tapInlineScanner.resetTimeOutTimer()
+                }
+            }
+            alert.addAction(stopAlertAction)
+            alert.addAction(scanAgainAlertAction)
+            DispatchQueue.main.async { [weak self] in
+                self?.present(alert, animated: true, completion: nil)
+            }
         }
         
         let scannedBlock:(ScannedTapCard) -> () = { [weak self] scannedCard in
