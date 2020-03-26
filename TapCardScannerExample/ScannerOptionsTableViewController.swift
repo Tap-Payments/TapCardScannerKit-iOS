@@ -50,7 +50,7 @@ class ScannerOptionsTableViewController: UITableViewController {
     }
     
     func handleStaticImageScanner() {
-        let alertControl: UIAlertController = .init(title: "Scan card from image", message: "Choose image source", preferredStyle: .alert)
+        let alertControl: UIAlertController = .init(title: "Scan card from image", message: "Choose image source", preferredStyle: .actionSheet)
         let libraryAction:UIAlertAction = .init(title: "Library", style: .default) { (_) in
             DispatchQueue.main.async { [weak self] in
                let imagePicker:UIImagePickerController =  UIImagePickerController()
@@ -61,8 +61,14 @@ class ScannerOptionsTableViewController: UITableViewController {
                           self?.present(imagePicker, animated: true, completion: nil)
             }
         }
-        let cameraAction:UIAlertAction = .init(title: "Camera", style: .default) { (_) in
+        let cameraAction:UIAlertAction = .init(title: "Camera", style: .default) { [weak self] (_) in
             
+            DispatchQueue.main.async {[weak self] in
+                if let cameraViewController:CameraViewController = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "CameraViewController") as? CameraViewController {
+                    cameraViewController.delegate = self
+                    self?.navigationController?.pushViewController(cameraViewController, animated: true)
+                }
+            }
         }
         let cancelAction:UIAlertAction = .init(title: "Cancel", style: .cancel, handler: nil)
         alertControl.addAction(libraryAction)
@@ -292,6 +298,13 @@ class ScannerOptionsTableViewController: UITableViewController {
 extension ScannerOptionsTableViewController:TapFullScannerCustomisationDelegate {
     func customisationDone(with customiser: TapFullScreenUICustomizer) {
         showFullScanner(with: customiser)
+    }
+}
+
+extension ScannerOptionsTableViewController:CameraViewControllerDelegate {
+    func photoCaptured(with image: UIImage) {
+        self.navigationController?.popViewController(animated: true)
+        self.showStaticScanner(from: image)
     }
 }
 

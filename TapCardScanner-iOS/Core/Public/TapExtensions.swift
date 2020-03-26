@@ -70,7 +70,7 @@ extension String
     func isaPotentialCardName() -> Bool {
         
         // Card name always has only upper cased letters and spaces
-        let allowedCharachters = "abcdefghijklmnopqrstuvwxyz ".uppercased()
+        let allowedCharachters = "abcdefghijklmnopqrstuvwxyz .'".uppercased()
         if self.rangeOfCharacter(from: CharacterSet(charactersIn: allowedCharachters).inverted) == nil {
             if self.components(separatedBy: " ").count > 2 && self.count > 10 {
                 return true
