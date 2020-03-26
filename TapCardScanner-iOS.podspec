@@ -16,17 +16,17 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapCardScanner-iOS"
-  spec.version      = "0.0.1"
-  spec.summary      = "The kit of kits TapCardScanner-iOS."
+  spec.version      = "1.0.0"
+  spec.summary      = "On demand, dynamic and customisable tap credit card scanner"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "This is the best ever never ever never scanning kit.This is the best ever never ever never scanning kit"
+  spec.description  = "This KIT should allow a parent/caller app that integrates with the kit to get credit card data from camera or library"
 
-  spec.homepage     = "http://EXAMPLE/TapCardScanner-iOS"
+  spec.homepage     = "https://github.com/Tap-Payments/TapCardScannerKit-iOS"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -64,6 +64,7 @@ Pod::Spec.new do |spec|
 
   # spec.platform     = :ios
    spec.platform     = :ios, "12.0"
+   spec.swift_versions = '4.2'
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
