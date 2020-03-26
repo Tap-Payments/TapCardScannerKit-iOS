@@ -65,10 +65,13 @@ import PayCardsRecognizer
         // GET base64 of the image
         if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
             
-            googleCloudVisionApi(with: base64, onTextExtracted: { (result) in
-                
+            // Execute the google cloud vision api request
+            googleCloudVisionApi(with: base64, onTextExtracted: { [weak self] (result) in
+                // If there is a success callback then call it with the potentially matched card
+                if let nonNullCardScannedBlock = cardScanned {
+                    nonNullCardScannedBlock(self?.processGoogleVision(with: result) ?? .init())
+                }
             }, onErrorOccured: onErrorOccured)
-            
         }
         
     }
@@ -151,29 +154,39 @@ import PayCardsRecognizer
     internal func processGoogleVision(with extractedText:String) -> ScannedTapCard {
         let scannedCard:ScannedTapCard = .init()
         // Let us go through the extracted lines
-        extractedText.enumerateLines { line, _ in
-            // First check if we already parsed a card number
-            if let _ = scannedCard.scannedCardNumber{
-                // Check For Card name
-                if let _ = scannedCard.scannedCardNumber {}else{
-                    if line.isaPotentialCardName() {
-                        scannedCard.scannedCardName = line
-                    }
-                }
-            } else {
-                if line.isPotentialCardNumber() {
-                    scannedCard.scannedCardNumber = line
+        extractedText.enumerateLines { [weak self] line, _ in
+            self?.match(string: line, to: scannedCard)
+        }
+        return scannedCard
+    }
+    
+    /**
+     The methoid that holds the logic for trying to match a given string to any part of a credit card
+     - Parameter string: The textt we want to check if it matches any card details
+     - Parameter scannedCard: The scanned card object we need to add the details into
+     */
+    internal func match(string:String, to scannedCard:ScannedTapCard) {
+        // First check if we already parsed a card number
+        if let _ = scannedCard.scannedCardNumber{
+            // Check For Card name
+            // We check for name after filling in the number to avoid bank names at the top of the cards
+            if let _ = scannedCard.scannedCardNumber {}else{
+                if string.isaPotentialCardName() {
+                    scannedCard.scannedCardName = string
                 }
             }
-            if let _ = scannedCard.scannedCardExpiryMonth{} else {
-                if let nonNullExpiryDateFound = line.extractCardExpiry() {
-                    scannedCard.scannedCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
-                    scannedCard.scannedCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
-                }
+        } else {
+            // Check if it is a potential card number
+            if string.isPotentialCardNumber() {
+                scannedCard.scannedCardNumber = string
             }
         }
-        
-        return scannedCard
+        if let _ = scannedCard.scannedCardExpiryMonth{} else {
+            if let nonNullExpiryDateFound = string.extractCardExpiry() {
+                scannedCard.scannedCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
+                scannedCard.scannedCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
+            }
+        }
     }
     
     /**
