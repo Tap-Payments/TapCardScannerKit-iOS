@@ -14,6 +14,15 @@ import AVFoundation
 class ScannerOptionsTableViewController: UITableViewController {
 
     lazy var fullScanner:TapFullScreenCardScanner = TapFullScreenCardScanner()
+    lazy var activityIndicatorBase : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x:0.0, y:0.0, width:60.0, height:60.0);
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .whiteLarge
+        activityIndicator.color = UIColor.orange
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +44,31 @@ class ScannerOptionsTableViewController: UITableViewController {
             handleInlineScanner()
         }else if indexPath.row == 2 {
             handleFullScanner()
+        }else if indexPath.row == 3 {
+            handleStaticImageScanner()
         }
+    }
+    
+    func handleStaticImageScanner() {
+        let alertControl: UIAlertController = .init(title: "Scan card from image", message: "Choose image source", preferredStyle: .alert)
+        let libraryAction:UIAlertAction = .init(title: "Library", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+               let imagePicker:UIImagePickerController =  UIImagePickerController()
+                          imagePicker.delegate = self
+                          imagePicker.allowsEditing = true
+                          imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                          imagePicker.allowsEditing = true
+                          self?.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        let cameraAction:UIAlertAction = .init(title: "Camera", style: .default) { (_) in
+            
+        }
+        let cancelAction:UIAlertAction = .init(title: "Cancel", style: .cancel, handler: nil)
+        alertControl.addAction(libraryAction)
+        alertControl.addAction(cameraAction)
+        alertControl.addAction(cancelAction)
+        self.present(alertControl, animated: true, completion: nil)
     }
     
     func handleScannerStatus() {
@@ -168,6 +201,35 @@ class ScannerOptionsTableViewController: UITableViewController {
             }
         }
     }
+    
+    func showStaticScanner(from pickedImage:UIImage) {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.backgroundView = self?.activityIndicatorBase
+            self?.tableView.isUserInteractionEnabled = false
+            let staticInlineScanner:TapInlineCardScanner = .init()
+            staticInlineScanner.ScanCard(from: pickedImage,maxDataSize: 250,minCompression: 0.4,cardScanned: { scannedCard in
+                let alertControl:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
+                
+                let okAction:UIAlertAction = .init(title: "OK", style: .cancel, handler: nil)
+                alertControl.addAction(okAction)
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(alertControl, animated: true, completion: nil)
+                    self?.tableView.backgroundView = nil
+                    self?.tableView.isUserInteractionEnabled = true
+                }
+            }, onErrorOccured: { error in
+                let alertControl: UIAlertController = .init(title: "Error happened", message: error, preferredStyle: .alert)
+                
+                let okAction:UIAlertAction = .init(title: "OK", style: .cancel, handler: nil)
+                alertControl.addAction(okAction)
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(alertControl, animated: true, completion: nil)
+                    self?.tableView.backgroundView = nil
+                    self?.tableView.isUserInteractionEnabled = true
+                }
+            })
+        }
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -232,3 +294,18 @@ extension ScannerOptionsTableViewController:TapFullScannerCustomisationDelegate 
         showFullScanner(with: customiser)
     }
 }
+
+
+extension ScannerOptionsTableViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        DispatchQueue.main.async { [unowned picker, weak self] in
+            picker.dismiss(animated: true) { [weak self] in
+                if let pickedImage = info[.originalImage] as? UIImage {
+                    self?.showStaticScanner(from: pickedImage)
+                }
+            }
+        }
+    }
+}
+
