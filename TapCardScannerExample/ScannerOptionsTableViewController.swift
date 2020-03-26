@@ -13,6 +13,8 @@ import AVFoundation
 
 class ScannerOptionsTableViewController: UITableViewController {
 
+    lazy var fullScanner:TapFullScreenCardScanner = TapFullScreenCardScanner()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +33,8 @@ class ScannerOptionsTableViewController: UITableViewController {
             handleScannerStatus()
         }else if indexPath.row == 1 {
             handleInlineScanner()
+        }else if indexPath.row == 2 {
+            handleFullScanner()
         }
     }
     
@@ -82,6 +86,74 @@ class ScannerOptionsTableViewController: UITableViewController {
 
         UILabel.appearance(whenContainedInInstancesOf:
         [UIAlertController.self]).lineBreakMode = .byWordWrapping
+    }
+    
+    
+    func handleFullScanner() {
+        let alertControl: UIAlertController = .init(title: "Full Scanner Opttions", message:"Those are the ways developers can customise their experience with the full scanner", preferredStyle: .actionSheet)
+       
+        let defaultAction:UIAlertAction = .init(title: "Default for border color and cancel button title", style: .destructive, handler: { [weak self] (_) in
+            self?.showFullScanner()
+        })
+        
+        alertControl.addAction(defaultAction)
+        
+        let customiseAction:UIAlertAction = .init(title: "Timeout for inactive scanner after 30 seconds of unsuccessufl scanning.\nCustomised border color", style: .default, handler: { [weak self] (_) in
+            // Create a SheetyColors view with your configuration
+            let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: .green, title: "Scanner Border Color", type: .rgb)
+            let sheetyColors = SheetyColorsController(withConfig: config)
+
+            // Add a button to accept the selected color
+            let selectAction = UIAlertAction(title: "Select Color", style: .destructive, handler: { [weak self] _ in
+                self?.showFullScanner()
+            })
+                
+            sheetyColors.addAction(selectAction)
+
+            // Add a cancel button
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {[weak self] _ in
+                self?.showInlineScanner(timeout: 30)
+            })
+            sheetyColors.addAction(cancelAction)
+
+            // Now, present it to the user
+            self?.present(sheetyColors, animated: true, completion: nil)
+        })
+       // alertControl.addAction(customiseAction)
+        
+        let cancelAction:UIAlertAction = .init(title: "Cancel", style: .cancel, handler: nil)
+        alertControl.addAction(cancelAction)
+        self.present(alertControl, animated: true, completion: nil)
+        
+        UILabel.appearance(whenContainedInInstancesOf:
+        [UIAlertController.self]).numberOfLines = 2
+
+        UILabel.appearance(whenContainedInInstancesOf:
+        [UIAlertController.self]).lineBreakMode = .byWordWrapping
+    }
+    
+    
+    func showFullScanner() {
+        
+        do {
+            let scannerUI:TapFullScreenUICustomizer = .init()
+            scannerUI.tapFullScreenScanBorderColor = .red
+            scannerUI.tapFullScreenCancelButtonHolderViewColor = .blue
+            try fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { [weak self] (scannedCard) in
+                
+                let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
+                let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
+                    
+                }
+                
+                alert.addAction(stopAlertAction)
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            },scannerUICustomization: scannerUI)
+        }catch{
+            print(error.localizedDescription)
+        }
     }
     
     func showInlineScanner(borderColor:UIColor = .green, timeout:Int = -1) {
