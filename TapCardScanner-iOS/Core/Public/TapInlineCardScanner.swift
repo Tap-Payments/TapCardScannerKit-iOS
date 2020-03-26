@@ -66,10 +66,10 @@ import PayCardsRecognizer
         if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
             
             // Execute the google cloud vision api request
-            googleCloudVisionApi(with: base64, onTextExtracted: { [weak self] (result) in
+            googleCloudVisionApi(with: base64, onTextExtracted: { (result) in
                 // If there is a success callback then call it with the potentially matched card
                 if let nonNullCardScannedBlock = cardScanned {
-                    nonNullCardScannedBlock(self?.processGoogleVision(with: result) ?? .init())
+                    nonNullCardScannedBlock(self.processGoogleVision(with: result))
                 }
             }, onErrorOccured: onErrorOccured)
         }
@@ -170,7 +170,7 @@ import PayCardsRecognizer
         if let _ = scannedCard.scannedCardNumber{
             // Check For Card name
             // We check for name after filling in the number to avoid bank names at the top of the cards
-            if let _ = scannedCard.scannedCardNumber {}else{
+            if let _ = scannedCard.scannedCardName {}else{
                 if string.isaPotentialCardName() {
                     scannedCard.scannedCardName = string
                 }
