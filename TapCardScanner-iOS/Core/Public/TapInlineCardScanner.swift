@@ -52,6 +52,129 @@ import PayCardsRecognizer
         }
     }
     
+    /**
+     This interface allows the caller to extract card data from a given static image. This can also scan flatten non imposed cards
+     - Parameter image: The static image you want to fetch card data from
+     - Parameter maxDataSize: Tap scanner will make sure to compress the image to the given max size in KB. The bigger the allowed size, the bigger the post request will be, the longer it will take to uploade.
+     - Parameter minCompression: Tap scanner will try to compress the image to the maxx size given, but it will not go below the given quality.
+     - Parameter cardScanned: A block that will send back the scand card details
+     - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
+     */
+    @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((ScannedTapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
+        
+        // GET base64 of the image
+        if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
+            
+            googleCloudVisionApi(with: base64, onTextExtracted: { (result) in
+                
+            }, onErrorOccured: onErrorOccured)
+            
+        }
+        
+    }
+    
+    /**
+    A method responsible for talking to google cloud vision API to exttact text from image
+    - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
+    - Parameter onTextExtracted: A block that will send back the extracted text
+    - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
+    */
+    internal func googleCloudVisionApi(with imageBase64:String, onTextExtracted:((String)->())? = nil,onErrorOccured:((String)->())? = nil) {
+        // Create the request
+        let request = createGoogleCloudVisionRequest(with: imageBase64)
+        
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            var errorMessage:String? = nil
+            // Check for Error
+            if let error = error {
+                errorMessage = "Error took place \(error)"
+            }else {
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
+                    do {
+                        // Check that google accepted the reqest and it did extract any peice of text from the given image
+                        let responseDict:[String:Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                        if let response:[[String:Any]] = responseDict["responses"] as? [[String : Any]], response.count == 1,
+                            let fullAnotation:[String:Any] = response[0]["fullTextAnnotation"] as? [String:Any],
+                            let parsedText:String = fullAnotation["text"] as? String {
+                            if let onTextExtractedBlock = onTextExtracted {
+                                onTextExtractedBlock(parsedText)
+                            }
+                        }else {
+                            errorMessage = "Error took place Wrong data from google as follows : \(dataString)"
+                        }
+                    }catch{
+                        errorMessage = "Error took place \(error)"
+                    }
+                }else {
+                    errorMessage = "Unkown Error took place"
+                }
+            }
+            
+            if let nonNullErrorMessage = errorMessage,
+               let errorBlock = onErrorOccured {
+                errorBlock(nonNullErrorMessage)
+            }
+        }
+        task.resume()
+    }
+    
+    /**
+       A method responsible for creating the URL request to be utilised in performing a POST to google cloud vision API
+       - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
+     - Returns: The url request
+       */
+    internal func createGoogleCloudVisionRequest(with imageBase64:String)->URLRequest {
+        // Prepare URL
+        let url = URL(string: "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCZs_vdFd2lI7650JuXabYNJUh4ljzTFgk")
+        guard let requestUrl = url else { fatalError() }
+        // Prepare URL Request Object
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+         request.setValue("application/json", forHTTPHeaderField: "Accept")
+         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        // HTTP Request Parameters which will be sent in HTTP Request Body
+        let postString = "{'requests': [{'image': {'content': '\(imageBase64)' },'imageContext':{'languageHints':['en']}, 'features': [{'type': 'TEXT_DETECTION' }]}]}";
+        // Set HTTP Request Body
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        return request
+    }
+    
+    /**
+     This method holds the logic for matching the text extracted from google vision cloud api to a potential card result
+     - Parameter extractedText: The extracted text by google cloud vision for the given image
+     - Returns: The potential scanned tap card from the extracted text.
+     */
+    internal func processGoogleVision(with extractedText:String) -> ScannedTapCard {
+        let scannedCard:ScannedTapCard = .init()
+        // Let us go through the extracted lines
+        extractedText.enumerateLines { line, _ in
+            // First check if we already parsed a card number
+            if let _ = scannedCard.scannedCardNumber{
+                // Check For Card name
+                if let _ = scannedCard.scannedCardNumber {}else{
+                    if line.isaPotentialCardName() {
+                        scannedCard.scannedCardName = line
+                    }
+                }
+            } else {
+                if line.isPotentialCardNumber() {
+                    scannedCard.scannedCardNumber = line
+                }
+            }
+            if let _ = scannedCard.scannedCardExpiryMonth{} else {
+                if let nonNullExpiryDateFound = line.extractCardExpiry() {
+                    scannedCard.scannedCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
+                    scannedCard.scannedCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
+                }
+            }
+        }
+        
+        return scannedCard
+    }
     
     /**
         This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
