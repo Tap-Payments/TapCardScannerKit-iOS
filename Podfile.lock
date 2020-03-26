@@ -1,16 +1,24 @@
 PODS:
+  - Capable/Colors (1.1.4)
   - PayCardsRecognizer (1.1.7)
+  - SheetyColors (1.0.2):
+    - Capable/Colors (~> 1.1)
 
 DEPENDENCIES:
   - PayCardsRecognizer
+  - SheetyColors
 
 SPEC REPOS:
   trunk:
+    - Capable
     - PayCardsRecognizer
+    - SheetyColors
 
 SPEC CHECKSUMS:
+  Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
+  SheetyColors: 1d0d56e5ee7923b3f12eea59a2815eae826479ee
 
-PODFILE CHECKSUM: b36a346f75c6174212dc32de520c3a928abfb6db
+PODFILE CHECKSUM: 740521649668cfa013605926b02f2171fe1eee8b
 
 COCOAPODS: 1.8.4

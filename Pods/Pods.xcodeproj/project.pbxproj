@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -19,23 +19,94 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0829A613025287FB03D6CE4F8A9929AA /* Pods-TapCardScannerExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3236AFBC2186A494B043EBB1EFACF7DA /* Pods-TapCardScannerExample-dummy.m */; };
-		1F621DBFB5A12BFFBD0688F50092A4DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3C52C67A2C3D8CFEF8A2D5654AF072E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		4DEDA9D5C2F4CD843536C00A74B17B4A /* Pods-TapCardScannerExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB99DA872A27A624E39B24581F64973 /* Pods-TapCardScannerExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04C1171221CE3E0C9F0A7195827F6116 /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B1EBD02F8CB8E3785B2CF1E0AAD45B /* UIView+anchor.swift */; };
+		0CB933D9409EC9E812EB4EB838AED5D5 /* SheetyColorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C43A71AE76C6E85011BF287182FD2E2 /* SheetyColorsViewController.xib */; };
+		1393ECFE3E2FE6892082509B8234F4E4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBC145FA4FC79155006321BDA9608BA5 /* Colors.xcassets */; };
+		13F117DF238B21F347E7589E00B97337 /* RGBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CA53C9DBEA55A6374EA12D61A2566F /* RGBAColor.swift */; };
+		1B03BB0E87E84D44DE9BED619A8D897B /* SheetyColorsConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EC542353FCE7CE24AD5C8A4C2867D /* SheetyColorsConfigProtocol.swift */; };
+		2344501E78D93C70401F7D680DFC12FA /* GrayscaleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0A959F4272CF6A83F0925770697C5 /* GrayscaleColor.swift */; };
+		247E723AB499ED7CE06C76A87719BD9B /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273F3D0E3512ECB5B87E01976CF06BD /* GradientSlider.swift */; };
+		27E369EBE1DAFF0564E5DAE0EF719B9D /* AppearenceProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53A41EAE68F0D445428145BF70D6370 /* AppearenceProviderProtocol.swift */; };
+		2AA2306BF7544D7A2BC70356592E3955 /* SheetyColorsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6A23648FF9A0C20586B6C34B00F3AF /* SheetyColorsType.swift */; };
+		37A5E39E3F161E150AB642CC8FD91421 /* SheetyColorsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ADD8F6A9E7F5A16D939E5B5B968B52 /* SheetyColorsViewProtocol.swift */; };
+		386F3436307ED18774FD30FEC49279C6 /* OSLogType+greaterEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B709390A45BF6A4C1A1F6C34A0A7D44 /* OSLogType+greaterEqual.swift */; };
+		3C52C67A2C3D8CFEF8A2D5654AF072E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610F3C30F247673EA87995CEC052C079 /* Foundation.framework */; };
+		3EA07194D2A2C60ED0313F110376232A /* Color+wcag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D9FCFACD3A620F1F8B974D3DE89B6 /* Color+wcag.swift */; };
+		3FDC9E96391273010174796380BA56B8 /* SheetyColorsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C21A821B0FE81ED8E6D659B13CE6F8 /* SheetyColorsConfig.swift */; };
+		43B547B21A6BE47B8DF9647B525A1F85 /* SheetyColors-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C32027D9DE7A67A541D3CCB1DA11A2 /* SheetyColors-dummy.m */; };
+		489660142F806FDD2740479865373F76 /* RGBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA0E2CFBD6B4450F26E3BE5D8666B1 /* RGBAColor.swift */; };
+		5731F5AA571DF585B8FF5ED55934735F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610F3C30F247673EA87995CEC052C079 /* Foundation.framework */; };
+		64C89B5124D2DB0BB9CB45B47F7D070F /* HSBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401BDB9D803B2F6E1F0915CF8B6DB11 /* HSBViewModel.swift */; };
+		66006286ABD101780D02CFE886513F94 /* UIColor+grayscaleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF9030CCBB509156D7BE3D7EB0AB6A1 /* UIColor+grayscaleColor.swift */; };
+		68CA7BD2DDAE18370B5CD443C1B0B0C0 /* UIColor+hsbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476285758092D2B3EC7F8B0DBB64D7F0 /* UIColor+hsbaColor.swift */; };
+		6A009E335A4087A3D5FD7A1D31C403EC /* Image+averageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100ABC72A8AAF9B1294893EA3698C287 /* Image+averageColor.swift */; };
+		6EA6C3894C63CB147213E1DFB3A9DFF1 /* CGFloat+constrainToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F1756B1A1C1F0672F43BACA1CBB5F /* CGFloat+constrainToRange.swift */; };
+		79A8EA8EE1DC41E2EE7A9BF2E2D2D69E /* GrayscaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D225B664F63EAC8492E57B9C75C4F /* GrayscaleViewModel.swift */; };
+		7F580FA35BD86EDA98F6E29F0B75630B /* NSFont+fontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8CF614A29FC273F1E061273D6815D /* NSFont+fontProps.swift */; };
+		8010AB8B9E544F88E90E3E762143C071 /* FontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D6E49F466DE57AC4643F2F890FF524 /* FontProps.swift */; };
+		83EE63509DDE46A301FDB352973327E2 /* CIImage+initWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7825C536BA55FF040CE584E5141872 /* CIImage+initWithImage.swift */; };
+		846DF0A83838C09FD6A4385B41F44378 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2822F79DD524972449D4F7BDBE0E6CD /* Logger.swift */; };
+		8507700E00DC3C13923B6F3299B2F1D7 /* ImageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6000F358115E903AE495FA53EFA56 /* ImageArea.swift */; };
+		8D1E72A6BA27450809F69DB8DBCCF654 /* Capable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4132CB57DD1CAC4032801EA6044DE9FC /* Capable-dummy.m */; };
+		8F2C1826D5312139D6B198682916C7B9 /* UIFont+fontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77703DD77444F3380246E2BCE66BC07 /* UIFont+fontProps.swift */; };
+		8F646124024FA624FD7794EB09A454FE /* SheetyColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3203FEC0A7FAF8FB1868D218E7903F2 /* SheetyColorProtocol.swift */; };
+		9192AC8ADF1C4054440EF649CB3B8BD5 /* SheetyColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5F98487656A2958A74A5885ECE135 /* SheetyColorsViewController.swift */; };
+		921408FB339B026EFDBF354A482CE862 /* UIAlertController+customView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10D34EA7149EA53505215D9FEBF45D9 /* UIAlertController+customView.swift */; };
+		92B234B5FAEBD1B3E937EB7081FA68FE /* NSColor+rgbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0031FE7BEA99B6C9176B7C411B725B80 /* NSColor+rgbaColor.swift */; };
+		94216C4658A417F38E4EE5C53E1C64D3 /* SheetyColors-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07102BFEA7C266AFC0262BC6D51CDED0 /* SheetyColors-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97AB8723F14EB49E766C4FE450E480FA /* AppearenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7CEB7DB28E0D35AB827BBE6D0358B /* AppearenceProvider.swift */; };
+		9A7DB8FD4EDEF40A8082FBC4C04D5B90 /* SheetyColorsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AD5553D6E05F60407B8132336D0F4A /* SheetyColorsViewFactory.swift */; };
+		9A8AE51AEEBA70E08A430B406E264CE8 /* UIColor+rgbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167C786B398C51712FABCB788B6D7C7D /* UIColor+rgbaColor.swift */; };
+		9C58B9BCE62F01222591680F63F300DF /* Pods-TapCardScannerExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB99DA872A27A624E39B24581F64973 /* Pods-TapCardScannerExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E184920C60E52CB36D03187FD6A7C2F /* UIColor+rgbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CE75A72C21F9601D00A9497EF99D70 /* UIColor+rgbaColor.swift */; };
+		A10B7683D5B189DE20E98333FCDB3EAF /* PreviewColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82005D86403303B25E72D8F7347C02DD /* PreviewColorView.swift */; };
+		A3FB1491A1A3B81152AF673DADCD2F34 /* SheetyColorsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F13083CA7E7B180E6A1AB1E1152CBB /* SheetyColorsViewModelDelegate.swift */; };
+		A4BA3929D2ABDB7A3A30D66F228B565B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B09EE684279BCFCF3FFB8D54F877BF /* UIKit.framework */; };
+		B4652984E852907A5A50CB620E43EE28 /* HSBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A851B28C2F7C30B82C52096FC0DE798 /* HSBAColor.swift */; };
+		BC0621156106076938EE4CB260141F0F /* SheetyColorsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53934ABF39EF9BCC6F9E5B73457B6F /* SheetyColorsViewModelProtocol.swift */; };
+		CA1940150CB01743CF82DD18D602FFA4 /* Bundle+framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10001B83DE84A5FDE947EC0A4131DFD /* Bundle+framework.swift */; };
+		CEBAAFD45BFE01D602F867FFF711C7A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610F3C30F247673EA87995CEC052C079 /* Foundation.framework */; };
+		D542F2806D78202E89894939750D8457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610F3C30F247673EA87995CEC052C079 /* Foundation.framework */; };
 		DD3A8BEA854E06032DE15ED267847054 /* Pods-TapCardScanner-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6708C7B8D165AE142EE09D6F7ABB467 /* Pods-TapCardScanner-iOS-dummy.m */; };
+		E042A4B064675A65ADB9D7488F911BE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF19F6D62F4F4B8B19EEB57695E070C6 /* Images.xcassets */; };
+		E4E88BC89BAD91A2CFED33C63A48F16D /* ConformanceLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879687FFE3BF7D553721BD20911D51E /* ConformanceLevel.swift */; };
 		EB52D4BF53918F06D45E3E7A5CD60C43 /* Pods-TapCardScanner-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 43E0D06C3D0B3C3F7EF94927A4A4D129 /* Pods-TapCardScanner-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F17D86C84572047500394AC464FE37DA /* RGBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3056D83442342C5B71EB8CE913FFCEF1 /* RGBViewModel.swift */; };
+		FE4104BF18D4D78A4D90E46C4B33F315 /* Capable-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F538AAA90CFB974517AAB67A5B711A /* Capable-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF2F6A52A4A54E4232C14C471236988F /* Pods-TapCardScannerExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3236AFBC2186A494B043EBB1EFACF7DA /* Pods-TapCardScannerExample-dummy.m */; };
+		FFAD816E3F75BD1F6E69BEC2E917C40D /* Capable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34466D942FBAB01644E681AE1238C3BC /* Capable.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44F0A36896B5DA282CF36F182A387EC1 /* PBXContainerItemProxy */ = {
+		121E0C0371F51D0A14F7507CBC878BD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F691C395A15AB6A5F19A00E280D57E0F;
+			remoteInfo = Capable;
+		};
+		156957DC826994E4C38B1FF628A4AAF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F691C395A15AB6A5F19A00E280D57E0F;
+			remoteInfo = Capable;
+		};
+		580C53295C6EF0EE65211080F8B58783 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECE08F087467D1E7D49C414E560769CE;
+			remoteInfo = SheetyColors;
+		};
+		CA14779727E270E7E3FC02DF5D8836E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7A1C8F08E55F85266691CD003FBAA5FC;
 			remoteInfo = PayCardsRecognizer;
 		};
-		CA14779727E270E7E3FC02DF5D8836E7 /* PBXContainerItemProxy */ = {
+		D96234B5C7CE4D3F32E269F57766E727 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -45,37 +116,104 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0031FE7BEA99B6C9176B7C411B725B80 /* NSColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSColor+rgbaColor.swift"; path = "Source/Colors/Extensions/NSColor+rgbaColor.swift"; sourceTree = "<group>"; };
+		0395F4BA63A2AB5DB62250C74FF2C86D /* PayCardsRecognizer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayCardsRecognizer.xcconfig; sourceTree = "<group>"; };
+		07102BFEA7C266AFC0262BC6D51CDED0 /* SheetyColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SheetyColors-umbrella.h"; sourceTree = "<group>"; };
+		0879687FFE3BF7D553721BD20911D51E /* ConformanceLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConformanceLevel.swift; path = Source/Colors/Models/ConformanceLevel.swift; sourceTree = "<group>"; };
+		08E41DFEC33DF6AA834D103BBA3288B7 /* Capable-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Capable-prefix.pch"; sourceTree = "<group>"; };
+		09F13083CA7E7B180E6A1AB1E1152CBB /* SheetyColorsViewModelDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewModelDelegate.swift; path = SheetyColors/Classes/Common/ViewModels/SheetyColorsViewModelDelegate.swift; sourceTree = "<group>"; };
+		0E22D487040F017BFE8CF12735C62C0E /* SheetyColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SheetyColors-prefix.pch"; sourceTree = "<group>"; };
+		100ABC72A8AAF9B1294893EA3698C287 /* Image+averageColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Image+averageColor.swift"; path = "Source/Colors/Extensions/Image+averageColor.swift"; sourceTree = "<group>"; };
+		116D9FCFACD3A620F1F8B974D3DE89B6 /* Color+wcag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Color+wcag.swift"; path = "Source/Colors/Extensions/Color+wcag.swift"; sourceTree = "<group>"; };
+		1401BDB9D803B2F6E1F0915CF8B6DB11 /* HSBViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBViewModel.swift; path = SheetyColors/Classes/HSB/ViewModels/HSBViewModel.swift; sourceTree = "<group>"; };
+		167C786B398C51712FABCB788B6D7C7D /* UIColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+rgbaColor.swift"; path = "Source/Colors/Extensions/UIColor+rgbaColor.swift"; sourceTree = "<group>"; };
+		17B1EBD02F8CB8E3785B2CF1E0AAD45B /* UIView+anchor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+anchor.swift"; path = "SheetyColors/Classes/Common/Views/Extensions/UIView+anchor.swift"; sourceTree = "<group>"; };
+		1C19A33E38DE43EF0EF62BA94D74443B /* SheetyColors.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SheetyColors.xcconfig; sourceTree = "<group>"; };
+		1C43A71AE76C6E85011BF287182FD2E2 /* SheetyColorsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SheetyColorsViewController.xib; path = SheetyColors/Classes/Common/Views/SheetyColorsViewController.xib; sourceTree = "<group>"; };
+		1E53934ABF39EF9BCC6F9E5B73457B6F /* SheetyColorsViewModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewModelProtocol.swift; path = SheetyColors/Classes/Common/ViewModels/SheetyColorsViewModelProtocol.swift; sourceTree = "<group>"; };
+		1E8EC542353FCE7CE24AD5C8A4C2867D /* SheetyColorsConfigProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsConfigProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/SheetyColorsConfigProtocol.swift; sourceTree = "<group>"; };
+		1EF9030CCBB509156D7BE3D7EB0AB6A1 /* UIColor+grayscaleColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+grayscaleColor.swift"; path = "SheetyColors/Classes/Grayscale/Models/Extensions/UIColor+grayscaleColor.swift"; sourceTree = "<group>"; };
+		2273F3D0E3512ECB5B87E01976CF06BD /* GradientSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientSlider.swift; path = SheetyColors/Classes/Common/Views/GradientSlider.swift; sourceTree = "<group>"; };
+		27C21A821B0FE81ED8E6D659B13CE6F8 /* SheetyColorsConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsConfig.swift; path = SheetyColors/Classes/Common/Models/SheetyColorsConfig.swift; sourceTree = "<group>"; };
+		28D6E49F466DE57AC4643F2F890FF524 /* FontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProps.swift; path = Source/Colors/Models/FontProps.swift; sourceTree = "<group>"; };
+		29CE75A72C21F9601D00A9497EF99D70 /* UIColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+rgbaColor.swift"; path = "SheetyColors/Classes/RGB/Models/Extensions/UIColor+rgbaColor.swift"; sourceTree = "<group>"; };
+		2A851B28C2F7C30B82C52096FC0DE798 /* HSBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBAColor.swift; path = SheetyColors/Classes/HSB/Models/HSBAColor.swift; sourceTree = "<group>"; };
 		2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapCardScannerExample.framework; path = "Pods-TapCardScannerExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3056D83442342C5B71EB8CE913FFCEF1 /* RGBViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBViewModel.swift; path = SheetyColors/Classes/RGB/ViewModels/RGBViewModel.swift; sourceTree = "<group>"; };
 		3236AFBC2186A494B043EBB1EFACF7DA /* Pods-TapCardScannerExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapCardScannerExample-dummy.m"; sourceTree = "<group>"; };
+		34466D942FBAB01644E681AE1238C3BC /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34EA2B56F85C1DA6DD76FAA6D60DD0A3 /* SheetyColors.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SheetyColors.modulemap; sourceTree = "<group>"; };
+		4132CB57DD1CAC4032801EA6044DE9FC /* Capable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Capable-dummy.m"; sourceTree = "<group>"; };
+		41AD5553D6E05F60407B8132336D0F4A /* SheetyColorsViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewFactory.swift; path = SheetyColors/Classes/Common/Factory/SheetyColorsViewFactory.swift; sourceTree = "<group>"; };
+		43CA53C9DBEA55A6374EA12D61A2566F /* RGBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBAColor.swift; path = Source/Colors/Models/RGBAColor.swift; sourceTree = "<group>"; };
 		43E0D06C3D0B3C3F7EF94927A4A4D129 /* Pods-TapCardScanner-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TapCardScanner-iOS-umbrella.h"; sourceTree = "<group>"; };
-		4A158CDC2BEE2A98BF60ACC4E860A8C3 /* PayCardsRecognizer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayCardsRecognizer.xcconfig; sourceTree = "<group>"; };
+		476285758092D2B3EC7F8B0DBB64D7F0 /* UIColor+hsbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+hsbaColor.swift"; path = "SheetyColors/Classes/HSB/Models/Extensions/UIColor+hsbaColor.swift"; sourceTree = "<group>"; };
+		4ADBB8A2082266FE8CDB092BD694F075 /* Capable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Capable.modulemap; sourceTree = "<group>"; };
 		4E0F249C41E2FFAE3C3093731F2AB475 /* Pods-TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		54F8A6149DF75AFD2C394816C32D3ED5 /* Pods-TapCardScannerExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TapCardScannerExample-frameworks.sh"; sourceTree = "<group>"; };
+		610F3C30F247673EA87995CEC052C079 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6BC2CC64FB07D36113CCE3EC365B046A /* Pods-TapCardScanner-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapCardScanner-iOS-Info.plist"; sourceTree = "<group>"; };
 		6CA9B454FA960985DA6E8DA95B693603 /* Pods-TapCardScannerExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapCardScannerExample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		784D49F3BC4C01F620361F0955CFDE7F /* PayCardsRecognizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayCardsRecognizer.framework; path = Source/PayCardsRecognizer.framework; sourceTree = "<group>"; };
+		6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SheetyColors.framework; path = SheetyColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E2D225B664F63EAC8492E57B9C75C4F /* GrayscaleViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleViewModel.swift; path = SheetyColors/Classes/Grayscale/ViewModels/GrayscaleViewModel.swift; sourceTree = "<group>"; };
+		71B6000F358115E903AE495FA53EFA56 /* ImageArea.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageArea.swift; path = Source/Colors/Models/ImageArea.swift; sourceTree = "<group>"; };
+		77B09EE684279BCFCF3FFB8D54F877BF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		7CC0A959F4272CF6A83F0925770697C5 /* GrayscaleColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleColor.swift; path = SheetyColors/Classes/Grayscale/Models/GrayscaleColor.swift; sourceTree = "<group>"; };
 		81368CB3F85FD1DFE87792F22F19D718 /* Pods-TapCardScanner-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapCardScanner-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		82005D86403303B25E72D8F7347C02DD /* PreviewColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewColorView.swift; path = SheetyColors/Classes/Common/Views/PreviewColorView.swift; sourceTree = "<group>"; };
 		8460A9F58A12E016C3C548DED72C438F /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapCardScanner_iOS.framework; path = "Pods-TapCardScanner-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D7825C536BA55FF040CE584E5141872 /* CIImage+initWithImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CIImage+initWithImage.swift"; path = "Source/Colors/Extensions/CIImage+initWithImage.swift"; sourceTree = "<group>"; };
+		97470033ABF6BA8DC8DF0B897946CC69 /* Capable-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Capable-Info.plist"; sourceTree = "<group>"; };
+		97D7CEB7DB28E0D35AB827BBE6D0358B /* AppearenceProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProvider.swift; path = SheetyColors/Classes/Common/Models/AppearenceProvider.swift; sourceTree = "<group>"; };
+		99ADD8F6A9E7F5A16D939E5B5B968B52 /* SheetyColorsViewProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewProtocol.swift; path = SheetyColors/Classes/Common/Views/Protocols/SheetyColorsViewProtocol.swift; sourceTree = "<group>"; };
+		9B709390A45BF6A4C1A1F6C34A0A7D44 /* OSLogType+greaterEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OSLogType+greaterEqual.swift"; path = "Source/Common/Logger/OSLogType+greaterEqual.swift"; sourceTree = "<group>"; };
+		9C6A23648FF9A0C20586B6C34B00F3AF /* SheetyColorsType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsType.swift; path = SheetyColors/Classes/Common/Models/SheetyColorsType.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9ECA0E2CFBD6B4450F26E3BE5D8666B1 /* RGBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBAColor.swift; path = SheetyColors/Classes/RGB/Models/RGBAColor.swift; sourceTree = "<group>"; };
 		A09F75E3C5662A12D2332D05833D9D4D /* Pods-TapCardScannerExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapCardScannerExample.modulemap"; sourceTree = "<group>"; };
+		A10001B83DE84A5FDE947EC0A4131DFD /* Bundle+framework.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+framework.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/Bundle+framework.swift"; sourceTree = "<group>"; };
 		A911D0FC1AFB3733ACC00ADE37A9BC9A /* Pods-TapCardScanner-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapCardScanner-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AA7F1756B1A1C1F0672F43BACA1CBB5F /* CGFloat+constrainToRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+constrainToRange.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/CGFloat+constrainToRange.swift"; sourceTree = "<group>"; };
+		ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Capable.framework; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE3980FEBAD0DB33FC0FA3235114252 /* Pods-TapCardScannerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapCardScannerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		AF19F6D62F4F4B8B19EEB57695E070C6 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SheetyColors/Classes/Common/Resources/Images.xcassets; sourceTree = "<group>"; };
+		B2822F79DD524972449D4F7BDBE0E6CD /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Source/Common/Logger/Logger.swift; sourceTree = "<group>"; };
+		B2C32027D9DE7A67A541D3CCB1DA11A2 /* SheetyColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SheetyColors-dummy.m"; sourceTree = "<group>"; };
 		B6708C7B8D165AE142EE09D6F7ABB467 /* Pods-TapCardScanner-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapCardScanner-iOS-dummy.m"; sourceTree = "<group>"; };
 		B68706395AC12BEC7C3781EDF1EC8A18 /* Pods-TapCardScannerExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapCardScannerExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		B90BB40E2637773A60397DB018658655 /* Pods-TapCardScanner-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapCardScanner-iOS.modulemap"; sourceTree = "<group>"; };
+		C10D34EA7149EA53505215D9FEBF45D9 /* UIAlertController+customView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIAlertController+customView.swift"; path = "SheetyColors/Classes/Common/Views/Extensions/UIAlertController+customView.swift"; sourceTree = "<group>"; };
 		C9794EFF5DC4B3FAD6151970CF0DF461 /* Pods-TapCardScannerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapCardScannerExample.release.xcconfig"; sourceTree = "<group>"; };
+		CE5E7BA4ECDAC759E3FEBE7F3D1F5A46 /* SheetyColors-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SheetyColors-Info.plist"; sourceTree = "<group>"; };
 		CEB99DA872A27A624E39B24581F64973 /* Pods-TapCardScannerExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TapCardScannerExample-umbrella.h"; sourceTree = "<group>"; };
+		D3203FEC0A7FAF8FB1868D218E7903F2 /* SheetyColorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/SheetyColorProtocol.swift; sourceTree = "<group>"; };
+		D53A41EAE68F0D445428145BF70D6370 /* AppearenceProviderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProviderProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/AppearenceProviderProtocol.swift; sourceTree = "<group>"; };
 		E37BD946833D1E6591D33894F4856D45 /* Pods-TapCardScannerExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapCardScannerExample-Info.plist"; sourceTree = "<group>"; };
+		E77703DD77444F3380246E2BCE66BC07 /* UIFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+fontProps.swift"; path = "Source/Colors/Extensions/UIFont+fontProps.swift"; sourceTree = "<group>"; };
+		E8F538AAA90CFB974517AAB67A5B711A /* Capable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Capable-umbrella.h"; sourceTree = "<group>"; };
 		ECC23DD48232D57844E0FF80981A5514 /* Pods-TapCardScanner-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapCardScanner-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		EFB29407AE84C597828A5399C6CA8467 /* PayCardsRecognizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayCardsRecognizer.framework; path = Source/PayCardsRecognizer.framework; sourceTree = "<group>"; };
+		F8E8CF614A29FC273F1E061273D6815D /* NSFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFont+fontProps.swift"; path = "Source/Colors/Extensions/NSFont+fontProps.swift"; sourceTree = "<group>"; };
+		FBC145FA4FC79155006321BDA9608BA5 /* Colors.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = SheetyColors/Classes/Common/Resources/Colors.xcassets; sourceTree = "<group>"; };
+		FD246E9559BD5244BC2FF1E5DF07D1AB /* Capable.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Capable.xcconfig; sourceTree = "<group>"; };
+		FFC5F98487656A2958A74A5885ECE135 /* SheetyColorsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewController.swift; path = SheetyColors/Classes/Common/Views/SheetyColorsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		27F7E16E09156E0AA3A76FFC0EE72895 /* Frameworks */ = {
+		26F9C2586E7DF5061B5BCD9E2563B89B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F621DBFB5A12BFFBD0688F50092A4DB /* Foundation.framework in Frameworks */,
+				D542F2806D78202E89894939750D8457 /* Foundation.framework in Frameworks */,
+				A4BA3929D2ABDB7A3A30D66F228B565B /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D7AE0CE893548E317727342EF06446E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBAAFD45BFE01D602F867FFF711C7A6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,9 +225,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9F71F0DB14B583051FE741AA146D164F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFAD816E3F75BD1F6E69BEC2E917C40D /* Capable.framework in Frameworks */,
+				5731F5AA571DF585B8FF5ED55934735F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00FCAF42DF0F9F7D9808391E69983BDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FBC145FA4FC79155006321BDA9608BA5 /* Colors.xcassets */,
+				AF19F6D62F4F4B8B19EEB57695E070C6 /* Images.xcassets */,
+				1C43A71AE76C6E85011BF287182FD2E2 /* SheetyColorsViewController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		091AD2A866361CB47A9EDEB7104F695A /* Pods-TapCardScannerExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,75 +280,157 @@
 			path = "Target Support Files/Pods-TapCardScanner-iOS";
 			sourceTree = "<group>";
 		};
-		3B16F04AA433543048AAE7FC376C0446 /* Products */ = {
+		26422FC7A5E81B031A1BB65531EA0D3B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8460A9F58A12E016C3C548DED72C438F /* Pods_TapCardScanner_iOS.framework */,
-				2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */,
+				610F3C30F247673EA87995CEC052C079 /* Foundation.framework */,
+				77B09EE684279BCFCF3FFB8D54F877BF /* UIKit.framework */,
 			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		63FB5B28AA1576DE6D8DA8E5CA6260E7 /* PayCardsRecognizer */ = {
+		34078FD3186A5BC1F5CCE802E60B491F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C06053101CD9C77053D5BF6D6176CFE /* Frameworks */,
-				8BBA36873BC69E53D75F29098FFF8359 /* Support Files */,
+				34466D942FBAB01644E681AE1238C3BC /* Capable.framework */,
+				26422FC7A5E81B031A1BB65531EA0D3B /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59A675BC9D482E1608BBF2FBD402DFE0 /* PayCardsRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				EB9B059CC95D2FF02DB83A808D23EAF3 /* Frameworks */,
+				A3E3E7437A07286E08A4A1D44ECA864A /* Support Files */,
 			);
 			name = PayCardsRecognizer;
 			path = PayCardsRecognizer;
 			sourceTree = "<group>";
 		};
-		7C06053101CD9C77053D5BF6D6176CFE /* Frameworks */ = {
+		5C9A016D8EDD155AF2282BEFA6729F19 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				784D49F3BC4C01F620361F0955CFDE7F /* PayCardsRecognizer.framework */,
+				34EA2B56F85C1DA6DD76FAA6D60DD0A3 /* SheetyColors.modulemap */,
+				1C19A33E38DE43EF0EF62BA94D74443B /* SheetyColors.xcconfig */,
+				B2C32027D9DE7A67A541D3CCB1DA11A2 /* SheetyColors-dummy.m */,
+				CE5E7BA4ECDAC759E3FEBE7F3D1F5A46 /* SheetyColors-Info.plist */,
+				0E22D487040F017BFE8CF12735C62C0E /* SheetyColors-prefix.pch */,
+				07102BFEA7C266AFC0262BC6D51CDED0 /* SheetyColors-umbrella.h */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/SheetyColors";
 			sourceTree = "<group>";
 		};
-		8BBA36873BC69E53D75F29098FFF8359 /* Support Files */ = {
+		71401026DDBEF9D80156399A936C93C6 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				4A158CDC2BEE2A98BF60ACC4E860A8C3 /* PayCardsRecognizer.xcconfig */,
+				8D7825C536BA55FF040CE584E5141872 /* CIImage+initWithImage.swift */,
+				116D9FCFACD3A620F1F8B974D3DE89B6 /* Color+wcag.swift */,
+				0879687FFE3BF7D553721BD20911D51E /* ConformanceLevel.swift */,
+				28D6E49F466DE57AC4643F2F890FF524 /* FontProps.swift */,
+				100ABC72A8AAF9B1294893EA3698C287 /* Image+averageColor.swift */,
+				71B6000F358115E903AE495FA53EFA56 /* ImageArea.swift */,
+				B2822F79DD524972449D4F7BDBE0E6CD /* Logger.swift */,
+				0031FE7BEA99B6C9176B7C411B725B80 /* NSColor+rgbaColor.swift */,
+				F8E8CF614A29FC273F1E061273D6815D /* NSFont+fontProps.swift */,
+				9B709390A45BF6A4C1A1F6C34A0A7D44 /* OSLogType+greaterEqual.swift */,
+				43CA53C9DBEA55A6374EA12D61A2566F /* RGBAColor.swift */,
+				167C786B398C51712FABCB788B6D7C7D /* UIColor+rgbaColor.swift */,
+				E77703DD77444F3380246E2BCE66BC07 /* UIFont+fontProps.swift */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
+		99404DABFED43F411ED2A4FB908A8072 /* SheetyColors */ = {
+			isa = PBXGroup;
+			children = (
+				97D7CEB7DB28E0D35AB827BBE6D0358B /* AppearenceProvider.swift */,
+				D53A41EAE68F0D445428145BF70D6370 /* AppearenceProviderProtocol.swift */,
+				A10001B83DE84A5FDE947EC0A4131DFD /* Bundle+framework.swift */,
+				AA7F1756B1A1C1F0672F43BACA1CBB5F /* CGFloat+constrainToRange.swift */,
+				2273F3D0E3512ECB5B87E01976CF06BD /* GradientSlider.swift */,
+				7CC0A959F4272CF6A83F0925770697C5 /* GrayscaleColor.swift */,
+				6E2D225B664F63EAC8492E57B9C75C4F /* GrayscaleViewModel.swift */,
+				2A851B28C2F7C30B82C52096FC0DE798 /* HSBAColor.swift */,
+				1401BDB9D803B2F6E1F0915CF8B6DB11 /* HSBViewModel.swift */,
+				82005D86403303B25E72D8F7347C02DD /* PreviewColorView.swift */,
+				9ECA0E2CFBD6B4450F26E3BE5D8666B1 /* RGBAColor.swift */,
+				3056D83442342C5B71EB8CE913FFCEF1 /* RGBViewModel.swift */,
+				D3203FEC0A7FAF8FB1868D218E7903F2 /* SheetyColorProtocol.swift */,
+				27C21A821B0FE81ED8E6D659B13CE6F8 /* SheetyColorsConfig.swift */,
+				1E8EC542353FCE7CE24AD5C8A4C2867D /* SheetyColorsConfigProtocol.swift */,
+				9C6A23648FF9A0C20586B6C34B00F3AF /* SheetyColorsType.swift */,
+				FFC5F98487656A2958A74A5885ECE135 /* SheetyColorsViewController.swift */,
+				41AD5553D6E05F60407B8132336D0F4A /* SheetyColorsViewFactory.swift */,
+				09F13083CA7E7B180E6A1AB1E1152CBB /* SheetyColorsViewModelDelegate.swift */,
+				1E53934ABF39EF9BCC6F9E5B73457B6F /* SheetyColorsViewModelProtocol.swift */,
+				99ADD8F6A9E7F5A16D939E5B5B968B52 /* SheetyColorsViewProtocol.swift */,
+				C10D34EA7149EA53505215D9FEBF45D9 /* UIAlertController+customView.swift */,
+				1EF9030CCBB509156D7BE3D7EB0AB6A1 /* UIColor+grayscaleColor.swift */,
+				476285758092D2B3EC7F8B0DBB64D7F0 /* UIColor+hsbaColor.swift */,
+				29CE75A72C21F9601D00A9497EF99D70 /* UIColor+rgbaColor.swift */,
+				17B1EBD02F8CB8E3785B2CF1E0AAD45B /* UIView+anchor.swift */,
+				00FCAF42DF0F9F7D9808391E69983BDA /* Resources */,
+				5C9A016D8EDD155AF2282BEFA6729F19 /* Support Files */,
+			);
+			name = SheetyColors;
+			path = SheetyColors;
+			sourceTree = "<group>";
+		};
+		A3E3E7437A07286E08A4A1D44ECA864A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0395F4BA63A2AB5DB62250C74FF2C86D /* PayCardsRecognizer.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/PayCardsRecognizer";
 			sourceTree = "<group>";
 		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+		A8ECE8EA2670AE0CBC4677612934F485 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+				ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */,
+				8460A9F58A12E016C3C548DED72C438F /* Pods_TapCardScanner_iOS.framework */,
+				2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */,
+				6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */,
 			);
-			name = iOS;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				DA47E2324AC7C4B93DBA10ABE98B0A7F /* Pods */,
-				3B16F04AA433543048AAE7FC376C0446 /* Products */,
+				34078FD3186A5BC1F5CCE802E60B491F /* Frameworks */,
+				D3D3265E843BABB6C86D8E2AEE8E0220 /* Pods */,
+				A8ECE8EA2670AE0CBC4677612934F485 /* Products */,
 				E06752095F57AB3A9CBD5559C4DDEDE2 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		D3D3265E843BABB6C86D8E2AEE8E0220 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DA47E2324AC7C4B93DBA10ABE98B0A7F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				63FB5B28AA1576DE6D8DA8E5CA6260E7 /* PayCardsRecognizer */,
+				E9B095CF74CD88DE63E9F6BDDB4E1F0F /* Capable */,
+				59A675BC9D482E1608BBF2FBD402DFE0 /* PayCardsRecognizer */,
+				99404DABFED43F411ED2A4FB908A8072 /* SheetyColors */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6DCAFF38568CC687BC2C3352AD71D15 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4ADBB8A2082266FE8CDB092BD694F075 /* Capable.modulemap */,
+				FD246E9559BD5244BC2FF1E5DF07D1AB /* Capable.xcconfig */,
+				4132CB57DD1CAC4032801EA6044DE9FC /* Capable-dummy.m */,
+				97470033ABF6BA8DC8DF0B897946CC69 /* Capable-Info.plist */,
+				08E41DFEC33DF6AA834D103BBA3288B7 /* Capable-prefix.pch */,
+				E8F538AAA90CFB974517AAB67A5B711A /* Capable-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Capable";
 			sourceTree = "<group>";
 		};
 		E06752095F57AB3A9CBD5559C4DDEDE2 /* Targets Support Files */ = {
@@ -203,14 +442,40 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		E9B095CF74CD88DE63E9F6BDDB4E1F0F /* Capable */ = {
+			isa = PBXGroup;
+			children = (
+				71401026DDBEF9D80156399A936C93C6 /* Colors */,
+				D6DCAFF38568CC687BC2C3352AD71D15 /* Support Files */,
+			);
+			name = Capable;
+			path = Capable;
+			sourceTree = "<group>";
+		};
+		EB9B059CC95D2FF02DB83A808D23EAF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFB29407AE84C597828A5399C6CA8467 /* PayCardsRecognizer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		92E9B7883164B754FA959DDFC97941BA /* Headers */ = {
+		1CF115ECAFF9BDBC881B23514A0A7FEE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DEDA9D5C2F4CD843536C00A74B17B4A /* Pods-TapCardScannerExample-umbrella.h in Headers */,
+				9C58B9BCE62F01222591680F63F300DF /* Pods-TapCardScannerExample-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BEF36DC778EAFDF769935089233EA04 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE4104BF18D4D78A4D90E46C4B33F315 /* Capable-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +484,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB52D4BF53918F06D45E3E7A5CD60C43 /* Pods-TapCardScanner-iOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF48EE7E179802A22DE75D7730A1F128 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94216C4658A417F38E4EE5C53E1C64D3 /* SheetyColors-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,21 +519,60 @@
 		};
 		C40522FEDC871E26A7F0FE226507A51E /* Pods-TapCardScannerExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DFB17AD370F60E066E185863FBBEFDA /* Build configuration list for PBXNativeTarget "Pods-TapCardScannerExample" */;
+			buildConfigurationList = D7E7A2E2068BFF8D9E75D2CFA787C711 /* Build configuration list for PBXNativeTarget "Pods-TapCardScannerExample" */;
 			buildPhases = (
-				92E9B7883164B754FA959DDFC97941BA /* Headers */,
-				767C1BF98D5FCFAB8C2290557C0E841D /* Sources */,
-				27F7E16E09156E0AA3A76FFC0EE72895 /* Frameworks */,
-				4E1CBE779C520B7AA4EB15E91D608120 /* Resources */,
+				1CF115ECAFF9BDBC881B23514A0A7FEE /* Headers */,
+				CA5C452D56B70CEC559A4F90D5485C5B /* Sources */,
+				3D7AE0CE893548E317727342EF06446E /* Frameworks */,
+				9F1FFD883CB9A6BB29B1BCB46112E47F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3D96902411CA16F28199676144044663 /* PBXTargetDependency */,
+				3BD7074BD158B70EAE779FE132B118D1 /* PBXTargetDependency */,
+				EB6FAD2E96D3320ECFCDDD3CF52E5308 /* PBXTargetDependency */,
+				169D8F94301A89B370AA2BB5AB4408A2 /* PBXTargetDependency */,
 			);
 			name = "Pods-TapCardScannerExample";
 			productName = "Pods-TapCardScannerExample";
 			productReference = 2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ECE08F087467D1E7D49C414E560769CE /* SheetyColors */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD03F248CEA0B4C13CE8A313797B2779 /* Build configuration list for PBXNativeTarget "SheetyColors" */;
+			buildPhases = (
+				FF48EE7E179802A22DE75D7730A1F128 /* Headers */,
+				46757E80C6132F90B20CD8A55D7D9814 /* Sources */,
+				9F71F0DB14B583051FE741AA146D164F /* Frameworks */,
+				9FF0F705769D0C322C1F903CB6F7AE44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D300D1860610499651136554ECCCB442 /* PBXTargetDependency */,
+			);
+			name = SheetyColors;
+			productName = SheetyColors;
+			productReference = 6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F691C395A15AB6A5F19A00E280D57E0F /* Capable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE7732A11754A43947B2CB3571278E58 /* Build configuration list for PBXNativeTarget "Capable" */;
+			buildPhases = (
+				3BEF36DC778EAFDF769935089233EA04 /* Headers */,
+				7C0D6ABF6D75F73AEBFFE5C70FD8AFC8 /* Sources */,
+				26F9C2586E7DF5061B5BCD9E2563B89B /* Frameworks */,
+				DF3BF2145F0CD240CE0715959D9B5B24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Capable;
+			productName = Capable;
+			productReference = ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -273,7 +585,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -281,22 +593,34 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3B16F04AA433543048AAE7FC376C0446 /* Products */;
+			productRefGroup = A8ECE8EA2670AE0CBC4677612934F485 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				F691C395A15AB6A5F19A00E280D57E0F /* Capable */,
 				7A1C8F08E55F85266691CD003FBAA5FC /* PayCardsRecognizer */,
 				03965585D18E3631E6A80BAECDEE6A01 /* Pods-TapCardScanner-iOS */,
 				C40522FEDC871E26A7F0FE226507A51E /* Pods-TapCardScannerExample */,
+				ECE08F087467D1E7D49C414E560769CE /* SheetyColors */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4E1CBE779C520B7AA4EB15E91D608120 /* Resources */ = {
+		9F1FFD883CB9A6BB29B1BCB46112E47F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FF0F705769D0C322C1F903CB6F7AE44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1393ECFE3E2FE6892082509B8234F4E4 /* Colors.xcassets in Resources */,
+				E042A4B064675A65ADB9D7488F911BE4 /* Images.xcassets in Resources */,
+				0CB933D9409EC9E812EB4EB838AED5D5 /* SheetyColorsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,14 +631,76 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF3BF2145F0CD240CE0715959D9B5B24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		767C1BF98D5FCFAB8C2290557C0E841D /* Sources */ = {
+		46757E80C6132F90B20CD8A55D7D9814 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0829A613025287FB03D6CE4F8A9929AA /* Pods-TapCardScannerExample-dummy.m in Sources */,
+				97AB8723F14EB49E766C4FE450E480FA /* AppearenceProvider.swift in Sources */,
+				27E369EBE1DAFF0564E5DAE0EF719B9D /* AppearenceProviderProtocol.swift in Sources */,
+				CA1940150CB01743CF82DD18D602FFA4 /* Bundle+framework.swift in Sources */,
+				6EA6C3894C63CB147213E1DFB3A9DFF1 /* CGFloat+constrainToRange.swift in Sources */,
+				247E723AB499ED7CE06C76A87719BD9B /* GradientSlider.swift in Sources */,
+				2344501E78D93C70401F7D680DFC12FA /* GrayscaleColor.swift in Sources */,
+				79A8EA8EE1DC41E2EE7A9BF2E2D2D69E /* GrayscaleViewModel.swift in Sources */,
+				B4652984E852907A5A50CB620E43EE28 /* HSBAColor.swift in Sources */,
+				64C89B5124D2DB0BB9CB45B47F7D070F /* HSBViewModel.swift in Sources */,
+				A10B7683D5B189DE20E98333FCDB3EAF /* PreviewColorView.swift in Sources */,
+				489660142F806FDD2740479865373F76 /* RGBAColor.swift in Sources */,
+				F17D86C84572047500394AC464FE37DA /* RGBViewModel.swift in Sources */,
+				8F646124024FA624FD7794EB09A454FE /* SheetyColorProtocol.swift in Sources */,
+				43B547B21A6BE47B8DF9647B525A1F85 /* SheetyColors-dummy.m in Sources */,
+				3FDC9E96391273010174796380BA56B8 /* SheetyColorsConfig.swift in Sources */,
+				1B03BB0E87E84D44DE9BED619A8D897B /* SheetyColorsConfigProtocol.swift in Sources */,
+				2AA2306BF7544D7A2BC70356592E3955 /* SheetyColorsType.swift in Sources */,
+				9192AC8ADF1C4054440EF649CB3B8BD5 /* SheetyColorsViewController.swift in Sources */,
+				9A7DB8FD4EDEF40A8082FBC4C04D5B90 /* SheetyColorsViewFactory.swift in Sources */,
+				A3FB1491A1A3B81152AF673DADCD2F34 /* SheetyColorsViewModelDelegate.swift in Sources */,
+				BC0621156106076938EE4CB260141F0F /* SheetyColorsViewModelProtocol.swift in Sources */,
+				37A5E39E3F161E150AB642CC8FD91421 /* SheetyColorsViewProtocol.swift in Sources */,
+				921408FB339B026EFDBF354A482CE862 /* UIAlertController+customView.swift in Sources */,
+				66006286ABD101780D02CFE886513F94 /* UIColor+grayscaleColor.swift in Sources */,
+				68CA7BD2DDAE18370B5CD443C1B0B0C0 /* UIColor+hsbaColor.swift in Sources */,
+				9E184920C60E52CB36D03187FD6A7C2F /* UIColor+rgbaColor.swift in Sources */,
+				04C1171221CE3E0C9F0A7195827F6116 /* UIView+anchor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C0D6ABF6D75F73AEBFFE5C70FD8AFC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D1E72A6BA27450809F69DB8DBCCF654 /* Capable-dummy.m in Sources */,
+				83EE63509DDE46A301FDB352973327E2 /* CIImage+initWithImage.swift in Sources */,
+				3EA07194D2A2C60ED0313F110376232A /* Color+wcag.swift in Sources */,
+				E4E88BC89BAD91A2CFED33C63A48F16D /* ConformanceLevel.swift in Sources */,
+				8010AB8B9E544F88E90E3E762143C071 /* FontProps.swift in Sources */,
+				6A009E335A4087A3D5FD7A1D31C403EC /* Image+averageColor.swift in Sources */,
+				8507700E00DC3C13923B6F3299B2F1D7 /* ImageArea.swift in Sources */,
+				846DF0A83838C09FD6A4385B41F44378 /* Logger.swift in Sources */,
+				92B234B5FAEBD1B3E937EB7081FA68FE /* NSColor+rgbaColor.swift in Sources */,
+				7F580FA35BD86EDA98F6E29F0B75630B /* NSFont+fontProps.swift in Sources */,
+				386F3436307ED18774FD30FEC49279C6 /* OSLogType+greaterEqual.swift in Sources */,
+				13F117DF238B21F347E7589E00B97337 /* RGBAColor.swift in Sources */,
+				9A8AE51AEEBA70E08A430B406E264CE8 /* UIColor+rgbaColor.swift in Sources */,
+				8F2C1826D5312139D6B198682916C7B9 /* UIFont+fontProps.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA5C452D56B70CEC559A4F90D5485C5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2F6A52A4A54E4232C14C471236988F /* Pods-TapCardScannerExample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,24 +715,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		169D8F94301A89B370AA2BB5AB4408A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SheetyColors;
+			target = ECE08F087467D1E7D49C414E560769CE /* SheetyColors */;
+			targetProxy = 580C53295C6EF0EE65211080F8B58783 /* PBXContainerItemProxy */;
+		};
 		1D965B9AA3ED180BF6CC2B1873A9B985 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PayCardsRecognizer;
 			target = 7A1C8F08E55F85266691CD003FBAA5FC /* PayCardsRecognizer */;
 			targetProxy = CA14779727E270E7E3FC02DF5D8836E7 /* PBXContainerItemProxy */;
 		};
-		3D96902411CA16F28199676144044663 /* PBXTargetDependency */ = {
+		3BD7074BD158B70EAE779FE132B118D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Capable;
+			target = F691C395A15AB6A5F19A00E280D57E0F /* Capable */;
+			targetProxy = 156957DC826994E4C38B1FF628A4AAF6 /* PBXContainerItemProxy */;
+		};
+		D300D1860610499651136554ECCCB442 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Capable;
+			target = F691C395A15AB6A5F19A00E280D57E0F /* Capable */;
+			targetProxy = 121E0C0371F51D0A14F7507CBC878BD1 /* PBXContainerItemProxy */;
+		};
+		EB6FAD2E96D3320ECFCDDD3CF52E5308 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PayCardsRecognizer;
 			target = 7A1C8F08E55F85266691CD003FBAA5FC /* PayCardsRecognizer */;
-			targetProxy = 44F0A36896B5DA282CF36F182A387EC1 /* PBXContainerItemProxy */;
+			targetProxy = D96234B5C7CE4D3F32E269F57766E727 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		03ADEA3849F028EB49642F5A62ADECA4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A158CDC2BEE2A98BF60ACC4E860A8C3 /* PayCardsRecognizer.xcconfig */;
+			baseConfigurationReference = 0395F4BA63A2AB5DB62250C74FF2C86D /* PayCardsRecognizer.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -464,11 +868,10 @@
 			};
 			name = Release;
 		};
-		697B7822F649C2E19C8361757556528A /* Release */ = {
+		5DFD28D11C06837B45D2BC7F275737B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9794EFF5DC4B3FAD6151970CF0DF461 /* Pods-TapCardScannerExample.release.xcconfig */;
+			baseConfigurationReference = FD246E9559BD5244BC2FF1E5DF07D1AB /* Capable.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -479,29 +882,63 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Capable/Capable-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Capable/Capable-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/Capable/Capable.modulemap";
+				PRODUCT_MODULE_NAME = Capable;
+				PRODUCT_NAME = Capable;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		5E7A5815DCB10A716CE94A0A75D9E051 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C19A33E38DE43EF0EF62BA94D74443B /* SheetyColors.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SheetyColors/SheetyColors-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SheetyColors/SheetyColors-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SheetyColors/SheetyColors.modulemap";
+				PRODUCT_MODULE_NAME = SheetyColors;
+				PRODUCT_NAME = SheetyColors;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		822FBA33596FF78F5F53508BC118414E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -541,9 +978,46 @@
 			};
 			name = Debug;
 		};
+		8E4D577BF5DDE08F5AF3D842511CFFC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD246E9559BD5244BC2FF1E5DF07D1AB /* Capable.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Capable/Capable-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Capable/Capable-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Capable/Capable.modulemap";
+				PRODUCT_MODULE_NAME = Capable;
+				PRODUCT_NAME = Capable;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		9E2F0957E6C5B7A790003722AAD2FF9C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A158CDC2BEE2A98BF60ACC4E860A8C3 /* PayCardsRecognizer.xcconfig */;
+			baseConfigurationReference = 0395F4BA63A2AB5DB62250C74FF2C86D /* PayCardsRecognizer.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -556,6 +1030,120 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		BD1DF557D397B9D968F7E8048632C6B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADE3980FEBAD0DB33FC0FA3235114252 /* Pods-TapCardScannerExample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D0E2C95E538BFF041D7CD24BA8F60869 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9794EFF5DC4B3FAD6151970CF0DF461 /* Pods-TapCardScannerExample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E807926A0F085256426D0C5786B74D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C19A33E38DE43EF0EF62BA94D74443B /* SheetyColors.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SheetyColors/SheetyColors-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SheetyColors/SheetyColors-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SheetyColors/SheetyColors.modulemap";
+				PRODUCT_MODULE_NAME = SheetyColors;
+				PRODUCT_NAME = SheetyColors;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		F090CD07A80273D5A73C8EA19224ADDB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -617,56 +1205,9 @@
 			};
 			name = Release;
 		};
-		FBD75D65318BB4A020831F45D744BC31 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADE3980FEBAD0DB33FC0FA3235114252 /* Pods-TapCardScannerExample.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TapCardScannerExample/Pods-TapCardScannerExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DFB17AD370F60E066E185863FBBEFDA /* Build configuration list for PBXNativeTarget "Pods-TapCardScannerExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FBD75D65318BB4A020831F45D744BC31 /* Debug */,
-				697B7822F649C2E19C8361757556528A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -690,6 +1231,33 @@
 			buildConfigurations = (
 				9E2F0957E6C5B7A790003722AAD2FF9C /* Debug */,
 				03ADEA3849F028EB49642F5A62ADECA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD03F248CEA0B4C13CE8A313797B2779 /* Build configuration list for PBXNativeTarget "SheetyColors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E7A5815DCB10A716CE94A0A75D9E051 /* Debug */,
+				E807926A0F085256426D0C5786B74D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7E7A2E2068BFF8D9E75D2CFA787C711 /* Build configuration list for PBXNativeTarget "Pods-TapCardScannerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD1DF557D397B9D968F7E8048632C6B0 /* Debug */,
+				D0E2C95E538BFF041D7CD24BA8F60869 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE7732A11754A43947B2CB3571278E58 /* Build configuration list for PBXNativeTarget "Capable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DFD28D11C06837B45D2BC7F275737B1 /* Debug */,
+				8E4D577BF5DDE08F5AF3D842511CFFC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

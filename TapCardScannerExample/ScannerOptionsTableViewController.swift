@@ -8,7 +8,7 @@
 
 import UIKit
 import TapCardScanner_iOS
-
+import SheetyColors
 class ScannerOptionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -27,17 +27,62 @@ class ScannerOptionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             handleScannerStatus()
+        }else if indexPath.row == 1 {
+            handleInlineScanner()
         }
     }
-    
-    
-    
     
     func handleScannerStatus() {
         let alertControl: UIAlertController = .init(title: "Scanner Status", message: TapInlineCardScanner.CanScan().rawValue, preferredStyle: .alert)
         let okAction:UIAlertAction = .init(title: "OK", style: .cancel, handler: nil)
         alertControl.addAction(okAction)
         self.present(alertControl, animated: true, completion: nil)
+    }
+    
+    func handleInlineScanner() {
+        let alertControl: UIAlertController = .init(title: "Inline Scanner Opttions", message:"Those are the ways developers can customise their experience with the inline scanner", preferredStyle: .actionSheet)
+       
+        let defaultAction:UIAlertAction = .init(title: "Default, no timeout and border color is green", style: .destructive, handler: { [weak self] (_) in
+            self?.showInlineScanner()
+        })
+        
+        alertControl.addAction(defaultAction)
+        
+        let customiseAction:UIAlertAction = .init(title: "Timeout for inactive scanner after 30 seconds of unsuccessufl scanning.\nCustomised border color", style: .default, handler: { [weak self] (_) in
+            // Create a SheetyColors view with your configuration
+            let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: .green, title: "Scanner Border Color", type: .rgb)
+            let sheetyColors = SheetyColorsController(withConfig: config)
+
+            // Add a button to accept the selected color
+            let selectAction = UIAlertAction(title: "Select Color", style: .destructive, handler: { [weak self] _ in
+                self?.showInlineScanner(borderColor: sheetyColors.color, timeout: 30)
+            })
+                
+            sheetyColors.addAction(selectAction)
+
+            // Add a cancel button
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {[weak self] _ in
+                self?.showInlineScanner(timeout: 30)
+            })
+            sheetyColors.addAction(cancelAction)
+
+            // Now, present it to the user
+            self?.present(sheetyColors, animated: true, completion: nil)
+        })
+        alertControl.addAction(customiseAction)
+        
+        let cancelAction:UIAlertAction = .init(title: "Cancel", style: .cancel, handler: nil)
+        alertControl.addAction(cancelAction)
+        self.present(alertControl, animated: true, completion: nil)
+        
+        UILabel.appearance(whenContainedInInstancesOf:
+        [UIAlertController.self]).numberOfLines = 2
+
+        UILabel.appearance(whenContainedInInstancesOf:
+        [UIAlertController.self]).lineBreakMode = .byWordWrapping
+    }
+    
+    func showInlineScanner(borderColor:UIColor = .green, timeout:Int = 0) {
         
     }
 
