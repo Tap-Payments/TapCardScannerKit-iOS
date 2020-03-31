@@ -205,8 +205,11 @@ import PayCardsRecognizer
      */
     @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((ScannedTapCard)->())? = nil) throws {
         
+        FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
+        
         // Check if scanner can start first
         guard TapInlineCardScanner.CanScan() == .CanStart else {
+            FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
             throw TapInlineCardScanner.CanScan().rawValue
         }
         
@@ -233,6 +236,7 @@ import PayCardsRecognizer
         if let _ = cardScanner {
             startScanning()
         }else {
+            FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
             throw "Preview view is not defined"
         }
     }
@@ -257,6 +261,8 @@ import PayCardsRecognizer
      - Parameter scannedCard: Whoever calling, will have to pass the scanned card
      */
     internal func scannerScanned(scannedCard:ScannedTapCard) {
+        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.scannedCardNumber ?? "","card_name":scannedCard.scannedCardName ?? "","card_month":scannedCard.scannedCardExpiryMonth ?? "","card_year":scannedCard.scannedCardExpiryYear ?? ""])
+        
         // Check if the scanned block is initialised, hence, utilise it and send the scannedCard to it
         if let tapCardScannerDidFinishBlock = tapCardScannerDidFinish {
             tapCardScannerDidFinishBlock(scannedCard)
@@ -286,6 +292,7 @@ import PayCardsRecognizer
     }
     
     internal func stopScanner() {
+        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called")
         if let nonNullScanner = cardScanner {
             nonNullScanner.stopCamera()
         }
