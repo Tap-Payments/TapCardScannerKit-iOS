@@ -133,5 +133,6 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency "PayCardsRecognizer", "~> 1.1.7"
-
+  spec.dependency "Flurry-iOS-SDK/FlurrySDK"
+  spec.dependency "Flurry-iOS-SDK/FlurryAds"
 end

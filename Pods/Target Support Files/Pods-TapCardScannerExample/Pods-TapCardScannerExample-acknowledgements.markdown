@@ -1980,6 +1980,11 @@ redistribute it freely, subject to the following restrictions:
    distribution.
 
 
+## Flurry-iOS-SDK
+
+Developer's use of the SDK is governed by the license in the applicable Flurry Terms of Service. Some components of the SDK are governed by open source software licenses. In the event of any conflict between the license in the applicable Flurry Terms of Service and the applicable open source license, the terms of the open source license shall prevail with respect to those components.
+
+
 ## PayCardsRecognizer
 
 MIT License

@@ -32,6 +32,7 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
+  - Flurry-iOS-SDK/FlurrySDK (10.2.0)
   - GoogleAppMeasurement (6.3.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -72,6 +73,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Flurry-iOS-SDK/FlurrySDK
   - PayCardsRecognizer
   - SheetyColors
 
@@ -84,6 +86,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
     - FirebaseInstallations
+    - Flurry-iOS-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -101,6 +104,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  Flurry-iOS-SDK: ca3540dd9607a05a8a13a7dd36dfffdd5e0fd0ef
   GoogleAppMeasurement: c29d405ff76e18551b5d158eaba6753fda8c7542
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
@@ -110,6 +114,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SheetyColors: 1d0d56e5ee7923b3f12eea59a2815eae826479ee
 
-PODFILE CHECKSUM: ba0b08231bece609b19522bb1b04ff284a8ab307
+PODFILE CHECKSUM: 292227332524014ee5a1b20ee831a3590b4bc734
 
 COCOAPODS: 1.8.4

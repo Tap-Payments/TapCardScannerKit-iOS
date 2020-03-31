@@ -7,6 +7,7 @@ target 'TapCardScanner-iOS' do
 
   # Pods for TapCardScanner-iOS
   pod 'PayCardsRecognizer'
+  pod 'Flurry-iOS-SDK/FlurrySDK' #Analytics Pod
 end
 
 target 'TapCardScannerExample' do
