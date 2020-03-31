@@ -182,3 +182,34 @@ This is the data model the scanner will return after scanning a card
 
 
 
+#### Asynchronous - Inline Screen Scanner
+
+This feature provides an easy way to add tap card scanner as a part of your UI by embedding it in a UIView
+
+
+
+##### TapInlineCardScanner Class
+
+This is the class providing the functionalioy of showing an inline scanner as a part of a given layout by bounding itself to a certain UIView.
+
+*Swift*:
+
+```swift
+import TapCardScanner_iOS
+
+let tapInlineScanner:TapInlineCardScanner = .init()
+tapInlineScanner.startScanning(in: previewView,cardScanned: { (scannedCard) in
+    print("Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n")
+})
+```
+
+*Parameters*:
+
+| Parameter name      | Parameter type             | Required | Default value | Description                                                  |
+| ------------------- | -------------------------- | -------- | ------------- | ------------------------------------------------------------ |
+| previewView         | UIView                     | Yes      | None          | This is the UIView that scanner/camera feed will show inside it |
+| scanningBorderColor | UIColor                    | No       | .green        | This is the color of scan the card border.                   |
+| timoutAfter         | Int                        | No       | -1            | This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required and it will not accept a value less than 20 seconds |
+| didTimout           | (TapInlineCardScanner)->() | No       | Nil           | A block that will be called after the timeout period to let the caller decide if he wants to leave the user scanning or he wants to cancel the scanning |
+| cardScanned         | (ScannedTapCard)->()       | No       | Nil           | A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces |
+
