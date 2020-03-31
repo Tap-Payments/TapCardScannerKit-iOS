@@ -24,9 +24,11 @@ import class UIKit.UIColor
      
      */
     @objc public func showModalScreen(presenter:UIViewController,tapFullCardScannerDimissed: (() -> ())? = nil,tapCardScannerDidFinish:((ScannedTapCard)->())? = nil,scannerUICustomization:TapFullScreenUICustomizer = TapFullScreenUICustomizer()) throws {
+        FlurryLogger.logEvent(with: "Scan_Full_Screen_Called", timed:true)
         
         // Check if scanner can start first
         guard TapInlineCardScanner.CanScan() == .CanStart else {
+            FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
             throw TapInlineCardScanner.CanScan().rawValue
         }
         
