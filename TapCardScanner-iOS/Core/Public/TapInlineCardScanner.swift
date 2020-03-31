@@ -37,6 +37,7 @@ import PayCardsRecognizer
      - Returns: TapCanScanStatusResult enum which has three values: .CanStart if all good, .CameraMissing if camera doesn't exist and .CameraPermissionMissing Scanning cannot start as camera usage permission is not granted
      */
     @objc public static func CanScan() -> TapCanScanStatusResult {
+        FlurryLogger.logEvent(with: "Can_Scan_Called")
         // Check if permission is granted to use the camera
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
             // Check the camera existance
@@ -61,6 +62,8 @@ import PayCardsRecognizer
      */
     @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((ScannedTapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
         
+        FlurryLogger.logEvent(with: "Scan_From_Image_Called", timed:true , params: ["maxDataSize":String(maxDataSize),"minCompression":"\(minCompression)"])
+        
         // GET base64 of the image
         if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
             
@@ -69,6 +72,8 @@ import PayCardsRecognizer
                 // If there is a success callback then call it with the potentially matched card
                 if let nonNullCardScannedBlock = cardScanned {
                     nonNullCardScannedBlock(self.processGoogleVision(with: result))
+                }else {
+                    FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","googleText":result])
                 }
             }, onErrorOccured: onErrorOccured)
         }
@@ -117,6 +122,7 @@ import PayCardsRecognizer
             
             if let nonNullErrorMessage = errorMessage,
                let errorBlock = onErrorOccured {
+                FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
                 errorBlock(nonNullErrorMessage)
             }
         }
@@ -156,6 +162,7 @@ import PayCardsRecognizer
         extractedText.enumerateLines { [weak self] line, _ in
             self?.match(string: line, to: scannedCard)
         }
+        FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.scannedCardNumber ?? "","card_name":scannedCard.scannedCardName ?? "","card_month":scannedCard.scannedCardExpiryMonth ?? "","card_year":scannedCard.scannedCardExpiryYear ?? ""])
         return scannedCard
     }
     

@@ -47,8 +47,8 @@ internal class FlurryLogger {
     }
     
     /// Used when you want to end a previously reported timed event
-    static func endTimerForEvent(with name:String) {
-        Flurry.endTimedEvent(name, withParameters: nil);
+    static func endTimerForEvent(with name:String, params:[String:String] = [:]) {
+        Flurry.endTimedEvent(name, withParameters: params);
     }
 }
 
