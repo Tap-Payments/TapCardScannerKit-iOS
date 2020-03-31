@@ -213,3 +213,32 @@ tapInlineScanner.startScanning(in: previewView,cardScanned: { (scannedCard) in
 | didTimout           | (TapInlineCardScanner)->() | No       | Nil           | A block that will be called after the timeout period to let the caller decide if he wants to leave the user scanning or he wants to cancel the scanning |
 | cardScanned         | (ScannedTapCard)->()       | No       | Nil           | A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces |
 
+#### Synchronous Scanner
+
+This feature provides an easy way to start a synchrnous scanning which scans card details from a given static image.  **This is to be used whenever you want to scan unembossed cards**
+
+
+
+##### TapInlineCardScanner Class
+
+This class provides an interface to scan card details from a static image as follows:
+
+*Swift*:
+
+```swift
+import TapCardScanner_iOS
+
+let staticInlineScanner:TapInlineCardScanner = .init()
+staticInlineScanner.ScanCard(from: imageWithCard)
+```
+
+*Parameters*:
+
+| Parameter name | Parameter type       | Required | Default value | Description                                                  |
+| -------------- | -------------------- | -------- | ------------- | ------------------------------------------------------------ |
+| image          | UIImage              | Yes      | None          | The static image you want to fetch card data from            |
+| maxDataSize    | Double               | No       | 0             | Tap scanner will make sure to compress the image to the given max size in KB. The bigger the allowed size, the bigger the post request will be, the longer it will take to uploade. |
+| minCompression | CGFloat              | No       | .2            | Tap scanner will try to compress the image to the maxx size given, but it will not go below the given quality. |
+| cardScanned    | (ScannedTapCard)->() | No       | Nil           | A block that will send back the scand card details           |
+| onErrorOccured | (String)->()         | No       | Nil           | A block that will send back any error occured dring any phase of the process |
+
