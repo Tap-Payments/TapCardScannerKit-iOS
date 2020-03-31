@@ -13,7 +13,6 @@ import class UIKit.UIImagePickerController
 import class UIKit.UIView
 import class UIKit.UIColor
 import PayCardsRecognizer
-import Flurry_iOS_SDK
 
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject,TapScannerProtocl {
@@ -38,15 +37,6 @@ import Flurry_iOS_SDK
      - Returns: TapCanScanStatusResult enum which has three values: .CanStart if all good, .CameraMissing if camera doesn't exist and .CameraPermissionMissing Scanning cannot start as camera usage permission is not granted
      */
     @objc public static func CanScan() -> TapCanScanStatusResult {
-        
-        Flurry.startSession("4H7NXGZ9536V45T9CQF4", with: FlurrySessionBuilder
-        .init()
-        .withCrashReporting(true)
-        .withLogLevel(FlurryLogLevelAll))
-
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-           print(bundleIdentifier)
-        }
         // Check if permission is granted to use the camera
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
             // Check the camera existance
@@ -57,7 +47,6 @@ import Flurry_iOS_SDK
                 return .CameraMissing
             }
         }else {
-            Flurry.logEvent("TapScanner : CanScan called", timed: true)
             return .CameraPermissionMissing
         }
     }

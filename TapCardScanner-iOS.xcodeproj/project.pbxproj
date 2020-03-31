@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450C92433314D00E3B4C9 /* FlurryLogger.swift */; };
 		E87C7D432429F418009AD770 /* TapCardScanner_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E87C7D502429F487009AD770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D4F2429F487009AD770 /* AppDelegate.swift */; };
 		E87C7D522429F487009AD770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D512429F487009AD770 /* SceneDelegate.swift */; };
@@ -75,6 +76,7 @@
 		65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScannerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91417D43AF0E31BC48951B3C /* Pods-TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScanner-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapCardScanner-iOS/Pods-TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E86450C92433314D00E3B4C9 /* FlurryLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
 		E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapCardScanner_iOS.h; sourceTree = "<group>"; };
 		E87C7D422429F418009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				E8B18848242B15BC0045A72C /* Controllers */,
 				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
+				E86450C92433314D00E3B4C9 /* FlurryLogger.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */,
+				E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */,
 				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
 				E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */,
 				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
