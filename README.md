@@ -86,3 +86,99 @@ $ pod update
 
   Making it one of the most inclusive pods in the market, yet one of the easiest to integrate with.
 
+### Asynchronous Card Scanning
+
+The kit provides an asyncronous offline way to scan cards from a camera feed right away in your app. This works great in case of scanning embossed cards. The Kit provides two ways to start an asynchronous:
+
+1. Inline card scanner.
+2. Full screen card scanner.
+3. EMVCO push payment based QR codes.
+
+Also, the Kit provides an interface to style the scanner in both cases as follows:
+
+1. Cancel button color.
+2. Cancel button localisation.
+3. Scanner rectangle colour.
+
+
+
+#### Asynchronous - Full Screen Scanner
+
+This feature provides an easy way to start the scanner in a modal covering screen.
+
+
+
+##### TapFullScreenUICustomizer Class
+
+This class is used whenever you want to customise the look and feel of the full scanner.
+
+*Swift*:
+
+```swift
+import TapCardScanner_iOS
+
+let tapFullScreenCustomiser:TapFullScreenUICustomizer = TapFullScreenUICustomizer()
+tapFullScreenCustomiser.tapFullScreenCancelButtonTitle = "Cancel"
+tapFullScreenCustomiser.tapFullScreenCancelButtonFont = UIFont.systemFont(ofSize: 15)
+tapFullScreenCustomiser.tapFullScreenCancelButtonTitleColor = .white
+tapFullScreenCustomiser.tapFullScreenCancelButtonHolderViewColor = .black
+tapFullScreenCustomiser.tapFullScreenScanBorderColor = .green
+
+```
+
+*Parameters*:
+
+| Parameter name                           | Parameter type | Required | Default value                 | Description                               |
+| ---------------------------------------- | -------------- | -------- | ----------------------------- | ----------------------------------------- |
+| tapFullScreenCancelButtonTitle           | String         | No       | Cancel                        | The cancel button title                   |
+| tapFullScreenCancelButtonFont            | UIFont         | No       | UIFont.systemFont(ofSize: 15) | The cancel button font                    |
+| tapFullScreenCancelButtonTitleColor      | UIColor        | No       | .white                        | The cancel button title color             |
+| tapFullScreenCancelButtonHolderViewColor | UIColor        | No       | .black                        | The cancel button holder background color |
+| tapFullScreenScanBorderColor             | UIColor        | No       | .green                        | The borders of scan card color            |
+
+
+
+##### TapFullScreenCardScanner Class
+
+This is the class providing the functionalioy of showing the Tap scanner as a modal full screen controller. Integrating with it is as simple as writing one line as follows
+
+*Swift*:
+
+```swift
+import TapCardScanner_iOS
+
+let fullScanner:TapFullScreenCardScanner = TapFullScreenCardScanner()
+
+fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { (scannedCard) in
+                            print("Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n")
+                        },scannerUICustomization: customiser)
+```
+
+*Parameters*:
+
+| Parameter name             | Parameter type            | Required | Default value | Description                                                  |
+| -------------------------- | ------------------------- | -------- | ------------- | ------------------------------------------------------------ |
+| Presenter                  | UIViewController          | Yes      | None          | The UIViewController the TAP scanner will be presented from  |
+| tapFullCardScannerDimissed | () -> ()                  | No       | Nil           | The dismiss block that will be called if the user clicks on the cancel button |
+| tapCardScannerDidFinish    | (ScannedTapCard)->()      | No       | Nil           | The block that will be called whenver a card has been scanned |
+| scannerUICustomization     | TapFullScreenUICustomizer | No       | .init()       | Pass this object if you want to customise how the UI elements of the full screen scanner looks like |
+
+
+
+
+
+##### ScannedTapCard Class
+
+This is the data model the scanner will return after scanning a card
+
+*Parameters*:
+
+| Parameter name         | Parameter type | Required | Default value | Description                                                  |
+| ---------------------- | -------------- | -------- | ------------- | ------------------------------------------------------------ |
+| scannedCardNumber      | String         | No       | Nil           | Represents the scanned card number if any. Otherwise, it will be nil |
+| scannedCardName        | String         | No       | Nil           | Represents the scanned card name if any. Otherwise, it will be nil |
+| scannedCardExpiryMonth | String         | No       | Nil           | Represents the scanned card expiration month MM if any. Otherwise, it will be nil |
+| scannedCardExpiryYear  | String         | No       | Nil           | Represents the scanned card exxpiration year YYYY or YY if any. Otherwise, it will be nil |
+
+
+
