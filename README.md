@@ -150,7 +150,7 @@ import TapCardScanner_iOS
 let fullScanner:TapFullScreenCardScanner = TapFullScreenCardScanner()
 
 fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { (scannedCard) in
-                            print("Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n")
+                            print("Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n")
                         },scannerUICustomization: customiser)
 ```
 
@@ -160,25 +160,25 @@ fullScanner.showModalScreen(presenter: self,tapCardScannerDidFinish: { (scannedC
 | -------------------------- | ------------------------- | -------- | ------------- | ------------------------------------------------------------ |
 | Presenter                  | UIViewController          | Yes      | None          | The UIViewController the TAP scanner will be presented from  |
 | tapFullCardScannerDimissed | () -> ()                  | No       | Nil           | The dismiss block that will be called if the user clicks on the cancel button |
-| tapCardScannerDidFinish    | (ScannedTapCard)->()      | No       | Nil           | The block that will be called whenver a card has been scanned |
+| tapCardScannerDidFinish    | (TapCard)->()             | No       | Nil           | The block that will be called whenver a card has been scanned |
 | scannerUICustomization     | TapFullScreenUICustomizer | No       | .init()       | Pass this object if you want to customise how the UI elements of the full screen scanner looks like |
 
 
 
 
 
-##### ScannedTapCard Class
+##### TapCard Class
 
 This is the data model the scanner will return after scanning a card
 
 *Parameters*:
 
-| Parameter name         | Parameter type | Required | Default value | Description                                                  |
-| ---------------------- | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| scannedCardNumber      | String         | No       | Nil           | Represents the scanned card number if any. Otherwise, it will be nil |
-| scannedCardName        | String         | No       | Nil           | Represents the scanned card name if any. Otherwise, it will be nil |
-| scannedCardExpiryMonth | String         | No       | Nil           | Represents the scanned card expiration month MM if any. Otherwise, it will be nil |
-| scannedCardExpiryYear  | String         | No       | Nil           | Represents the scanned card exxpiration year YYYY or YY if any. Otherwise, it will be nil |
+| Parameter name     | Parameter type | Required | Default value | Description                                                  |
+| ------------------ | -------------- | -------- | ------------- | ------------------------------------------------------------ |
+| tapCardNumber      | String         | No       | Nil           | Represents the scanned card number if any. Otherwise, it will be nil |
+| tapCardName        | String         | No       | Nil           | Represents the scanned card name if any. Otherwise, it will be nil |
+| tapCardExpiryMonth | String         | No       | Nil           | Represents the scanned card expiration month MM if any. Otherwise, it will be nil |
+| tapCardExpiryYear  | String         | No       | Nil           | Represents the scanned card exxpiration year YYYY or YY if any. Otherwise, it will be nil |
 
 
 
@@ -199,7 +199,7 @@ import TapCardScanner_iOS
 
 let tapInlineScanner:TapInlineCardScanner = .init()
 tapInlineScanner.startScanning(in: previewView,cardScanned: { (scannedCard) in
-    print("Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n")
+    print("Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n")
 })
 ```
 
@@ -211,7 +211,7 @@ tapInlineScanner.startScanning(in: previewView,cardScanned: { (scannedCard) in
 | scanningBorderColor | UIColor                    | No       | .green        | This is the color of scan the card border.                   |
 | timoutAfter         | Int                        | No       | -1            | This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required and it will not accept a value less than 20 seconds |
 | didTimout           | (TapInlineCardScanner)->() | No       | Nil           | A block that will be called after the timeout period to let the caller decide if he wants to leave the user scanning or he wants to cancel the scanning |
-| cardScanned         | (ScannedTapCard)->()       | No       | Nil           | A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces |
+| cardScanned         | (TapCard)->()              | No       | Nil           | A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces |
 
 #### Synchronous Scanner
 
@@ -234,11 +234,11 @@ staticInlineScanner.ScanCard(from: imageWithCard)
 
 *Parameters*:
 
-| Parameter name | Parameter type       | Required | Default value | Description                                                  |
-| -------------- | -------------------- | -------- | ------------- | ------------------------------------------------------------ |
-| image          | UIImage              | Yes      | None          | The static image you want to fetch card data from            |
-| maxDataSize    | Double               | No       | 0             | Tap scanner will make sure to compress the image to the given max size in KB. The bigger the allowed size, the bigger the post request will be, the longer it will take to uploade. |
-| minCompression | CGFloat              | No       | .2            | Tap scanner will try to compress the image to the maxx size given, but it will not go below the given quality. |
-| cardScanned    | (ScannedTapCard)->() | No       | Nil           | A block that will send back the scand card details           |
-| onErrorOccured | (String)->()         | No       | Nil           | A block that will send back any error occured dring any phase of the process |
+| Parameter name | Parameter type | Required | Default value | Description                                                  |
+| -------------- | -------------- | -------- | ------------- | ------------------------------------------------------------ |
+| image          | UIImage        | Yes      | None          | The static image you want to fetch card data from            |
+| maxDataSize    | Double         | No       | 0             | Tap scanner will make sure to compress the image to the given max size in KB. The bigger the allowed size, the bigger the post request will be, the longer it will take to uploade. |
+| minCompression | CGFloat        | No       | .2            | Tap scanner will try to compress the image to the maxx size given, but it will not go below the given quality. |
+| cardScanned    | (TapCard)->()  | No       | Nil           | A block that will send back the scand card details           |
+| onErrorOccured | (String)->()   | No       | Nil           | A block that will send back any error occured dring any phase of the process |
 
