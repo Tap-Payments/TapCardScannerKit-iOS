@@ -1,5 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
+  - CommonDataModelsKit-iOS (1.0.1)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
   - Firebase/Core (6.20.0):
@@ -72,6 +73,7 @@ PODS:
     - Capable/Colors (~> 1.1)
 
 DEPENDENCIES:
+  - CommonDataModelsKit-iOS
   - Firebase/Analytics
   - Flurry-iOS-SDK/FlurrySDK
   - PayCardsRecognizer
@@ -80,6 +82,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Capable
+    - CommonDataModelsKit-iOS
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -98,6 +101,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
+  CommonDataModelsKit-iOS: c42e1f329a05ac2ff5ceff735d60f27439f18b54
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
   FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
@@ -114,6 +118,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SheetyColors: 1d0d56e5ee7923b3f12eea59a2815eae826479ee
 
-PODFILE CHECKSUM: 292227332524014ee5a1b20ee831a3590b4bc734
+PODFILE CHECKSUM: 9ba33d9b1d764b5307cccf2cd5999132f8108cb4
 
 COCOAPODS: 1.8.4

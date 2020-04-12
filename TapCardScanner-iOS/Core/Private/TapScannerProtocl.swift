@@ -7,13 +7,13 @@
 //
 
 import Foundation
-
+import class CommonDataModelsKit_iOS.TapCard
 /// This class will hold the shared methods/vars between different card scanners. This is to make sure that all are using same interfaces
 internal protocol TapScannerProtocl:NSObject {
     
     
     /// This block fires when the scanner finished scanning
-    var tapCardScannerDidFinish:((ScannedTapCard)->())? { get set }
+    var tapCardScannerDidFinish:((TapCard)->())? { get set }
     /// This block fires when the inline scanner timesout
     var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())? { get set }
     /// This block fires when the user cancels the Full screen scanner

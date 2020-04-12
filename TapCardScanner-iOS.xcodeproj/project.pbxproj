@@ -21,7 +21,6 @@
 		E87C7D7D2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */; };
 		E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */; };
-		E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */; };
 		E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18844242A39010045A72C /* TapScannerProtocl.swift */; };
 		E8B18847242B159E0045A72C /* TapScannerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */; };
 		E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */; };
@@ -76,7 +75,9 @@
 		65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScannerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91417D43AF0E31BC48951B3C /* Pods-TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapCardScanner-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapCardScanner-iOS/Pods-TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8159E50243DB3AD0021B880 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flurry_iOS_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86450C92433314D00E3B4C9 /* FlurryLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
+		E8784C542443546C00EB661D /* CommonDataModelsKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonDataModelsKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapCardScanner_iOS.h; sourceTree = "<group>"; };
 		E87C7D422429F418009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		E87C7D5D2429F489009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapInlineCardScanner.swift; sourceTree = "<group>"; };
 		E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCanScanStatusResult.swift; sourceTree = "<group>"; };
-		E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedTapCard.swift; sourceTree = "<group>"; };
 		E8B18844242A39010045A72C /* TapScannerProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapScannerProtocl.swift; sourceTree = "<group>"; };
 		E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapScannerStoryboard.storyboard; sourceTree = "<group>"; };
 		E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenScannerViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +137,8 @@
 		807191F1E2717EDA1F211282 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8784C542443546C00EB661D /* CommonDataModelsKit_iOS.framework */,
+				E8159E50243DB3AD0021B880 /* Flurry_iOS_SDK.framework */,
 				CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */,
 				65164D6704219AE438F6ABBB /* Pods_TapCardScannerExample.framework */,
 			);
@@ -242,7 +244,6 @@
 		E8B1883F242A0D4D0045A72C /* models */ = {
 			isa = PBXGroup;
 			children = (
-				E8B18840242A0D5F0045A72C /* ScannedTapCard.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -442,7 +443,6 @@
 				E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */,
 				E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */,
 				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
-				E8B18841242A0D5F0045A72C /* ScannedTapCard.swift in Sources */,
 				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
 				E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */,
 				E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */,
@@ -683,7 +683,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = TapCardScannerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -705,7 +705,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = TapCardScannerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

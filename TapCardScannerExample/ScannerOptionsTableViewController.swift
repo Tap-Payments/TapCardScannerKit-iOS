@@ -169,7 +169,7 @@ class ScannerOptionsTableViewController: UITableViewController {
                     do {
                         try self?.fullScanner.showModalScreen(presenter: self!,tapCardScannerDidFinish: { [weak self] (scannedCard) in
                             
-                            let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
+                            let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
                             let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
                                 
                             }
@@ -214,7 +214,7 @@ class ScannerOptionsTableViewController: UITableViewController {
             self?.tableView.isUserInteractionEnabled = false
             let staticInlineScanner:TapInlineCardScanner = .init()
             staticInlineScanner.ScanCard(from: pickedImage,maxDataSize: 250,minCompression: 0.4,cardScanned: { scannedCard in
-                let alertControl:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.scannedCardNumber ?? "")\nCard Name : \(scannedCard.scannedCardName ?? "")\nCard Expiry : \(scannedCard.scannedCardExpiryMonth ?? "")/\(scannedCard.scannedCardExpiryYear ?? "")\n", preferredStyle: .alert)
+                let alertControl:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
                 
                 let okAction:UIAlertAction = .init(title: "OK", style: .cancel, handler: nil)
                 alertControl.addAction(okAction)

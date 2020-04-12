@@ -10,6 +10,7 @@ import class UIKit.UIView
 import class UIKit.UIButton
 import class UIKit.UIViewController
 import PayCardsRecognizer
+import class CommonDataModelsKit_iOS.TapCard
 
 /// The view controller handling the full screen scanner
 internal class TapFullScreenScannerViewController: UIViewController {
@@ -24,7 +25,7 @@ internal class TapFullScreenScannerViewController: UIViewController {
     var scanner:PayCardsRecognizer?
     
     /// This block fires when the scanner finished scanning
-    internal var tapFullCardScannerDidFinish:((ScannedTapCard)->())?
+    internal var tapFullCardScannerDidFinish:((TapCard)->())?
     /// This block fires when the scanner finished scanning
     internal var tapFullCardScannerDimissed:(()->())?
     
@@ -71,9 +72,9 @@ internal class TapFullScreenScannerViewController: UIViewController {
     */
     internal func cardScannedHandler(result: PayCardsRecognizerResult) {
         // Create the ScannedTapCard from the scanner result
-        let tapCardScanned:ScannedTapCard = .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear)
+        let tapCardScanned:TapCard = .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear)
         
-        FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"true","error":"","card_number":tapCardScanned.scannedCardNumber ?? "","card_name":tapCardScanned.scannedCardName ?? "","card_month":tapCardScanned.scannedCardExpiryMonth ?? "","card_year":tapCardScanned.scannedCardExpiryYear ?? ""])
+        FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"true","error":"","card_number":tapCardScanned.tapCardNumber ?? "","card_name":tapCardScanned.tapCardName ?? "","card_month":tapCardScanned.tapCardExpiryMonth ?? "","card_year":tapCardScanned.tapCardExpiryYear ?? ""])
         
         // If there is a scanned block then call it with the result
         if let scannedBlock = tapFullCardScannerDidFinish {

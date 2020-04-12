@@ -13,6 +13,7 @@ import class UIKit.UIImagePickerController
 import class UIKit.UIView
 import class UIKit.UIColor
 import PayCardsRecognizer
+import class CommonDataModelsKit_iOS.TapCard
 
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject,TapScannerProtocl {
@@ -20,7 +21,7 @@ import PayCardsRecognizer
     /// This block fires when the scanner finished scanning
     var tapFullCardScannerDimissed: (() -> ())?
     /// This block fires when the scanner finished scanning
-    var tapCardScannerDidFinish:((ScannedTapCard)->())?
+    var tapCardScannerDidFinish:((TapCard)->())?
     /// This block fires when the scanner finished scanning
     var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())?
     
@@ -60,7 +61,7 @@ import PayCardsRecognizer
      - Parameter cardScanned: A block that will send back the scand card details
      - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
      */
-    @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((ScannedTapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
+    @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((TapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
         
         FlurryLogger.logEvent(with: "Scan_From_Image_Called", timed:true , params: ["maxDataSize":String(maxDataSize),"minCompression":"\(minCompression)"])
         
@@ -156,13 +157,13 @@ import PayCardsRecognizer
      - Parameter extractedText: The extracted text by google cloud vision for the given image
      - Returns: The potential scanned tap card from the extracted text.
      */
-    internal func processGoogleVision(with extractedText:String) -> ScannedTapCard {
-        let scannedCard:ScannedTapCard = .init()
+    internal func processGoogleVision(with extractedText:String) -> TapCard {
+        let scannedCard:TapCard = .init()
         // Let us go through the extracted lines
         extractedText.enumerateLines { [weak self] line, _ in
             self?.match(string: line, to: scannedCard)
         }
-        FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.scannedCardNumber ?? "","card_name":scannedCard.scannedCardName ?? "","card_month":scannedCard.scannedCardExpiryMonth ?? "","card_year":scannedCard.scannedCardExpiryYear ?? ""])
+        FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
         return scannedCard
     }
     
@@ -171,26 +172,26 @@ import PayCardsRecognizer
      - Parameter string: The textt we want to check if it matches any card details
      - Parameter scannedCard: The scanned card object we need to add the details into
      */
-    internal func match(string:String, to scannedCard:ScannedTapCard) {
+    internal func match(string:String, to scannedCard:TapCard) {
         // First check if we already parsed a card number
-        if let _ = scannedCard.scannedCardNumber{
+        if let _ = scannedCard.tapCardNumber{
             // Check For Card name
             // We check for name after filling in the number to avoid bank names at the top of the cards
-            if let _ = scannedCard.scannedCardName {}else{
+            if let _ = scannedCard.tapCardName {}else{
                 if string.isaPotentialCardName() {
-                    scannedCard.scannedCardName = string
+                    scannedCard.tapCardName = string
                 }
             }
         } else {
             // Check if it is a potential card number
             if string.isPotentialCardNumber() {
-                scannedCard.scannedCardNumber = string
+                scannedCard.tapCardNumber = string
             }
         }
-        if let _ = scannedCard.scannedCardExpiryMonth{} else {
+        if let _ = scannedCard.tapCardExpiryMonth{} else {
             if let nonNullExpiryDateFound = string.extractCardExpiry() {
-                scannedCard.scannedCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
-                scannedCard.scannedCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
+                scannedCard.tapCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
+                scannedCard.tapCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
             }
         }
     }
@@ -203,7 +204,7 @@ import PayCardsRecognizer
      - Parameter didTimout: A block that will be called after the timeout period
      - Parameter cardScanned: A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces
      */
-    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((ScannedTapCard)->())? = nil) throws {
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
         
         FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
         
@@ -260,8 +261,8 @@ import PayCardsRecognizer
         This is the method responsible for POST action of successful scanning
      - Parameter scannedCard: Whoever calling, will have to pass the scanned card
      */
-    internal func scannerScanned(scannedCard:ScannedTapCard) {
-        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.scannedCardNumber ?? "","card_name":scannedCard.scannedCardName ?? "","card_month":scannedCard.scannedCardExpiryMonth ?? "","card_year":scannedCard.scannedCardExpiryYear ?? ""])
+    internal func scannerScanned(scannedCard:TapCard) {
+        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
         
         // Check if the scanned block is initialised, hence, utilise it and send the scannedCard to it
         if let tapCardScannerDidFinishBlock = tapCardScannerDidFinish {
@@ -327,7 +328,7 @@ extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
     public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
         if result.isCompleted {
             // Scanner captured semi/complete card details
-            scannerScanned(scannedCard: .init(scannedCardNumber: result.recognizedNumber, scannedCardName: result.recognizedHolderName, scannedCardExpiryMonth: result.recognizedExpireDateMonth, scannedCardExpiryYear: result.recognizedExpireDateYear))
+            scannerScanned(scannedCard: .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear))
             pauseScanner(stopCamera: false)
         }
     }

@@ -8,6 +8,7 @@ target 'TapCardScanner-iOS' do
   # Pods for TapCardScanner-iOS
   pod 'PayCardsRecognizer'
   pod 'Flurry-iOS-SDK/FlurrySDK' #Analytics Pod
+  pod 'CommonDataModelsKit-iOS'
 end
 
 target 'TapCardScannerExample' do
@@ -15,6 +16,7 @@ target 'TapCardScannerExample' do
   use_frameworks!
   pod 'SheetyColors'
   pod 'Firebase/Analytics'
+  pod 'CommonDataModelsKit-iOS'
   # Pods for TapCardScannerExample
 
 end

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapCardScanner-iOS"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "On demand, dynamic and customisable tap credit card scanner"
 
   # This description is used to generate tags and improve search results.
@@ -135,4 +135,5 @@ Pod::Spec.new do |spec|
   spec.dependency "PayCardsRecognizer", "~> 1.1.7"
   spec.dependency "Flurry-iOS-SDK/FlurrySDK"
   spec.dependency "Flurry-iOS-SDK/FlurryAds"
+  spec.dependency "CommonDataModelsKit-iOS", "~> 1.0.1"
 end

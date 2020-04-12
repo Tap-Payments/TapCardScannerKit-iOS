@@ -10,6 +10,7 @@ import class UIKit.UIStoryboard
 import class UIKit.UIViewController
 import class UIKit.UIFont
 import class UIKit.UIColor
+import class CommonDataModelsKit_iOS.TapCard
 
 /// This class represents the tap full scanner UIViewController.
 @objc public class TapFullScreenCardScanner:NSObject {
@@ -23,7 +24,7 @@ import class UIKit.UIColor
      - Parameter scannerUICustomization: Pass this object if you want to customise how the UI elements of the full screen scanner looks like. See [TapFullScreenUICustomizer](x-source-tag://TapFullScreenUICustomizer) for more details
      
      */
-    @objc public func showModalScreen(presenter:UIViewController,tapFullCardScannerDimissed: (() -> ())? = nil,tapCardScannerDidFinish:((ScannedTapCard)->())? = nil,scannerUICustomization:TapFullScreenUICustomizer = TapFullScreenUICustomizer()) throws {
+    @objc public func showModalScreen(presenter:UIViewController,tapFullCardScannerDimissed: (() -> ())? = nil,tapCardScannerDidFinish:((TapCard)->())? = nil,scannerUICustomization:TapFullScreenUICustomizer = TapFullScreenUICustomizer()) throws {
         FlurryLogger.logEvent(with: "Scan_Full_Screen_Called", timed:true)
         
         // Check if scanner can start first
