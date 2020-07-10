@@ -200,11 +200,12 @@ import class CommonDataModelsKit_iOS.TapCard
         This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
+     - Parameter blurBackground: Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Defult is false
      - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required and it will not accept a value less than 20 seconds
      - Parameter didTimout: A block that will be called after the timeout period
      - Parameter cardScanned: A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces
      */
-    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
         
         FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
         
@@ -252,6 +253,7 @@ import class CommonDataModelsKit_iOS.TapCard
         // Defensive code to check there is a holding view
         if let nonNullPreviewView = self.previewView {
             cardScanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: nonNullPreviewView, frameColor: scanningBorderColor)
+            
         }else {
             cardScanner = nil
         }

@@ -19,6 +19,8 @@ import Foundation
     @objc public var tapCardExpiryMonth:String?
     /// Represents the  card exxpiration year YYYY or YY if any. Otherwise, it will be nil
     @objc public var tapCardExpiryYear:String?
+    /// Represents the  card  cvv. Otherwise, it will be nil
+    @objc public var tapCardCVV:String?
     
     /**
      This is the default constructor for creating the TapCard model
@@ -27,7 +29,7 @@ import Foundation
      - Parameter tapCardExpiryMonth: Represents the card expiration month MM if any. Otherwise, it will be nil
      - Parameter tapCardExpiryYear: Represents the card exxpiration year YYYY or YY if any. Otherwise, it will be nil
      */
-    @objc public init(tapCardNumber:String? = nil,tapCardName:String? = nil,tapCardExpiryMonth:String? = nil, tapCardExpiryYear:String? = nil) {
+    @objc public init(tapCardNumber:String? = nil,tapCardName:String? = nil,tapCardExpiryMonth:String? = nil, tapCardExpiryYear:String? = nil, tapCardCVV:String? = nil) {
         
         super.init()
         
@@ -35,6 +37,7 @@ import Foundation
         self.tapCardName = tapCardName
         self.tapCardExpiryMonth = tapCardExpiryMonth
         self.tapCardExpiryYear = tapCardExpiryYear
+        self.tapCardCVV = tapCardCVV
     }
     
 }

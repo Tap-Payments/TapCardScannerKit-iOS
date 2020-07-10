@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qtU-Hq-5pf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qtU-Hq-5pf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -138,14 +138,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-el-9OF">
-                                <rect key="frame" x="20" y="64" width="374" height="374"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="200"/>
+                                <subviews>
+                                    <view tag="89" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-LO-Pgb">
+                                        <rect key="frame" x="18" y="18" width="378" height="164"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="VaG-LO-Pgb" secondAttribute="height" multiplier="3:2" priority="750" id="OrY-hk-EXR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="GLC-el-9OF" secondAttribute="height" multiplier="1:1" id="oHU-RY-vOP"/>
+                                    <constraint firstItem="VaG-LO-Pgb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GLC-el-9OF" secondAttribute="top" constant="18" id="42c-8y-rYu"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VaG-LO-Pgb" secondAttribute="bottom" constant="18" id="DVv-oh-na5"/>
+                                    <constraint firstItem="VaG-LO-Pgb" firstAttribute="leading" secondItem="GLC-el-9OF" secondAttribute="leading" constant="18" id="KEx-n8-a31"/>
+                                    <constraint firstAttribute="trailing" secondItem="VaG-LO-Pgb" secondAttribute="trailing" constant="18" id="NNR-hM-4V8"/>
+                                    <constraint firstAttribute="height" constant="200" id="ena-DS-Ie0"/>
+                                    <constraint firstItem="VaG-LO-Pgb" firstAttribute="centerY" secondItem="GLC-el-9OF" secondAttribute="centerY" priority="750" id="uVn-Px-muK"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjP-FE-2eF">
-                                <rect key="frame" x="20" y="458" width="374" height="100.5"/>
+                                <rect key="frame" x="20" y="741.5" width="374" height="100.5"/>
                                 <string key="text">The upper view is just a view we embedded inside our very nice layout :).. This shows how our card scanner can fit within any size in any UI layout if the app owner doesn't want to show a full scanner.. Viva TAP 😉</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -154,13 +168,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="GLC-el-9OF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="1dF-KS-gc3"/>
                             <constraint firstItem="GLC-el-9OF" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" constant="20" id="5Mq-O5-0OV"/>
-                            <constraint firstItem="GLC-el-9OF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="5z8-4h-LVi"/>
+                            <constraint firstItem="EBj-dS-QWB" firstAttribute="bottom" secondItem="GjP-FE-2eF" secondAttribute="bottom" constant="20" id="JdF-6V-0e8"/>
                             <constraint firstItem="GjP-FE-2eF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="MXR-dJ-RFK"/>
-                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GLC-el-9OF" secondAttribute="trailing" constant="20" id="Pli-o0-Xnf"/>
+                            <constraint firstItem="GLC-el-9OF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" id="RiN-Ip-mND"/>
                             <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GjP-FE-2eF" secondAttribute="trailing" constant="20" id="Uyk-cY-1EM"/>
                             <constraint firstItem="GjP-FE-2eF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="gGt-LE-oDl"/>
-                            <constraint firstItem="GjP-FE-2eF" firstAttribute="top" secondItem="GLC-el-9OF" secondAttribute="bottom" constant="20" id="mpg-bb-axD"/>
+                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GLC-el-9OF" secondAttribute="trailing" id="qLd-i0-4Wh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EBj-dS-QWB"/>
                     </view>

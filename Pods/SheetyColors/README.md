@@ -1,5 +1,6 @@
 ![Cocoapods(https://cocoapods.org/pods/SheetyColors)](https://img.shields.io/cocoapods/v/SheetyColors.svg)
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+![UIKit & SwiftUI](https://img.shields.io/badge/iOS-UIKit%20%26%20SwiftUI-yellow)
 ![iOS 13 Ready](https://img.shields.io/badge/iOS%2013-Ready-blueviolet)
 ![Swift](https://img.shields.io/badge/swift-5.0-red.svg)
 [![Build Status](https://app.bitrise.io/app/e955e72e7da4b8c0/status.svg?token=wOm6zBpCFw7ZeP8gJdDE_A&branch=develop)](https://app.bitrise.io/app/e955e72e7da4b8c0)
@@ -11,15 +12,21 @@
 
 **SheetyColors** is an action sheet styled color picker for iOS:
 
-- **Based on UIAlertController:** The SheetyColors API is based on UIKit's `UIAlertController`. Simply add buttons to it as you would for any other Action Sheet by defining `UIAlertAction` instances. Therefore, it nicely integrates with the look & feel of all other native system dialogs.
-- **iOS 13 ready:** SheetyColors has been tested on devices running iOS 13 Beta. The library is also optimized to work well with the new Dark Mode.
-- **Fully configurable:** You can choose between a variety of configurations such as a color model (RGB, HSB, or Grayscale), alpha component support, haptic feedback, text/message label, and many more.
-- **Intuitive UI:** Each slider comes with a gradient that gives you an idea of how changing individual slider values affects the resulting color.
+- 📱 **Based on UIAlertController:** The SheetyColors API is based on UIKit's `UIAlertController`. Simply add buttons to it as you would for any other Action Sheet by defining `UIAlertAction` instances. Therefore, it nicely integrates with the look & feel of all other native system dialogs. However, you can also chose to use the color picker it self without an action sheet.
+- 🎨 **Fully configurable:** You can choose between a variety of configurations such as 
+	- color model (RGB, HSB, or Grayscale)
+	- alpha component support
+	- haptic feedback
+	- text/message label
+- 🎚️ **Sliders and Hex input:** You can create new colors by either using sliders or the newly added Hex input.
+- 👶 **Intuitive UI:** Each slider comes with a gradient that gives you an idea of how changing individual slider values affects the resulting color. All controls do support haptic feedback and will react to any errors such as invalid Hex values.
+- 🍏 **SwiftUI & iOS 13 support:** SheetyColors can also be used as part of your SwiftUI projects. Have a look at the *Usage* section to get further info. The library is also optimized to work well with the new Dark Mode.
 
-|RGB, HSB, and Grayscale|Fully configurable|Dark mode support|
-| :-: | :-: | :-: |
-|![Color picker supporting RGB, HSB, and Grayscale][minimum_config]|![Fully configurable][fully_configurable]|![Dark mode support][dark_mode]|
+| NEW: Hex input |RGB, HSB, and Grayscale|Fully configurable|Dark mode support|
+| :-: | :-: | :-: | :-: |
+|![Color picker supporting RGB, HSB, and Grayscale][hex_input]|![Color picker supporting RGB, HSB, and Grayscale][minimum_config]|![Fully configurable][fully_configurable]|![Dark mode support][dark_mode]|
 
+[hex_input]: ./Documentation/hex_input.gif "New Hex input field"
 [minimum_config]: ./Documentation/demo_minimum_configuration.png "Color picker supporting RGB, HSB, and Grayscale"
 [fully_configurable]: ./Documentation/demo_customizable.png "Fully configurable"
 [dark_mode]: ./Documentation/demo_dark_mode.png "Dark mode support"
@@ -47,7 +54,7 @@ end
 
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/chrs1885/SheetyColors.git", from: "1.0.2")
+    .package(url: "https://github.com/chrs1885/SheetyColors.git", from: "1.2.0")
 ]
 ```
 
@@ -94,6 +101,47 @@ present(sheetyColors, animated: true, completion: nil)
 ```
 
 Please check the [documentation](./Documentation/Reference/README.md) for further information on the API.
+
+### Custom container views
+If you prefer to use the color picker inside a custom view controller, you can do so by creating the picker's view controller directly:
+
+```swift
+return SheetyColorsViewFactory.createView(withConfig: config, delegate: myDelegate)
+
+```
+
+The class of the `myDelegate` instance needs to conform to the `SheetyColorsDelegate`:
+
+```swift
+class MyViewController: SheetyColorsDelegate {
+
+	...
+	
+	func didSelectColor(_ color: UIColor) {
+	    self.color = color
+	}
+}
+```
+
+`didSelectColor` will be called on any slider change.
+
+### SwiftUI support
+With SwiftUI projects the color picker can't be used inside the action sheet that Apple provides. However, you can embed the view inside your custom view container by using the `SheetyColorsView`:
+
+```swift
+struct ContentView: View {
+	@State var selectedColor: UIColor = UIColor.white
+	let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: UIColor.red, type: .rgb)
+
+	var body: some View {
+		Text("Select a color")
+			.foregroundColor(Color(self.$selectedColor.wrappedValue))
+		SheetyColorsView(config: config, color: self.$selectedColor)
+	}
+}
+```
+
+[Here's an example](https://gist.github.com/chrs1885/d3b9310f92a247b1ad6e022896596401) of how creating an action sheet styled color picker with SwiftUI and SheetyColors.
 
 ## Contributions
 

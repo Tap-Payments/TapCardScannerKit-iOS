@@ -73,6 +73,9 @@ class InlineScannerDemoViewController: UIViewController {
         do{
             try tapInlineScanner.startScanning(in: previewView, scanningBorderColor: scannerBorderColor, timoutAfter: timeout, didTimout: ((timeout == -1) ? nil : timeOutBlock), cardScanned: scannedBlock)
         }catch{}
+        
+        view.bringSubviewToFront(previewView)
+        previewView.bringSubviewToFront(previewView.viewWithTag(89)!)
     }
     
 

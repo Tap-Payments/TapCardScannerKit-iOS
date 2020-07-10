@@ -1,0 +1,68 @@
+{
+    "en": {
+        "TapCardInputKit": {
+            "cardNumberPlaceHolder": "0000 0000 0000 0000",
+            "cardNamePlaceHolder": "Holder name",
+            "cardCVVPlaceHolder": "CVV",
+            "cardExpiryPlaceHolder": "MM/YY",
+            "cardSaveLabel": "For faster and more secure checkout,\nsave your card"
+        },
+        "TapMerchantSection": {
+            "paymentFor" : "PAYMENT FOR"
+        },
+        "HorizontalHeaders": {
+            "GatewayHeader":{
+                "leftTitle": "SELECT",
+                "rightTitle": "EDIT"
+            }
+        },
+        "ItemList": {
+            "showDesc": "Show Description",
+            "hideDesc": "Hide Description",
+            "Discount": "Discount"
+        },
+        "Common": {
+            "next": "Next",
+            "previous": "Previous",
+            "done": "Done",
+            "recent": "Recent",
+            "edit": "Edit",
+            "close": "Close",
+            "items": "Items",
+            "item": "Item"
+        }
+    },
+    "ar": {
+        "TapCardInputKit": {
+            "cardNumberPlaceHolder": "0000 0000 0000 0000",
+            "cardNamePlaceHolder": "صاحب البطاقة",
+            "cardCVVPlaceHolder": "الرمز الأمني",
+            "cardExpiryPlaceHolder": "شش/سس",
+            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة"
+        },
+        "TapMerchantSection": {
+            "paymentFor" : "سأدفع لـ"
+        },
+        "HorizontalHeaders": {
+            "GatewayHeader":{
+                "leftTitle": "إختر",
+                "rightTitle": "تعديل"
+            }
+        },
+        "ItemList": {
+            "showDesc": "إظهار الوصف",
+            "hideDesc": "إخفاء الوصف",
+            "Discount": "خصم"
+        },
+        "Common": {
+            "next": "التالي",
+            "previous": "السابق",
+            "done": "تم",
+            "recent": "كروت سابقة",
+            "edit": "تعديل",
+            "close": "غلق",
+            "items": "منتجات",
+            "item": "منتج"
+        }
+    }
+}

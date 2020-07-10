@@ -19,10 +19,13 @@
 #if !TARGET_OS_WATCH
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
+
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #elif TARGET_OS_OSX
 #import <AppKit/AppKit.h>
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
 #if TARGET_OS_IOS
@@ -67,13 +70,48 @@ typedef NS_ENUM(NSInteger, GDTCORNetworkMobileSubtype) {
 };
 
 #if !TARGET_OS_WATCH
+/** Define SCNetworkReachabilityFlags as GDTCORNetworkReachabilityFlags on non-watchOS. */
+typedef SCNetworkReachabilityFlags GDTCORNetworkReachabilityFlags;
+
+/** Define SCNetworkReachabilityRef as GDTCORNetworkReachabilityRef on non-watchOS. */
+typedef SCNetworkReachabilityRef GDTCORNetworkReachabilityRef;
+
+#else
+/** The different possible reachabilityFlags option on watchOS. */
+typedef NS_OPTIONS(uint32_t, GDTCORNetworkReachabilityFlags) {
+  kGDTCORNetworkReachabilityFlagsReachable = 1 << 1,
+  // TODO(doudounan): Add more options on watchOS if watchOS network connection information relative
+  // APIs available in the future.
+};
+
+/** Define a struct as GDTCORNetworkReachabilityRef on watchOS to store network connection
+ * information. */
+typedef struct {
+  // TODO(doudounan): Store network connection information on watchOS if watchOS network connection
+  // information relative APIs available in the future.
+} GDTCORNetworkReachabilityRef;
+#endif
+
+/** Returns a URL to the root directory under which all GDT-associated data must be saved.
+ *
+ * @return A URL to the root directory under which all GDT-associated data must be saved.
+ */
+NSURL *GDTCORRootDirectory(void);
+
+/** Compares flags with the reachable flag (on non-watchos with both reachable and
+ * connectionRequired flags), if available, and returns YES if network reachable.
+ *
+ * @param flags The set of reachability flags.
+ * @return YES if the network is reachable, NO otherwise.
+ */
+BOOL GDTCORReachabilityFlagsReachable(GDTCORNetworkReachabilityFlags flags);
+
 /** Compares flags with the WWAN reachability flag, if available, and returns YES if present.
  *
  * @param flags The set of reachability flags.
  * @return YES if the WWAN flag is set, NO otherwise.
  */
-BOOL GDTCORReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags);
-#endif
+BOOL GDTCORReachabilityFlagsContainWWAN(GDTCORNetworkReachabilityFlags flags);
 
 /** Generates an enum message GDTCORNetworkType representing network connection type.
  *
@@ -88,6 +126,30 @@ GDTCORNetworkType GDTCORNetworkTypeMessage(void);
  */
 GDTCORNetworkMobileSubtype GDTCORNetworkMobileSubTypeMessage(void);
 
+/** Writes the given object to the given fileURL and populates the given error if it fails.
+ *
+ * @param obj The object to encode.
+ * @param filePath The path to write the object to. Can be nil if you just need the data.
+ * @param error The error to populate if something goes wrong.
+ * @return The data of the archive. If error is nil, it's been written to disk.
+ */
+NSData *_Nullable GDTCOREncodeArchive(id<NSSecureCoding> obj,
+                                      NSString *_Nullable filePath,
+                                      NSError *_Nullable *error);
+
+/** Decodes an object of the given class from the given archive path or data and populates the given
+ * error if it fails.
+ *
+ * @param archiveClass The class of the archive's root object.
+ * @param archivePath The path to the archived data. Don't use with the archiveData param.
+ * @param archiveData The data to decode. Don't use with the archivePath param.
+ * @param error The error to populate if something goes wrong.
+ */
+id<NSSecureCoding> _Nullable GDTCORDecodeArchive(Class archiveClass,
+                                                 NSString *_Nullable archivePath,
+                                                 NSData *_Nullable archiveData,
+                                                 NSError *_Nullable *error);
+
 /** A typedef identify background identifiers. */
 typedef volatile NSUInteger GDTCORBackgroundIdentifier;
 
@@ -95,10 +157,14 @@ typedef volatile NSUInteger GDTCORBackgroundIdentifier;
 FOUNDATION_EXPORT const GDTCORBackgroundIdentifier GDTCORBackgroundIdentifierInvalid;
 
 #if TARGET_OS_IOS || TARGET_OS_TV
-/** A protocol that wraps UIApplicationDelegate or NSObject protocol, depending on the platform. */
+/** A protocol that wraps UIApplicationDelegate, WKExtensionDelegate or NSObject protocol, depending
+ * on the platform.
+ */
 @protocol GDTCORApplicationDelegate <UIApplicationDelegate>
 #elif TARGET_OS_OSX
 @protocol GDTCORApplicationDelegate <NSApplicationDelegate>
+#elif TARGET_OS_WATCH
+@protocol GDTCORApplicationDelegate <WKExtensionDelegate>
 #else
 @protocol GDTCORApplicationDelegate <NSObject>
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
