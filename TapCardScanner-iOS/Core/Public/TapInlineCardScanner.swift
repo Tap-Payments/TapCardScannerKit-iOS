@@ -33,6 +33,9 @@ import class CommonDataModelsKit_iOS.TapCard
     internal lazy var scanningBorderColor:UIColor = .green
     /// This is the backbone of the scanner object
     internal var cardScanner:PayCardsRecognizer?
+    /// Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Default is false
+    internal var blurBackground:Bool = false
+    
     /**
      This interface decides whether the scanner can start or not based on camera usage permission granted and camera does exist.
      - Returns: TapCanScanStatusResult enum which has three values: .CanStart if all good, .CameraMissing if camera doesn't exist and .CameraPermissionMissing Scanning cannot start as camera usage permission is not granted
@@ -217,6 +220,7 @@ import class CommonDataModelsKit_iOS.TapCard
         
         // hold the customisations
         self.previewView = previewView
+        self.blurBackground = blurBackground
         self.scanningBorderColor = scanningBorderColor
         self.timeOutPeriod = (timoutAfter == -1) ? -1 : (timoutAfter > 20) ? timoutAfter : 20
         self.tapCardScannerDidFinish = cardScanned
@@ -233,6 +237,8 @@ import class CommonDataModelsKit_iOS.TapCard
         
         // Configure and restart the recognizer
         configureScanner()
+        // Configure the blur overlay
+        //configureBlurOverlay()
         
         // Double check all is good
         if let _ = cardScanner {
@@ -246,6 +252,7 @@ import class CommonDataModelsKit_iOS.TapCard
     /// This method is responsible for starting the camera feed logic
     internal func startScanning() {
         cardScanner?.startCamera(with: .portrait)
+        configureBlurOverlay()
     }
     
     /// This method is responsible for configuring the card scanner object and attach it inside the required view with the needed customisations
@@ -257,6 +264,25 @@ import class CommonDataModelsKit_iOS.TapCard
         }else {
             cardScanner = nil
         }
+    }
+    
+    /// Configure the blur overlay to check if we have to add/remove it. And if add it, draw it on top then draw a whole at the scanner rect
+    internal func configureBlurOverlay() {
+        // Make sure we have a valid uiview
+        
+        if let previousBlurEffect = previewView?.viewWithTag(1010) {
+            previousBlurEffect.removeFromSuperview()
+        }
+        guard let view = previewView, blurBackground else { return }
+        
+        let blurEffectView: VisualEffectView = VisualEffectView(frame: view.bounds)
+        blurEffectView.tag = 1010
+        blurEffectView.colorTint = .black
+        blurEffectView.colorTintAlpha = 0.48
+        blurEffectView.blurRadius = 10
+        blurEffectView.scale = 1
+        view.addSubview(blurEffectView)
+        view.bringSubviewToFront(blurEffectView)
     }
     
     /**

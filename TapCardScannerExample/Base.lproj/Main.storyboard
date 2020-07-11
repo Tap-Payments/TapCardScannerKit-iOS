@@ -140,7 +140,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-el-9OF">
                                 <rect key="frame" x="0.0" y="64" width="414" height="200"/>
                                 <subviews>
-                                    <view tag="89" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-LO-Pgb">
+                                    <view hidden="YES" alpha="0.0" tag="89" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-LO-Pgb">
                                         <rect key="frame" x="18" y="18" width="378" height="164"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
