@@ -275,7 +275,7 @@ import class CommonDataModelsKit_iOS.TapCard
         }
         guard let view = previewView, blurBackground else { return }
         
-        let blurEffectView: VisualEffectView = VisualEffectView(frame: view.bounds)
+        let blurEffectView: VisualEffectView = VisualEffectView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         blurEffectView.tag = 1010
         blurEffectView.colorTint = .black
         blurEffectView.colorTintAlpha = 0.48
