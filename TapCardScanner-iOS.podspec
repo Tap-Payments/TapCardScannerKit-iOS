@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapCardScanner-iOS"
-  spec.version      = "1.0.4"
+  spec.version      = "1.0.5"
   spec.summary      = "On demand, dynamic and customisable tap credit card scanner"
 
   # This description is used to generate tags and improve search results.
@@ -105,7 +105,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  spec.resources = "TapCardScanner-iOS/Core/Assets/**/*.{storyboard,xib}"
+  spec.resources = "TapCardScanner-iOS/Core/Assets/**/*.{storyboard,xib,png}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

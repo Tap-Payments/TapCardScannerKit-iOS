@@ -33,7 +33,6 @@ class InlineScannerDemoViewController: UIViewController {
         }catch{}
         
         view.bringSubviewToFront(previewView)
-        previewView.bringSubviewToFront(previewView.viewWithTag(89)!)
     }
     
 
