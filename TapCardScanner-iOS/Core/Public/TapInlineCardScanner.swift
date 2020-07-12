@@ -268,11 +268,12 @@ import class CommonDataModelsKit_iOS.TapCard
     
     /// Configure the blur overlay to check if we have to add/remove it. And if add it, draw it on top then draw a whole at the scanner rect
     internal func configureBlurOverlay() {
-        // Make sure we have a valid uiview
+        
         
         if let previousBlurEffect = previewView?.viewWithTag(1010) {
             previousBlurEffect.removeFromSuperview()
         }
+        // Make sure we have a valid uiview
         guard let view = previewView, blurBackground else { return }
         
         let blurEffectView: VisualEffectView = VisualEffectView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
@@ -283,6 +284,62 @@ import class CommonDataModelsKit_iOS.TapCard
         blurEffectView.scale = 1
         view.addSubview(blurEffectView)
         view.bringSubviewToFront(blurEffectView)
+        
+        
+        // Draw a hole in the blur layout to show the scanning rect
+        showBlurringHole(in: blurEffectView)
+    }
+    
+    /**
+     Draws a hole areound rect scanning in PayCards SDK
+     - Parameter blurEffectView: The VisualEffectView that represents the bluring layer, a hole will be drawn inside it to show the scanning rect in a clear way
+     */
+    internal func showBlurringHole(in blurEffectView:VisualEffectView) {
+        
+        // Make sure we have a valid uiview
+        guard let view = previewView, blurBackground else { return }
+        
+        // Define the scanning rect to show a whole in the blur overlay
+        let holeView:UIView = .init()
+        holeView.backgroundColor = .clear
+        view.addSubview(holeView)
+        holeView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //make.centerY.equalToSuperview().priority(.high)
+        //make.height.equalTo(holeView.snp.width).multipliedBy(0.66).priority(.high)
+        
+        // Map the correct constraints to match the PayCards SDK scanning rect
+        let constraints:[NSLayoutConstraint] = [
+            holeView.centerYAnchor.constraint(equalTo: holeView.superview!.centerYAnchor),
+            holeView.heightAnchor.constraint(equalTo: holeView.widthAnchor,multiplier: 0.66),
+            holeView.leadingAnchor.constraint(equalTo: holeView.superview!.leadingAnchor,constant: 15),
+            holeView.trailingAnchor.constraint(equalTo: holeView.superview!.trailingAnchor,constant: -15),
+            holeView.topAnchor.constraint(greaterThanOrEqualTo: holeView.superview!.topAnchor, constant: 18)
+        ]
+        
+        // First two constraints needs a priority of HIGHT
+        constraints[0].priority = .defaultHigh
+        constraints[1].priority = .defaultHigh
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        holeView.layoutIfNeeded()
+        
+        // Give it a little time to redraw itself then draw the whole around the copumted frame above
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+            let outerbezierPath = UIBezierPath.init(roundedRect: blurEffectView.frame, cornerRadius: 0)
+            let rect = holeView.frame
+            let innerCirclepath = UIBezierPath.init(roundedRect: rect,byRoundingCorners: .allCorners,
+                                                    cornerRadii: CGSize(width: 10.0, height: 10.0))
+            outerbezierPath.append(innerCirclepath)
+            outerbezierPath.usesEvenOddFillRule = false
+            let fillLayer = CAShapeLayer()
+            fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
+            fillLayer.fillColor = UIColor.black.cgColor
+            fillLayer.path = outerbezierPath.cgPath
+            blurEffectView.layer.mask = fillLayer
+            holeView.removeFromSuperview()
+        }
     }
     
     /**
