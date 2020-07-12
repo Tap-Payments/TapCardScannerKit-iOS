@@ -65,7 +65,7 @@ class InlineScannerDemoViewController: UIViewController {
             }
             alert.addAction(stopAlertAction)
             alert.addAction(scanAgainAlertAction)
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)){ [weak self] in
                 self?.present(alert, animated: true, completion: nil)
             }
         }

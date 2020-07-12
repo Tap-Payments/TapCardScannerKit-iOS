@@ -23,6 +23,7 @@ class BlurHoleCorners: UIView {
         commonInit()
     }
     
+    @IBOutlet var corners: [UIImageView]!
     
     internal func commonInit() {
         // Add the XIB
@@ -50,5 +51,57 @@ class BlurHoleCorners: UIView {
         addSubview(newContainerView)
         contentView = newContainerView
     }
+    
+    internal func updateCorners(with status:ScanningCornersColors) {
+        let bundle = Bundle(for: Self.self)
+        corners.forEach{ $0.image = UIImage(named: status.imageName(for: ScanningCorner.init(rawValue: $0.tag) ?? .topLeft), in: bundle, compatibleWith: nil) }
+    }
 
+}
+
+/// Enum to decide the current state of the scanner to reflect this on border corners colors
+enum ScanningCornersColors {
+    /// Scanner is running
+    case normal
+    /// Card is scanned
+    case scanned
+    /**
+     Generates the name of the correct image based on status and corner position
+     - Parameter corner: The corner we want to generate the asset for
+     - Returns: The name of the image that correctly reflects the status and the corner
+     */
+    func imageName(for corner:ScanningCorner) -> String {
+        return "\(corner.toString())\(self.toString())"
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .normal:
+            return "Corner.png"
+        case .scanned:
+            return "SuccessCorner.png"
+        }
+    }
+}
+
+/// Enum to decide a corner to avoid typos and the code looks more elegant
+enum ScanningCorner: Int {
+    case topLeft = 1
+    case topRight = 2
+    case bottomRight = 3
+    case bottomLeft = 4
+    
+    
+    func toString() -> String {
+        switch self {
+        case .topLeft:
+            return "TopLeft"
+        case .topRight:
+            return "TopRight"
+        case .bottomRight:
+            return "BottomRight"
+        case .bottomLeft:
+            return "BottomLeft"
+        }
+    }
 }

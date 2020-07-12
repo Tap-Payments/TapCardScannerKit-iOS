@@ -318,8 +318,8 @@ import class CommonDataModelsKit_iOS.TapCard
         let constraints:[NSLayoutConstraint] = [
             cornersView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             cornersView.heightAnchor.constraint(equalTo: cornersView.widthAnchor,multiplier: 0.63),
-            cornersView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 32),
-            cornersView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -32),
+            cornersView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
+            cornersView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
             cornersView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 18)
         ]
         
@@ -388,6 +388,7 @@ import class CommonDataModelsKit_iOS.TapCard
         if let tapCardScannerDidFinishBlock = tapCardScannerDidFinish {
             tapCardScannerDidFinishBlock(scannedCard)
         }
+        cornersView?.updateCorners(with: .scanned)
     }
     
     /**
@@ -401,6 +402,7 @@ import class CommonDataModelsKit_iOS.TapCard
                 stopScanner()
             }
         }
+        //cornersView?.updateCorners(with: .normal)
     }
     
     /**
@@ -410,6 +412,7 @@ import class CommonDataModelsKit_iOS.TapCard
         if let nonNullScanner = cardScanner {
             nonNullScanner.resumeRecognizer()
         }
+        cornersView?.updateCorners(with: .normal)
     }
     
     internal func stopScanner() {
@@ -417,6 +420,7 @@ import class CommonDataModelsKit_iOS.TapCard
         if let nonNullScanner = cardScanner {
             nonNullScanner.stopCamera()
         }
+        //cornersView?.updateCorners(with: .normal)
     }
     
     /**

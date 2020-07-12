@@ -11,6 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BlurHoleCorners" customModule="TapCardScanner_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ZLP-Zd-3Eg"/>
+                <outletCollection property="corners" destination="ADs-2h-kmD" collectionClass="NSMutableArray" id="6xH-HU-rCB"/>
+                <outletCollection property="corners" destination="Gb3-dp-BtO" collectionClass="NSMutableArray" id="Dlg-8w-2Az"/>
+                <outletCollection property="corners" destination="kCx-RZ-xFP" collectionClass="NSMutableArray" id="Cri-2N-KFn"/>
+                <outletCollection property="corners" destination="j1i-eB-ru1" collectionClass="NSMutableArray" id="xYR-Af-bxG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
