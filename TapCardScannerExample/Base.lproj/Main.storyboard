@@ -137,32 +137,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjP-FE-2eF">
-                                <rect key="frame" x="20" y="657.66666666666663" width="335" height="100.33333333333337"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100.5" id="1IM-qT-rZ1"/>
-                                </constraints>
-                                <string key="text">The upper view is just a view we embedded inside our very nice layout :).. This shows how our card scanner can fit within any size in any UI layout if the app owner doesn't want to show a full scanner.. Viva TAP 😉</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-el-9OF">
-                                <rect key="frame" x="0.0" y="144.00000000000003" width="375" height="463.66666666666674"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GLC-el-9OF" secondAttribute="bottom" id="0HO-Nc-si6"/>
                             <constraint firstItem="GLC-el-9OF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="1dF-KS-gc3"/>
-                            <constraint firstItem="GLC-el-9OF" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" constant="100" id="5Mq-O5-0OV"/>
-                            <constraint firstItem="EBj-dS-QWB" firstAttribute="bottom" secondItem="GjP-FE-2eF" secondAttribute="bottom" constant="20" id="JdF-6V-0e8"/>
-                            <constraint firstItem="GjP-FE-2eF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EBj-dS-QWB" secondAttribute="leading" constant="20" id="MXR-dJ-RFK"/>
+                            <constraint firstItem="GLC-el-9OF" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" id="5Mq-O5-0OV"/>
                             <constraint firstItem="GLC-el-9OF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" id="RiN-Ip-mND"/>
-                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GjP-FE-2eF" secondAttribute="trailing" constant="20" id="Uyk-cY-1EM"/>
-                            <constraint firstItem="GjP-FE-2eF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="gGt-LE-oDl"/>
                             <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GLC-el-9OF" secondAttribute="trailing" id="qLd-i0-4Wh"/>
-                            <constraint firstItem="GjP-FE-2eF" firstAttribute="top" secondItem="GLC-el-9OF" secondAttribute="bottom" constant="50" id="u1F-no-gU1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EBj-dS-QWB"/>
                     </view>
@@ -172,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N49-Mk-Jvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.913043478261" y="221.65178571428569"/>
+            <point key="canvasLocation" x="1973.5999999999999" y="220.93596059113301"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CiK-sd-gcb">

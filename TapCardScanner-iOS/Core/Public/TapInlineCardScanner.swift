@@ -27,7 +27,7 @@ import class CommonDataModelsKit_iOS.TapCard
 
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject {
-   
+    
     /// Delegate to listen to firing events from the scanner
     @objc public var delegate:TapInlineScannerProtocl?
     
@@ -77,7 +77,6 @@ import class CommonDataModelsKit_iOS.TapCard
     @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((TapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
         
         FlurryLogger.logEvent(with: "Scan_From_Image_Called", timed:true , params: ["maxDataSize":String(maxDataSize),"minCompression":"\(minCompression)"])
-        
         // GET base64 of the image
         if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
             
@@ -95,11 +94,11 @@ import class CommonDataModelsKit_iOS.TapCard
     }
     
     /**
-    A method responsible for talking to google cloud vision API to exttact text from image
-    - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
-    - Parameter onTextExtracted: A block that will send back the extracted text
-    - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
-    */
+     A method responsible for talking to google cloud vision API to exttact text from image
+     - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
+     - Parameter onTextExtracted: A block that will send back the extracted text
+     - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
+     */
     internal func googleCloudVisionApi(with imageBase64:String, onTextExtracted:((String)->())? = nil,onErrorOccured:((String)->())? = nil) {
         // Create the request
         let request = createGoogleCloudVisionRequest(with: imageBase64)
@@ -135,7 +134,7 @@ import class CommonDataModelsKit_iOS.TapCard
             }
             
             if let nonNullErrorMessage = errorMessage,
-               let errorBlock = onErrorOccured {
+                let errorBlock = onErrorOccured {
                 FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
                 errorBlock(nonNullErrorMessage)
             }
@@ -144,10 +143,10 @@ import class CommonDataModelsKit_iOS.TapCard
     }
     
     /**
-       A method responsible for creating the URL request to be utilised in performing a POST to google cloud vision API
-       - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
+     A method responsible for creating the URL request to be utilised in performing a POST to google cloud vision API
+     - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
      - Returns: The url request
-       */
+     */
     internal func createGoogleCloudVisionRequest(with imageBase64:String)->URLRequest {
         // Prepare URL
         let url = URL(string: "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCZs_vdFd2lI7650JuXabYNJUh4ljzTFgk")
@@ -155,8 +154,8 @@ import class CommonDataModelsKit_iOS.TapCard
         // Prepare URL Request Object
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
-         request.setValue("application/json", forHTTPHeaderField: "Accept")
-         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         // HTTP Request Parameters which will be sent in HTTP Request Body
         let postString = "{'requests': [{'image': {'content': '\(imageBase64)' },'imageContext':{'languageHints':['en']}, 'features': [{'type': 'TEXT_DETECTION' }]}]}";
         // Set HTTP Request Body
@@ -210,7 +209,7 @@ import class CommonDataModelsKit_iOS.TapCard
     }
     
     /**
-        This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
+     This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
      - Parameter blurBackground: Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Defult is false
@@ -242,8 +241,8 @@ import class CommonDataModelsKit_iOS.TapCard
         
         // Configure and restart the recognizer
         configureScanner()
-        // Configure the blur overlay
-        //configureBlurOverlay()
+        
+        
         
         // Double check all is good
         if let _ = cardScanner {
@@ -281,7 +280,8 @@ import class CommonDataModelsKit_iOS.TapCard
         // Make sure we have a valid uiview
         guard let view = previewView, blurBackground else { return }
         
-        let blurEffectView: VisualEffectView = VisualEffectView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        let blurEffectView: VisualEffectView = .init()
+        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         blurEffectView.tag = 1010
         blurEffectView.colorTint = .black
         blurEffectView.colorTintAlpha = 0.48
@@ -290,14 +290,29 @@ import class CommonDataModelsKit_iOS.TapCard
         view.addSubview(blurEffectView)
         view.bringSubviewToFront(blurEffectView)
         
+        
+        
+        // Create the correct layout constraints to show the corners view properly
+        // Map the correct constraints to match the PayCards SDK scanning rect
+        let constraints:[NSLayoutConstraint] = [
+            blurEffectView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            blurEffectView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            blurEffectView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            blurEffectView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        blurEffectView.layoutIfNeeded()
+        
         // Add the custom corners View
-        addCustomCornersView()
+        addCustomCornersView(in: blurEffectView)
         // Draw a hole in the blur layout to show the scanning rect
         showBlurringHole(in: blurEffectView)
     }
     
     /// Add the custom corners View which will show custom corner images around the hole in the blurred layout
-    internal func addCustomCornersView() {
+    internal func addCustomCornersView(in blurEffectView:VisualEffectView) {
         // Make sure we have a valid uiview
         guard let view = previewView, blurBackground else { return }
         
@@ -316,11 +331,10 @@ import class CommonDataModelsKit_iOS.TapCard
         // Create the correct layout constraints to show the corners view properly
         // Map the correct constraints to match the PayCards SDK scanning rect
         let constraints:[NSLayoutConstraint] = [
-            cornersView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            cornersView.centerYAnchor.constraint(equalTo: blurEffectView.centerYAnchor),
             cornersView.heightAnchor.constraint(equalTo: cornersView.widthAnchor,multiplier: 0.63),
-            cornersView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-            cornersView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-            cornersView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 18)
+            cornersView.leadingAnchor.constraint(equalTo: blurEffectView.leadingAnchor,constant: 10),
+            cornersView.trailingAnchor.constraint(equalTo: blurEffectView.trailingAnchor,constant: -10),
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -361,7 +375,7 @@ import class CommonDataModelsKit_iOS.TapCard
         holeView.layoutIfNeeded()
         
         // Give it a little time to redraw itself then draw the whole around the copumted frame above
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
             let outerbezierPath = UIBezierPath.init(roundedRect: blurEffectView.frame, cornerRadius: 0)
             let rect = holeView.frame
             let innerCirclepath = UIBezierPath.init(roundedRect: rect,byRoundingCorners: .allCorners,
@@ -373,12 +387,12 @@ import class CommonDataModelsKit_iOS.TapCard
             fillLayer.fillColor = UIColor.black.cgColor
             fillLayer.path = outerbezierPath.cgPath
             blurEffectView.layer.mask = fillLayer
-            holeView.removeFromSuperview()
+            //holeView.removeFromSuperview()
         }
     }
     
     /**
-        This is the method responsible for POST action of successful scanning
+     This is the method responsible for POST action of successful scanning
      - Parameter scannedCard: Whoever calling, will have to pass the scanned card
      */
     internal func scannerScanned(scannedCard:TapCard) {
@@ -395,6 +409,7 @@ import class CommonDataModelsKit_iOS.TapCard
      */
     @objc public func pauseScanner(stopCamera:Bool) {
         if let nonNullScanner = cardScanner {
+            
             nonNullScanner.pause()
             if stopCamera {
                 stopScanner()
