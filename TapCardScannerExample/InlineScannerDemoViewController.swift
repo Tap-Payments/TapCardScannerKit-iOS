@@ -27,51 +27,9 @@ class InlineScannerDemoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let timeOutBlock:(TapInlineCardScanner) -> () = { [weak self] scanner in
-            let alert:UIAlertController = UIAlertController(title: "TimeOut", message: "The timeout period ended and the scanner didn't get any card from the camera feed :(", preferredStyle: .alert)
-            let stopAlertAction:UIAlertAction = UIAlertAction(title: "Stop Scanning", style: .default) { (_) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.tapInlineScanner.pauseScanner(stopCamera: true)
-                    self?.navigationController?.popViewController(animated: true)
-                }
-            }
-            let scanAgainAlertAction:UIAlertAction = UIAlertAction(title: "Reset Timeout", style: .default) { (_) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.tapInlineScanner.resumeScanner()
-                    self?.tapInlineScanner.resetTimeOutTimer()
-                }
-            }
-            alert.addAction(stopAlertAction)
-            alert.addAction(scanAgainAlertAction)
-            DispatchQueue.main.async { [weak self] in
-                self?.present(alert, animated: true, completion: nil)
-            }
-        }
-        
-        let scannedBlock:(TapCard) -> () = { [weak self] scannedCard in
-            
-            let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
-            let stopAlertAction:UIAlertAction = UIAlertAction(title: "Stop Scanning", style: .default) { (_) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.tapInlineScanner.pauseScanner(stopCamera: true)
-                    self?.navigationController?.popViewController(animated: true)
-                }
-            }
-            let scanAgainAlertAction:UIAlertAction = UIAlertAction(title: "Scan Again", style: .default) { (_) in
-                DispatchQueue.main.async { [weak self] in
-                    self?.tapInlineScanner.resumeScanner()
-                }
-            }
-            alert.addAction(stopAlertAction)
-            alert.addAction(scanAgainAlertAction)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)){ [weak self] in
-                self?.present(alert, animated: true, completion: nil)
-            }
-        }
-        
+        tapInlineScanner.delegate = self
         do{
-            try tapInlineScanner.startScanning(in: previewView, scanningBorderColor: scannerBorderColor,blurBackground: true,showTapCorners: true, timoutAfter: timeout, didTimout: ((timeout == -1) ? nil : timeOutBlock), cardScanned: scannedBlock)
+            try tapInlineScanner.startScanning(in: previewView, scanningBorderColor: scannerBorderColor,blurBackground: true,showTapCorners: true, timoutAfter: timeout)
         }catch{}
         
         view.bringSubviewToFront(previewView)
@@ -89,4 +47,54 @@ class InlineScannerDemoViewController: UIViewController {
     }
     */
 
+}
+
+
+extension InlineScannerDemoViewController:TapInlineScannerProtocl {
+    func tapFullCardScannerDimissed() {
+        
+    }
+    
+    func tapCardScannerDidFinish(with tapCard: TapCard) {
+        let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
+        let stopAlertAction:UIAlertAction = UIAlertAction(title: "Stop Scanning", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+                self?.tapInlineScanner.pauseScanner(stopCamera: true)
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
+        let scanAgainAlertAction:UIAlertAction = UIAlertAction(title: "Scan Again", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+                self?.tapInlineScanner.resumeScanner()
+            }
+        }
+        alert.addAction(stopAlertAction)
+        alert.addAction(scanAgainAlertAction)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)){ [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func tapInlineCardScannerTimedOut(for inlineScanner: TapInlineCardScanner) {
+        let alert:UIAlertController = UIAlertController(title: "TimeOut", message: "The timeout period ended and the scanner didn't get any card from the camera feed :(", preferredStyle: .alert)
+        let stopAlertAction:UIAlertAction = UIAlertAction(title: "Stop Scanning", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+                self?.tapInlineScanner.pauseScanner(stopCamera: true)
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
+        let scanAgainAlertAction:UIAlertAction = UIAlertAction(title: "Reset Timeout", style: .default) { (_) in
+            DispatchQueue.main.async { [weak self] in
+                self?.tapInlineScanner.resumeScanner()
+                self?.tapInlineScanner.resetTimeOutTimer()
+            }
+        }
+        alert.addAction(stopAlertAction)
+        alert.addAction(scanAgainAlertAction)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

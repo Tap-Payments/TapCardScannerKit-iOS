@@ -15,15 +15,21 @@ import class UIKit.UIColor
 import PayCardsRecognizer
 import class CommonDataModelsKit_iOS.TapCard
 
+
+@objc public protocol TapInlineScannerProtocl {
+    /// This block fires when the scanner finished scanning
+    @objc func tapFullCardScannerDimissed()
+    /// This block fires when the scanner finished scanning
+    @objc func tapCardScannerDidFinish(with tapCard:TapCard)
+    /// This block fires when the scanner finished scanning
+    @objc func tapInlineCardScannerTimedOut(for inlineScanner:TapInlineCardScanner)
+}
+
 /// This class represents the tap inline scanner UI controller.
-@objc public class TapInlineCardScanner:NSObject,TapScannerProtocl {
+@objc public class TapInlineCardScanner:NSObject {
    
-    /// This block fires when the scanner finished scanning
-    var tapFullCardScannerDimissed: (() -> ())?
-    /// This block fires when the scanner finished scanning
-    var tapCardScannerDidFinish:((TapCard)->())?
-    /// This block fires when the scanner finished scanning
-    var tapInlineCardScannerTimedOut:((TapInlineCardScanner)->())?
+    /// Delegate to listen to firing events from the scanner
+    @objc public var delegate:TapInlineScannerProtocl?
     
     /// This is the timeout period for the current scanner, -1 means it doesn't have one and will keep showing until parent app decides not to
     internal lazy var timeOutPeriod:Int = -1
@@ -213,7 +219,7 @@ import class CommonDataModelsKit_iOS.TapCard
      - Parameter didTimout: A block that will be called after the timeout period
      - Parameter cardScanned: A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces
      */
-    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false,showTapCorners:Bool = false, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false,showTapCorners:Bool = false,timoutAfter:Int = -1) throws {
         
         FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
         
@@ -228,16 +234,10 @@ import class CommonDataModelsKit_iOS.TapCard
         self.blurBackground = blurBackground
         self.scanningBorderColor = showTapCorners ? .clear : scanningBorderColor
         self.timeOutPeriod = (timoutAfter == -1) ? -1 : (timoutAfter > 20) ? timoutAfter : 20
-        self.tapCardScannerDidFinish = cardScanned
-        self.tapInlineCardScannerTimedOut = didTimout
         self.showTapCorners = showTapCorners
         // Check if the user passed a timeout then he needs to pass timeout block
         if self.timeOutPeriod > 0 {
-            if didTimout == nil {
-                throw "When you define a timeout period, you need to define a timeout block"
-            }else {
-                resetTimeOutTimer()
-            }
+            resetTimeOutTimer()
         }
         
         // Configure and restart the recognizer
@@ -385,9 +385,7 @@ import class CommonDataModelsKit_iOS.TapCard
         FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
         
         // Check if the scanned block is initialised, hence, utilise it and send the scannedCard to it
-        if let tapCardScannerDidFinishBlock = tapCardScannerDidFinish {
-            tapCardScannerDidFinishBlock(scannedCard)
-        }
+        delegate?.tapCardScannerDidFinish(with: scannedCard)
         cornersView?.updateCorners(with: .scanned)
     }
     
@@ -442,9 +440,7 @@ import class CommonDataModelsKit_iOS.TapCard
     
     /// A helper method reponsible for executing the timeout block if exists
     internal func dispatchTimeOutBlock() {
-        if let timeOutBlock = tapInlineCardScannerTimedOut {
-            timeOutBlock(self)
-        }
+        delegate?.tapInlineCardScannerTimedOut(for: self)
     }
 }
 
