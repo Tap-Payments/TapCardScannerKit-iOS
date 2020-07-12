@@ -35,6 +35,10 @@ import class CommonDataModelsKit_iOS.TapCard
     internal var cardScanner:PayCardsRecognizer?
     /// Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Default is false
     internal var blurBackground:Bool = false
+    /// Will be used to show the required corners by UI instead of the default pay cards corners view
+    internal var cornersView:BlurHoleCorners?
+    /// Indicates whether to add TAP custom corners instead of the default corners provided by PaySDK
+    internal var showTapCorners: Bool = false
     
     /**
      This interface decides whether the scanner can start or not based on camera usage permission granted and camera does exist.
@@ -204,11 +208,12 @@ import class CommonDataModelsKit_iOS.TapCard
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
      - Parameter blurBackground: Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Defult is false
+     - Parameter showTapCorners: Indicates whether to add TAP custom corners instead of the default corners provided by PaySDK
      - Parameter timoutAfter: This decides when the scanner should timeout (fires the timeout callback) in seconds. Default is -1 which means no timeout is required and it will not accept a value less than 20 seconds
      - Parameter didTimout: A block that will be called after the timeout period
      - Parameter cardScanned: A block that will be called once a card has been scanned. Note, that the scanner will pause itself aftter this, so if you can remove it or resume it using the respective interfaces
      */
-    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
+    @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false,showTapCorners:Bool = false, timoutAfter:Int = -1,didTimout:((TapInlineCardScanner)->())? = nil, cardScanned:((TapCard)->())? = nil) throws {
         
         FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
         
@@ -221,11 +226,11 @@ import class CommonDataModelsKit_iOS.TapCard
         // hold the customisations
         self.previewView = previewView
         self.blurBackground = blurBackground
-        self.scanningBorderColor = scanningBorderColor
+        self.scanningBorderColor = showTapCorners ? .clear : scanningBorderColor
         self.timeOutPeriod = (timoutAfter == -1) ? -1 : (timoutAfter > 20) ? timoutAfter : 20
         self.tapCardScannerDidFinish = cardScanned
         self.tapInlineCardScannerTimedOut = didTimout
-       
+        self.showTapCorners = showTapCorners
         // Check if the user passed a timeout then he needs to pass timeout block
         if self.timeOutPeriod > 0 {
             if didTimout == nil {
@@ -285,9 +290,42 @@ import class CommonDataModelsKit_iOS.TapCard
         view.addSubview(blurEffectView)
         view.bringSubviewToFront(blurEffectView)
         
-        
+        // Add the custom corners View
+        addCustomCornersView()
         // Draw a hole in the blur layout to show the scanning rect
         showBlurringHole(in: blurEffectView)
+    }
+    
+    /// Add the custom corners View which will show custom corner images around the hole in the blurred layout
+    internal func addCustomCornersView() {
+        // Make sure we have a valid uiview
+        guard let view = previewView, blurBackground else { return }
+        
+        // Remove any old corners added if any
+        cornersView?.removeFromSuperview()
+        
+        // Create new corners view
+        cornersView = .init()
+        cornersView?.isHidden = showTapCorners ? false : true
+        
+        guard let cornersView = cornersView else { return }
+        view.addSubview(cornersView)
+        view.bringSubviewToFront(cornersView)
+        cornersView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Create the correct layout constraints to show the corners view properly
+        // Map the correct constraints to match the PayCards SDK scanning rect
+        let constraints:[NSLayoutConstraint] = [
+            cornersView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            cornersView.heightAnchor.constraint(equalTo: cornersView.widthAnchor,multiplier: 0.63),
+            cornersView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 32),
+            cornersView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -32),
+            cornersView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 18)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+        
+        cornersView.layoutIfNeeded()
     }
     
     /**
@@ -297,7 +335,7 @@ import class CommonDataModelsKit_iOS.TapCard
     internal func showBlurringHole(in blurEffectView:VisualEffectView) {
         
         // Make sure we have a valid uiview
-        guard let view = previewView, blurBackground else { return }
+        guard let view = previewView, let cornersView = cornersView, blurBackground else { return }
         
         // Define the scanning rect to show a whole in the blur overlay
         let holeView:UIView = .init()
@@ -310,16 +348,13 @@ import class CommonDataModelsKit_iOS.TapCard
         
         // Map the correct constraints to match the PayCards SDK scanning rect
         let constraints:[NSLayoutConstraint] = [
+            holeView.leadingAnchor.constraint(equalTo: cornersView.leadingAnchor,constant: 6),
+            holeView.trailingAnchor.constraint(equalTo: cornersView.trailingAnchor,constant: -6),
+            holeView.topAnchor.constraint(equalTo: cornersView.topAnchor, constant: 6),
+            holeView.bottomAnchor.constraint(equalTo: cornersView.bottomAnchor, constant: -6),
             holeView.centerYAnchor.constraint(equalTo: holeView.superview!.centerYAnchor),
-            holeView.heightAnchor.constraint(equalTo: holeView.widthAnchor,multiplier: 0.66),
-            holeView.leadingAnchor.constraint(equalTo: holeView.superview!.leadingAnchor,constant: 15),
-            holeView.trailingAnchor.constraint(equalTo: holeView.superview!.trailingAnchor,constant: -15),
-            holeView.topAnchor.constraint(greaterThanOrEqualTo: holeView.superview!.topAnchor, constant: 18)
+            holeView.centerXAnchor.constraint(equalTo: holeView.superview!.centerXAnchor)
         ]
-        
-        // First two constraints needs a priority of HIGHT
-        constraints[0].priority = .defaultHigh
-        constraints[1].priority = .defaultHigh
         
         NSLayoutConstraint.activate(constraints)
         
@@ -330,7 +365,7 @@ import class CommonDataModelsKit_iOS.TapCard
             let outerbezierPath = UIBezierPath.init(roundedRect: blurEffectView.frame, cornerRadius: 0)
             let rect = holeView.frame
             let innerCirclepath = UIBezierPath.init(roundedRect: rect,byRoundingCorners: .allCorners,
-                                                    cornerRadii: CGSize(width: 10.0, height: 10.0))
+                                                    cornerRadii: CGSize(width: 8, height: 8))
             outerbezierPath.append(innerCirclepath)
             outerbezierPath.usesEvenOddFillRule = false
             let fillLayer = CAShapeLayer()

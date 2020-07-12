@@ -71,7 +71,7 @@ class InlineScannerDemoViewController: UIViewController {
         }
         
         do{
-            try tapInlineScanner.startScanning(in: previewView, scanningBorderColor: scannerBorderColor,blurBackground: true, timoutAfter: timeout, didTimout: ((timeout == -1) ? nil : timeOutBlock), cardScanned: scannedBlock)
+            try tapInlineScanner.startScanning(in: previewView, scanningBorderColor: scannerBorderColor,blurBackground: true,showTapCorners: true, timoutAfter: timeout, didTimout: ((timeout == -1) ? nil : timeOutBlock), cardScanned: scannedBlock)
         }catch{}
         
         view.bringSubviewToFront(previewView)

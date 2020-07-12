@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BlurHoleCorners" customModule="TapCardScanner_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="ZLP-Zd-3Eg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="193"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopLeftCorner.png" translatesAutoresizingMaskIntoConstraints="NO" id="ADs-2h-kmD">
+                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="5ln-SQ-F1h"/>
+                        <constraint firstAttribute="width" secondItem="ADs-2h-kmD" secondAttribute="height" multiplier="1:1" id="xjF-87-Mjt"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BottomLeftCorner.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gb3-dp-BtO">
+                    <rect key="frame" x="0.0" y="165" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="OUY-cT-Ie9"/>
+                        <constraint firstAttribute="width" secondItem="Gb3-dp-BtO" secondAttribute="height" multiplier="1:1" id="dcO-1H-Dc8"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BottomRightCorner.png" translatesAutoresizingMaskIntoConstraints="NO" id="kCx-RZ-xFP">
+                    <rect key="frame" x="279" y="165" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kCx-RZ-xFP" secondAttribute="height" multiplier="1:1" id="wQ3-AY-FfH"/>
+                        <constraint firstAttribute="height" constant="28" id="y2a-8z-0bp"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopRightCorner.png" translatesAutoresizingMaskIntoConstraints="NO" id="j1i-eB-ru1">
+                    <rect key="frame" x="279" y="0.0" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="j1i-eB-ru1" secondAttribute="height" multiplier="1:1" id="9DO-HX-MED"/>
+                        <constraint firstAttribute="height" constant="28" id="SZj-MF-so8"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="j1i-eB-ru1" secondAttribute="trailing" id="9x1-bJ-yUg"/>
+                <constraint firstItem="Gb3-dp-BtO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BmB-O5-oHI"/>
+                <constraint firstItem="j1i-eB-ru1" firstAttribute="width" secondItem="j1i-eB-ru1" secondAttribute="height" multiplier="1:1" id="E6p-Nh-67g"/>
+                <constraint firstItem="kCx-RZ-xFP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="PLu-UU-a4C"/>
+                <constraint firstItem="Gb3-dp-BtO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Z4K-uo-JX1"/>
+                <constraint firstItem="ADs-2h-kmD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cSd-nM-zMU"/>
+                <constraint firstItem="Gb3-dp-BtO" firstAttribute="width" secondItem="Gb3-dp-BtO" secondAttribute="height" multiplier="1:1" id="dta-pF-QO8"/>
+                <constraint firstItem="ADs-2h-kmD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="f9S-Dg-5co"/>
+                <constraint firstItem="kCx-RZ-xFP" firstAttribute="width" secondItem="kCx-RZ-xFP" secondAttribute="height" multiplier="1:1" id="grY-3x-mjE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kCx-RZ-xFP" secondAttribute="bottom" id="lHW-OS-Rpe"/>
+                <constraint firstItem="j1i-eB-ru1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ywP-p9-ZwD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BottomLeftCorner.png" width="512" height="512"/>
+        <image name="BottomRightCorner.png" width="512" height="512"/>
+        <image name="TopLeftCorner.png" width="384" height="384"/>
+        <image name="TopRightCorner.png" width="512" height="512"/>
+    </resources>
+</document>

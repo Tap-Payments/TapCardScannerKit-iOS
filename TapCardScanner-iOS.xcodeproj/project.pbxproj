@@ -21,6 +21,12 @@
 		E87C7D7D2429FE03009AD770 /* Pods_TapCardScanner_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB77101CC4FB85B270E0DD41 /* Pods_TapCardScanner_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */; };
 		E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */; };
+		E88F9DF324BADBD100A7B470 /* BlurHoleCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88F9DF224BADBD100A7B470 /* BlurHoleCorners.swift */; };
+		E88F9DF824BADE4700A7B470 /* BottomRightCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = E88F9DF424BADE4700A7B470 /* BottomRightCorner.png */; };
+		E88F9DF924BADE4700A7B470 /* TopLeftCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = E88F9DF524BADE4700A7B470 /* TopLeftCorner.png */; };
+		E88F9DFA24BADE4700A7B470 /* TopRightCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = E88F9DF624BADE4700A7B470 /* TopRightCorner.png */; };
+		E88F9DFB24BADE4700A7B470 /* BottomLeftCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = E88F9DF724BADE4700A7B470 /* BottomLeftCorner.png */; };
+		E88F9DFD24BADE5F00A7B470 /* BlurHoleCorners.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88F9DFC24BADE5F00A7B470 /* BlurHoleCorners.xib */; };
 		E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18844242A39010045A72C /* TapScannerProtocl.swift */; };
 		E8B18847242B159E0045A72C /* TapScannerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */; };
 		E8B1884A242B15DB0045A72C /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */; };
@@ -91,6 +97,12 @@
 		E87C7D5D2429F489009AD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapInlineCardScanner.swift; sourceTree = "<group>"; };
 		E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCanScanStatusResult.swift; sourceTree = "<group>"; };
+		E88F9DF224BADBD100A7B470 /* BlurHoleCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHoleCorners.swift; sourceTree = "<group>"; };
+		E88F9DF424BADE4700A7B470 /* BottomRightCorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BottomRightCorner.png; sourceTree = "<group>"; };
+		E88F9DF524BADE4700A7B470 /* TopLeftCorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopLeftCorner.png; sourceTree = "<group>"; };
+		E88F9DF624BADE4700A7B470 /* TopRightCorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopRightCorner.png; sourceTree = "<group>"; };
+		E88F9DF724BADE4700A7B470 /* BottomLeftCorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BottomLeftCorner.png; sourceTree = "<group>"; };
+		E88F9DFC24BADE5F00A7B470 /* BlurHoleCorners.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlurHoleCorners.xib; sourceTree = "<group>"; };
 		E8B18844242A39010045A72C /* TapScannerProtocl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapScannerProtocl.swift; sourceTree = "<group>"; };
 		E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapScannerStoryboard.storyboard; sourceTree = "<group>"; };
 		E8B18849242B15DB0045A72C /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFullScreenScannerViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +220,7 @@
 		E87C7D81242A0266009AD770 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				E88F9DF124BADBAF00A7B470 /* Views */,
 				E8B18848242B15BC0045A72C /* Controllers */,
 				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
 				E8BE3FB724B854BD00F15C41 /* VisualEffectView.swift */,
@@ -232,6 +245,11 @@
 			isa = PBXGroup;
 			children = (
 				E8B18846242B159E0045A72C /* TapScannerStoryboard.storyboard */,
+				E88F9DF724BADE4700A7B470 /* BottomLeftCorner.png */,
+				E88F9DF424BADE4700A7B470 /* BottomRightCorner.png */,
+				E88F9DF524BADE4700A7B470 /* TopLeftCorner.png */,
+				E88F9DF624BADE4700A7B470 /* TopRightCorner.png */,
+				E88F9DFC24BADE5F00A7B470 /* BlurHoleCorners.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -242,6 +260,14 @@
 				E87C7D87242A0769009AD770 /* TapCanScanStatusResult.swift */,
 			);
 			path = enum;
+			sourceTree = "<group>";
+		};
+		E88F9DF124BADBAF00A7B470 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E88F9DF224BADBD100A7B470 /* BlurHoleCorners.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E8B1883F242A0D4D0045A72C /* models */ = {
@@ -357,7 +383,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88F9DF824BADE4700A7B470 /* BottomRightCorner.png in Resources */,
+				E88F9DFD24BADE5F00A7B470 /* BlurHoleCorners.xib in Resources */,
+				E88F9DF924BADE4700A7B470 /* TopLeftCorner.png in Resources */,
+				E88F9DFB24BADE4700A7B470 /* BottomLeftCorner.png in Resources */,
 				E8B18847242B159E0045A72C /* TapScannerStoryboard.storyboard in Resources */,
+				E88F9DFA24BADE4700A7B470 /* TopRightCorner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +478,7 @@
 				E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */,
 				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
 				E87C7D88242A0769009AD770 /* TapCanScanStatusResult.swift in Sources */,
+				E88F9DF324BADBD100A7B470 /* BlurHoleCorners.swift in Sources */,
 				E87C7D85242A0453009AD770 /* TapInlineCardScanner.swift in Sources */,
 				E8BE3FB824B854BD00F15C41 /* VisualEffectView.swift in Sources */,
 				E8B1884C242B16410045A72C /* TapFullScreenCardScanner.swift in Sources */,
