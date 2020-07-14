@@ -333,8 +333,8 @@ import class CommonDataModelsKit_iOS.TapCard
         let constraints:[NSLayoutConstraint] = [
             cornersView.centerYAnchor.constraint(equalTo: blurEffectView.centerYAnchor),
             cornersView.heightAnchor.constraint(equalTo: cornersView.widthAnchor,multiplier: 0.63),
-            cornersView.leadingAnchor.constraint(equalTo: blurEffectView.leadingAnchor,constant: 10),
-            cornersView.trailingAnchor.constraint(equalTo: blurEffectView.trailingAnchor,constant: -10),
+            cornersView.leadingAnchor.constraint(equalTo: blurEffectView.leadingAnchor,constant: 14),
+            cornersView.trailingAnchor.constraint(equalTo: blurEffectView.trailingAnchor,constant: -14),
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -361,11 +361,13 @@ import class CommonDataModelsKit_iOS.TapCard
         //make.height.equalTo(holeView.snp.width).multipliedBy(0.66).priority(.high)
         
         // Map the correct constraints to match the PayCards SDK scanning rect
+        let spacing:CGFloat = 3.5
+        
         let constraints:[NSLayoutConstraint] = [
-            holeView.leadingAnchor.constraint(equalTo: cornersView.leadingAnchor,constant: 6),
-            holeView.trailingAnchor.constraint(equalTo: cornersView.trailingAnchor,constant: -6),
-            holeView.topAnchor.constraint(equalTo: cornersView.topAnchor, constant: 6),
-            holeView.bottomAnchor.constraint(equalTo: cornersView.bottomAnchor, constant: -6),
+            holeView.leadingAnchor.constraint(equalTo: cornersView.leadingAnchor,constant: spacing),
+            holeView.trailingAnchor.constraint(equalTo: cornersView.trailingAnchor,constant: -spacing),
+            holeView.topAnchor.constraint(equalTo: cornersView.topAnchor, constant: spacing),
+            holeView.bottomAnchor.constraint(equalTo: cornersView.bottomAnchor, constant: -spacing),
             holeView.centerYAnchor.constraint(equalTo: holeView.superview!.centerYAnchor),
             holeView.centerXAnchor.constraint(equalTo: holeView.superview!.centerXAnchor)
         ]
