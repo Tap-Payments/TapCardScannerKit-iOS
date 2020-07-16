@@ -13,7 +13,7 @@ import class UIKit.UIVisualEffect
 import class UIKit.UIBlurEffect
 
 /// VisualEffectView is a dynamic background blur view.
-internal class VisualEffectView: UIVisualEffectView {
+public class VisualEffectView: UIVisualEffectView {
     
     /// Returns the instance of UIBlurEffect.
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
@@ -23,7 +23,7 @@ internal class VisualEffectView: UIVisualEffectView {
      
      The default value is nil.
      */
-    var colorTint: UIColor? {
+    public var colorTint: UIColor? {
         get { return _value(forKey: "colorTint") as? UIColor }
         set { _setValue(newValue, forKey: "colorTint") }
     }
@@ -33,7 +33,7 @@ internal class VisualEffectView: UIVisualEffectView {
      
      The default value is 0.0.
      */
-    var colorTintAlpha: CGFloat {
+    public var colorTintAlpha: CGFloat {
         get { return _value(forKey: "colorTintAlpha") as! CGFloat }
         set { _setValue(newValue, forKey: "colorTintAlpha") }
     }
@@ -43,7 +43,7 @@ internal class VisualEffectView: UIVisualEffectView {
      
      The default value is 0.0.
      */
-    var blurRadius: CGFloat {
+    public var blurRadius: CGFloat {
         get { return _value(forKey: "blurRadius") as! CGFloat }
         set { _setValue(newValue, forKey: "blurRadius") }
     }
@@ -55,7 +55,7 @@ internal class VisualEffectView: UIVisualEffectView {
      
      The default value is 1.0.
      */
-    var scale: CGFloat {
+    public var scale: CGFloat {
         get { return _value(forKey: "scale") as! CGFloat }
         set { _setValue(newValue, forKey: "scale") }
     }
