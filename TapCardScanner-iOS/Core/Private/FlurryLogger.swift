@@ -1,5 +1,5 @@
 //
-//  FlurryLogger.swift
+//  //FlurryLogger.swift
 //  TapCardScanner-iOS
 //
 //  Created by Osama Rabie on 31/03/2020.
@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Flurry_iOS_SDK
+/*import Flurry_iOS_SDK
 
 /// This class is a singleton class responsible for dealing with Flurry SDK
 internal class FlurryLogger {
@@ -29,7 +29,7 @@ internal class FlurryLogger {
     static func logEvent(with name:String,timed:Bool = false,params:[String:String] = [:]) {
         activateSession()
         
-        var finalParams = FlurryLogger.defaultParams()
+        var finalParams = //FlurryLogger.defaultParams()
         finalParams.merge(dict: params)
         Flurry.logEvent(name, withParameters: finalParams, timed: timed);
         
@@ -61,3 +61,4 @@ internal extension Dictionary {
     }
 }
 
+*/

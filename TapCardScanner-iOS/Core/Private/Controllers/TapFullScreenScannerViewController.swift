@@ -57,7 +57,7 @@ internal class TapFullScreenScannerViewController: UIViewController {
     internal func dismissScanner(callDismissBlock:Bool = true) {
         self.dismiss(animated: true) { [weak self] in
             // Check if the caller wants to call the dismiss block
-            FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called")
+            //FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called")
             if callDismissBlock {
                 if let dismissBlock = self?.tapFullCardScannerDimissed {
                     dismissBlock()
@@ -74,7 +74,7 @@ internal class TapFullScreenScannerViewController: UIViewController {
         // Create the ScannedTapCard from the scanner result
         let tapCardScanned:TapCard = .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear)
         
-        FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"true","error":"","card_number":tapCardScanned.tapCardNumber ?? "","card_name":tapCardScanned.tapCardName ?? "","card_month":tapCardScanned.tapCardExpiryMonth ?? "","card_year":tapCardScanned.tapCardExpiryYear ?? ""])
+        //FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"true","error":"","card_number":tapCardScanned.tapCardNumber ?? "","card_name":tapCardScanned.tapCardName ?? "","card_month":tapCardScanned.tapCardExpiryMonth ?? "","card_year":tapCardScanned.tapCardExpiryYear ?? ""])
         
         // If there is a scanned block then call it with the result
         if let scannedBlock = tapFullCardScannerDidFinish {

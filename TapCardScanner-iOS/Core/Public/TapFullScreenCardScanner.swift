@@ -25,11 +25,11 @@ import class CommonDataModelsKit_iOS.TapCard
      
      */
     @objc public func showModalScreen(presenter:UIViewController,tapFullCardScannerDimissed: (() -> ())? = nil,tapCardScannerDidFinish:((TapCard)->())? = nil,scannerUICustomization:TapFullScreenUICustomizer = TapFullScreenUICustomizer()) throws {
-        FlurryLogger.logEvent(with: "Scan_Full_Screen_Called", timed:true)
+        //FlurryLogger.logEvent(with: "Scan_Full_Screen_Called", timed:true)
         
         // Check if scanner can start first
         guard TapInlineCardScanner.CanScan() == .CanStart else {
-            FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
+            //FlurryLogger.endTimerForEvent(with: "Scan_Full_Screen_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
             throw TapInlineCardScanner.CanScan().rawValue
         }
         

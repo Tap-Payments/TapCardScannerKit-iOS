@@ -5,7 +5,8 @@
             "cardNamePlaceHolder": "Holder name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
-            "cardSaveLabel": "For faster and more secure checkout,\nsave your card"
+            "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
+            "emailPlaceHolder": "email@email.com"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -21,6 +22,62 @@
             "hideDesc": "Hide Description",
             "Discount": "Discount"
         },
+        "Hints":
+        {
+            "Warning":
+            {
+                "missingExpiryCVV": "Expiry date & CVV number are missing.",
+                "missingCVV": "CVV number is missing."
+            },
+            "Error":
+            {
+                "wrongCardNumber": "Card number is invalid"
+            },
+            "Default":
+            {
+                "scan": "Ready to scan."
+            },
+            "Scanned":
+            {
+                "successFullScan" : "Your card has been scanned successfully."
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "OTP has been sent to"
+            }
+        },
+        "TapOtpView": {
+            "Message": {
+                "Ready": "OTP has been sent to",
+                "Invalid": "Invalid OTP number! ",
+                "Expired": ""
+            }
+        },
+        "TapSwitchView" : {
+            "mainTelecom": {
+                "titleEmpty": "For faster and easier checkout,\nsave your mobile number.",
+                "titleValid": "For faster and easier checkout,\nsave your mobile number.",
+                "subtitle": "",
+                "notes": ""
+            },
+            "mainCards": {
+                "titleEmpty": "For faster and easier checkout,\nuse card scanner or NFC.",
+                "titleValid": "For faster and easier checkout,\nsave the card for later.",
+                "subtitle": "",
+                "notes": ""
+            },
+            "goPay": {
+                "title": "Save for goPay Checkouts",
+                "subtitle": "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
+                "notes": "Please check your email or SMS's in order to complete the goPay Checkout signup process."
+            },
+            "merchant": {
+                "title": "Save for %@ Checkouts",
+                "subtitle": "",
+                "notes": ""
+            }
+        },
         "Common": {
             "next": "Next",
             "previous": "Previous",
@@ -29,7 +86,21 @@
             "edit": "Edit",
             "close": "Close",
             "items": "Items",
-            "item": "Item"
+            "item": "Item",
+            "email": "email",
+            "phone": "phone",
+            "password": "Password",
+            "change": "change"
+        },
+        "GoPay": {
+            "HintLabel": "You can access your saved cards from anywhere with goPay."
+        },
+        "ActionButton":{
+            "pay": "Pay",
+            "confirm": "Confirm",
+            "resend": "Resend OTP",
+            "next": "Next",
+            "signin": "Signin"
         }
     },
     "ar": {
@@ -38,7 +109,8 @@
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
-            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة"
+            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
+            "emailPlaceHolder": "email@email.com"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
@@ -54,6 +126,62 @@
             "hideDesc": "إخفاء الوصف",
             "Discount": "خصم"
         },
+        "TapOtpView": {
+            "Message": {
+                "Ready": "تم إرسال الكود لـ",
+                "Invalid": "الكود غير صحيح!",
+                "Expired": ""
+            }
+        },
+        "Hints":
+        {
+            "Warning":
+            {
+                "missingExpiryCVV": "تاريخ الإنتهاء و الرمز الأمني مطلوبين",
+                "missingCVV": "الرمز الأمني مطلوب"
+            },
+            "Error":
+            {
+                "wrongCardNumber": "رقم غير صحيح"
+            },
+            "Default":
+            {
+                "scan": "جاهز للتصوير"
+            },
+            "Scanned":
+            {
+                "successFullScan" : "تم  تصوير الكارت بنجاح"
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "تم إرسال الرمز لـ"
+            }
+        },
+        "TapSwitchView" : {
+            "mainTelecom": {
+                "titleEmpty": "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.",
+                "titleValid": "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.",
+                "subtitle": "",
+                "notes": ""
+            },
+            "mainCards": {
+                "titleEmpty": "للدفع بشكل أسرع،\nبرجاء إستخدام قارئ الكروت",
+                "titleValid": "للدفع بشكل أسرع وأسهل ،\nاحفظ كارت الدفع.",
+                "subtitle": "",
+                "notes": ""
+            },
+            "goPay": {
+                "title": "حفظ ل goPay Checkouts",
+                "subtitle": "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.",
+                "notes": "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."
+            },
+            "merchant": {
+                "title": "حفظ لعمليات دفع %@",
+                "subtitle": "",
+                "notes": ""
+            }
+        },
         "Common": {
             "next": "التالي",
             "previous": "السابق",
@@ -62,7 +190,21 @@
             "edit": "تعديل",
             "close": "غلق",
             "items": "منتجات",
-            "item": "منتج"
+            "item": "منتج",
+            "email": "البريد",
+            "phone": "الهاتف",
+            "password": "كلمة السر",
+            "change": "تعديل"
+        },
+        "GoPay": {
+            "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
+        },
+        "ActionButton":{
+            "pay": "إدفع",
+            "confirm": "تأكيد",
+            "resend": "إعادة إرسال",
+            "next": "التالي",
+            "signin": "دخول"
         }
     }
 }

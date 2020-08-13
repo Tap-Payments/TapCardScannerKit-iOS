@@ -51,7 +51,7 @@ import class CommonDataModelsKit_iOS.TapCard
      - Returns: TapCanScanStatusResult enum which has three values: .CanStart if all good, .CameraMissing if camera doesn't exist and .CameraPermissionMissing Scanning cannot start as camera usage permission is not granted
      */
     @objc public static func CanScan() -> TapCanScanStatusResult {
-        FlurryLogger.logEvent(with: "Can_Scan_Called")
+        //FlurryLogger.logEvent(with: "Can_Scan_Called")
         // Check if permission is granted to use the camera
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
             // Check the camera existance
@@ -76,7 +76,7 @@ import class CommonDataModelsKit_iOS.TapCard
      */
     @objc public func ScanCard(from image:UIImage, maxDataSize:Double = 0, minCompression:CGFloat = 0.2,cardScanned:((TapCard)->())? = nil,onErrorOccured:((String)->())? = nil) {
         
-        FlurryLogger.logEvent(with: "Scan_From_Image_Called", timed:true , params: ["maxDataSize":String(maxDataSize),"minCompression":"\(minCompression)"])
+        //FlurryLogger.logEvent(with: "Scan_From_Image_Called", timed:true , params: ["maxDataSize":String(maxDataSize),"minCompression":"\(minCompression)"])
         // GET base64 of the image
         if let base64:String = image.base64Encode(maxDataSize: maxDataSize, minCompression: minCompression) {
             
@@ -86,7 +86,7 @@ import class CommonDataModelsKit_iOS.TapCard
                 if let nonNullCardScannedBlock = cardScanned {
                     nonNullCardScannedBlock(self.processGoogleVision(with: result))
                 }else {
-                    FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","googleText":result])
+                    //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","googleText":result])
                 }
             }, onErrorOccured: onErrorOccured)
         }
@@ -135,7 +135,7 @@ import class CommonDataModelsKit_iOS.TapCard
             
             if let nonNullErrorMessage = errorMessage,
                 let errorBlock = onErrorOccured {
-                FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
+                //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
                 errorBlock(nonNullErrorMessage)
             }
         }
@@ -175,7 +175,7 @@ import class CommonDataModelsKit_iOS.TapCard
         extractedText.enumerateLines { [weak self] line, _ in
             self?.match(string: line, to: scannedCard)
         }
-        FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
+        //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
         return scannedCard
     }
     
@@ -220,11 +220,11 @@ import class CommonDataModelsKit_iOS.TapCard
      */
     @objc public func startScanning(in previewView:UIView, scanningBorderColor:UIColor = .green, blurBackground:Bool = false,showTapCorners:Bool = false,timoutAfter:Int = -1) throws {
         
-        FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
+        //FlurryLogger.logEvent(with: "Scan_Inline_Called", timed:true)
         
         // Check if scanner can start first
         guard TapInlineCardScanner.CanScan() == .CanStart else {
-            FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
+            //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":TapInlineCardScanner.CanScan().rawValue])
             throw TapInlineCardScanner.CanScan().rawValue
         }
         
@@ -248,7 +248,7 @@ import class CommonDataModelsKit_iOS.TapCard
         if let _ = cardScanner {
             startScanning()
         }else {
-            FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
+            //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
             throw "Preview view is not defined"
         }
     }
@@ -398,7 +398,7 @@ import class CommonDataModelsKit_iOS.TapCard
      - Parameter scannedCard: Whoever calling, will have to pass the scanned card
      */
     internal func scannerScanned(scannedCard:TapCard) {
-        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
+        //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
         
         // Check if the scanned block is initialised, hence, utilise it and send the scannedCard to it
         delegate?.tapCardScannerDidFinish(with: scannedCard)
@@ -431,7 +431,7 @@ import class CommonDataModelsKit_iOS.TapCard
     }
     
     internal func stopScanner() {
-        FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called")
+        //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called")
         if let nonNullScanner = cardScanner {
             nonNullScanner.stopCamera()
         }
