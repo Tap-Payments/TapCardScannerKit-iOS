@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapCardScanner-iOS"
-  spec.version      = "1.0.10"
+  spec.version      = "1.0.11"
   spec.summary      = "On demand, dynamic and customisable tap credit card scanner"
 
   # This description is used to generate tags and improve search results.
@@ -134,4 +134,11 @@ Pod::Spec.new do |spec|
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   spec.dependency "PayCardsRecognizer", "~> 1.1.7"
   spec.dependency "CommonDataModelsKit-iOS", "~> 1.0.1"
+
+
+  spec.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+
 end
