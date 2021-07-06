@@ -9,8 +9,9 @@
 import UIKit
 
 class BlurHoleCorners: UIView {
-
+    
     @IBOutlet var contentView:UIView!
+    var reverseCorners:Bool = false
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -39,7 +40,7 @@ class BlurHoleCorners: UIView {
     /// Add the XIB
     internal func loadXIB() {
         guard let nibs = Bundle(for: Self.self).loadNibNamed("BlurHoleCorners", owner: self, options: nil),
-            nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib BlurHoleCorners") }
+              nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib BlurHoleCorners") }
         
         let newContainerView = loadedView
         
@@ -56,7 +57,7 @@ class BlurHoleCorners: UIView {
         let bundle = Bundle(for: Self.self)
         corners.forEach{ $0.image = UIImage(named: status.imageName(for: ScanningCorner.init(rawValue: $0.tag) ?? .topLeft), in: bundle, compatibleWith: nil) }
     }
-
+    
 }
 
 /// Enum to decide the current state of the scanner to reflect this on border corners colors

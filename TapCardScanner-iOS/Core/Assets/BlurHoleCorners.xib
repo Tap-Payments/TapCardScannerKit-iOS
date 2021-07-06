@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,22 +51,22 @@
                     </constraints>
                 </imageView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="j1i-eB-ru1" secondAttribute="trailing" id="9x1-bJ-yUg"/>
-                <constraint firstItem="Gb3-dp-BtO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BmB-O5-oHI"/>
+                <constraint firstAttribute="right" secondItem="j1i-eB-ru1" secondAttribute="right" id="9x1-bJ-yUg"/>
+                <constraint firstItem="Gb3-dp-BtO" firstAttribute="left" secondItem="vUN-kp-3ea" secondAttribute="left" id="BmB-O5-oHI"/>
                 <constraint firstItem="j1i-eB-ru1" firstAttribute="width" secondItem="j1i-eB-ru1" secondAttribute="height" multiplier="1:1" id="E6p-Nh-67g"/>
-                <constraint firstItem="kCx-RZ-xFP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="PLu-UU-a4C"/>
+                <constraint firstItem="kCx-RZ-xFP" firstAttribute="right" secondItem="vUN-kp-3ea" secondAttribute="right" id="PLu-UU-a4C"/>
                 <constraint firstItem="Gb3-dp-BtO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Z4K-uo-JX1"/>
                 <constraint firstItem="ADs-2h-kmD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cSd-nM-zMU"/>
                 <constraint firstItem="Gb3-dp-BtO" firstAttribute="width" secondItem="Gb3-dp-BtO" secondAttribute="height" multiplier="1:1" id="dta-pF-QO8"/>
-                <constraint firstItem="ADs-2h-kmD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="f9S-Dg-5co"/>
+                <constraint firstItem="ADs-2h-kmD" firstAttribute="left" secondItem="vUN-kp-3ea" secondAttribute="left" id="f9S-Dg-5co"/>
                 <constraint firstItem="kCx-RZ-xFP" firstAttribute="width" secondItem="kCx-RZ-xFP" secondAttribute="height" multiplier="1:1" id="grY-3x-mjE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kCx-RZ-xFP" secondAttribute="bottom" id="lHW-OS-Rpe"/>
                 <constraint firstItem="j1i-eB-ru1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ywP-p9-ZwD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>
     </objects>

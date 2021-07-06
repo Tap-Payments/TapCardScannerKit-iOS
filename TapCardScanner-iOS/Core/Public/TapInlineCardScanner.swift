@@ -117,8 +117,8 @@ import class CommonDataModelsKit_iOS.TapCard
                         // Check that google accepted the reqest and it did extract any peice of text from the given image
                         let responseDict:[String:Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                         if let response:[[String:Any]] = responseDict["responses"] as? [[String : Any]], response.count == 1,
-                            let fullAnotation:[String:Any] = response[0]["fullTextAnnotation"] as? [String:Any],
-                            let parsedText:String = fullAnotation["text"] as? String {
+                           let fullAnotation:[String:Any] = response[0]["fullTextAnnotation"] as? [String:Any],
+                           let parsedText:String = fullAnotation["text"] as? String {
                             if let onTextExtractedBlock = onTextExtracted {
                                 onTextExtractedBlock(parsedText)
                             }
@@ -134,7 +134,7 @@ import class CommonDataModelsKit_iOS.TapCard
             }
             
             if let nonNullErrorMessage = errorMessage,
-                let errorBlock = onErrorOccured {
+               let errorBlock = onErrorOccured {
                 //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
                 errorBlock(nonNullErrorMessage)
             }
@@ -280,13 +280,15 @@ import class CommonDataModelsKit_iOS.TapCard
         // Make sure we have a valid uiview
         guard let view = previewView, blurBackground else { return }
         
-        let blurEffectView: VisualEffectView = .init()
+        let blurEffectView: VisualEffectView = .init(effect: UIBlurEffect(style: .light))
+        blurEffectView.adjustBlurType()
+        //blurEffectView.effect = UIBlurEffect(style: .dark)
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         blurEffectView.tag = 1010
-        blurEffectView.colorTint = .black
-        blurEffectView.colorTintAlpha = 0.48
-        blurEffectView.blurRadius = 10
-        blurEffectView.scale = 1
+        /*blurEffectView.colorTint = .yellow
+         blurEffectView.colorTintAlpha = 0.48
+         blurEffectView.blurRadius = 10
+         blurEffectView.scale = 1*/
         view.addSubview(blurEffectView)
         view.bringSubviewToFront(blurEffectView)
         

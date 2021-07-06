@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = PayCardsRecognizer;
+			productName = PayCardsRecognizer;
 		};
 /* End PBXAggregateTarget section */
 
@@ -165,10 +166,10 @@
 		2750FD52C3DB4B347086D258B27EF410 /* TapCurrencyLocale.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyLocale.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode/TapCurrencyLocale.swift"; sourceTree = "<group>"; };
 		2813EF056DDF35877000524571734F33 /* TapCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCard.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/TapCard.swift"; sourceTree = "<group>"; };
 		288EF9406B6D16770A2CDDCEFC54E27B /* TapCurrencyCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyCode.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode/TapCurrencyCode.swift"; sourceTree = "<group>"; };
-		2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapCardScannerExample.framework; path = "Pods-TapCardScannerExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EAE3D866BD7A0D03E034A52A4873A23 /* Pods_TapCardScannerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScannerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F0CAF7DA9537D8DB4D47CCF68787245 /* Capable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Capable.debug.xcconfig; sourceTree = "<group>"; };
 		3236AFBC2186A494B043EBB1EFACF7DA /* Pods-TapCardScannerExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapCardScannerExample-dummy.m"; sourceTree = "<group>"; };
-		324E7578413670459F2055EA9E908920 /* CommonDataModelsKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CommonDataModelsKit_iOS.framework; path = "CommonDataModelsKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		324E7578413670459F2055EA9E908920 /* CommonDataModelsKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonDataModelsKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34466D942FBAB01644E681AE1238C3BC /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F7457912CC6E164049E4768F2B7745 /* RGBViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBViewModel.swift; path = SheetyColors/Classes/RGB/ViewModels/RGBViewModel.swift; sourceTree = "<group>"; };
 		361363F17426FACF340F3682E785FC6F /* ImageArea.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageArea.swift; path = Source/Colors/Models/ImageArea.swift; sourceTree = "<group>"; };
@@ -191,7 +192,7 @@
 		6B746FA63F7FE9EE098CFC0BBCA5716C /* TransactionItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransactionItemModel.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/TransactionItemModel.swift"; sourceTree = "<group>"; };
 		6BC2CC64FB07D36113CCE3EC365B046A /* Pods-TapCardScanner-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapCardScanner-iOS-Info.plist"; sourceTree = "<group>"; };
 		6CA9B454FA960985DA6E8DA95B693603 /* Pods-TapCardScannerExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapCardScannerExample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SheetyColors.framework; path = SheetyColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SheetyColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4BC9BD29841E2F76599249430583D2 /* PreviewColorViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewColorViewDelegate.swift; path = SheetyColors/Classes/Common/Views/Protocols/PreviewColorViewDelegate.swift; sourceTree = "<group>"; };
 		6FE5048443A4FF42EEA7164ED6007CF4 /* SheetyColorsViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewFactory.swift; path = SheetyColors/Classes/Common/Factory/SheetyColorsViewFactory.swift; sourceTree = "<group>"; };
 		72A49F326238C5BAC776659BAB98D953 /* ConformanceLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConformanceLevel.swift; path = Source/Colors/Models/ConformanceLevel.swift; sourceTree = "<group>"; };
@@ -206,17 +207,17 @@
 		8169B79D7751B1F2A5FA8D08BF2E44BB /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+hex.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/UIColor+hex.swift"; sourceTree = "<group>"; };
 		82D45EC983D87A4BB783E6B9C1934BB4 /* SheetyColorsViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewDelegate.swift; path = SheetyColors/Classes/Common/ViewModels/Protocols/SheetyColorsViewDelegate.swift; sourceTree = "<group>"; };
 		837E31B1E47F4EC70BDEE6843A8E74FD /* Capable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Capable-dummy.m"; sourceTree = "<group>"; };
-		8460A9F58A12E016C3C548DED72C438F /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapCardScanner_iOS.framework; path = "Pods-TapCardScanner-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8460A9F58A12E016C3C548DED72C438F /* Pods_TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		868F7C6C219ACA1517C5B119F42705A5 /* AppearenceProviderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProviderProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/AppearenceProviderProtocol.swift; sourceTree = "<group>"; };
 		89DA97E0D5BA2E62D107B2EF850EEF7C /* RGBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBAColor.swift; path = Source/Colors/Models/RGBAColor.swift; sourceTree = "<group>"; };
 		915CBCE3C16024FE7A23A1C377538443 /* CIImage+initWithImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CIImage+initWithImage.swift"; path = "Source/Colors/Extensions/CIImage+initWithImage.swift"; sourceTree = "<group>"; };
 		935C9AEF784B98036A6C991CC91C3EC3 /* SheetyColors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SheetyColors.debug.xcconfig; sourceTree = "<group>"; };
 		93DB4F7784D2B1EED5A7C37515A7D6FD /* PreviewColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewColorView.swift; path = SheetyColors/Classes/Common/Views/PreviewColorView.swift; sourceTree = "<group>"; };
-		9653359225404DB42D8E847F94326601 /* DefaultTapLocalisation.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultTapLocalisation.json; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/assets/DefaultTapLocalisation.json"; sourceTree = "<group>"; };
+		9653359225404DB42D8E847F94326601 /* DefaultTapLocalisation.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = DefaultTapLocalisation.json; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/assets/DefaultTapLocalisation.json"; sourceTree = "<group>"; };
 		99C896536E622E25B59C50396E6E94CF /* UIFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+fontProps.swift"; path = "Source/Colors/Extensions/UIFont+fontProps.swift"; sourceTree = "<group>"; };
 		9AF77DD0B435F069AC76C5DEBCFF3C1C /* PayCardsRecognizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayCardsRecognizer.debug.xcconfig; sourceTree = "<group>"; };
 		9C08C76970F7ACFB4AB62C60BD6A92F4 /* TapCountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCountryCode.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCountryCode.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F1CAECAE7B510FD7C1E09A597CDBCFA /* SheetyColorsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewController.swift; path = SheetyColors/Classes/Common/Views/SheetyColorsViewController.swift; sourceTree = "<group>"; };
 		9FBE377B3134453EE5FDD4ED7990B2B0 /* Color+wcag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Color+wcag.swift"; path = "Source/Colors/Extensions/Color+wcag.swift"; sourceTree = "<group>"; };
 		A09F75E3C5662A12D2332D05833D9D4D /* Pods-TapCardScannerExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapCardScannerExample.modulemap"; sourceTree = "<group>"; };
@@ -227,7 +228,7 @@
 		A60A4549B6CC14A8B60821D754A6791F /* GradientSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientSlider.swift; path = SheetyColors/Classes/Common/Views/GradientSlider.swift; sourceTree = "<group>"; };
 		A76B11FF8B41CBFB470C354D22496780 /* CGFloat+constrainToRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+constrainToRange.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/CGFloat+constrainToRange.swift"; sourceTree = "<group>"; };
 		A911D0FC1AFB3733ACC00ADE37A9BC9A /* Pods-TapCardScanner-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapCardScanner-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Capable.framework; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9774FE6B9C798EF9F612B4BCF816B7 /* GrayscaleColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleColor.swift; path = SheetyColors/Classes/Grayscale/Models/GrayscaleColor.swift; sourceTree = "<group>"; };
 		ADE3980FEBAD0DB33FC0FA3235114252 /* Pods-TapCardScannerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapCardScannerExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B6708C7B8D165AE142EE09D6F7ABB467 /* Pods-TapCardScanner-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapCardScanner-iOS-dummy.m"; sourceTree = "<group>"; };
@@ -350,7 +351,6 @@
 				3ABAA448E9A0AF5A53FA5618776B1BC7 /* Frameworks */,
 				3BD5117A4858E324C56C78AEBB4F642A /* Support Files */,
 			);
-			name = PayCardsRecognizer;
 			path = PayCardsRecognizer;
 			sourceTree = "<group>";
 		};
@@ -405,7 +405,6 @@
 				BE1C0C96D35249498CBA9F803F4E0655 /* Colors */,
 				986AF8E3E7371A7EEA8129D015E80335 /* Support Files */,
 			);
-			name = Capable;
 			path = Capable;
 			sourceTree = "<group>";
 		};
@@ -434,7 +433,6 @@
 				6156D69144F67017F85FCF29B7E2F63C /* Resources */,
 				A8EB893834DD7C8D33D20DC3862F5BE0 /* Support Files */,
 			);
-			name = "CommonDataModelsKit-iOS";
 			path = "CommonDataModelsKit-iOS";
 			sourceTree = "<group>";
 		};
@@ -546,7 +544,6 @@
 				1F77BD025A5789447B1821F7A3BC58E4 /* Resources */,
 				7E51B656363BFAE2E40408487AA8372B /* Support Files */,
 			);
-			name = SheetyColors;
 			path = SheetyColors;
 			sourceTree = "<group>";
 		};
@@ -740,7 +737,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -979,6 +976,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1074,7 +1072,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Capable/Capable-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Capable/Capable-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1150,7 +1148,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SheetyColors/SheetyColors-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SheetyColors/SheetyColors-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1187,7 +1185,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SheetyColors/SheetyColors-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SheetyColors/SheetyColors-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1223,7 +1221,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Capable/Capable-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Capable/Capable-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1248,7 +1246,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1265,7 +1263,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1330,7 +1328,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CommonDataModelsKit-iOS/CommonDataModelsKit-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CommonDataModelsKit-iOS/CommonDataModelsKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1375,6 +1373,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1427,7 +1426,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CommonDataModelsKit-iOS/CommonDataModelsKit-iOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CommonDataModelsKit-iOS/CommonDataModelsKit-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
