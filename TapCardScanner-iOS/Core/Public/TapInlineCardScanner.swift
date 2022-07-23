@@ -7,13 +7,9 @@
 //
 
 import Foundation
-import class AVFoundation.AVCaptureDevice
-import struct AVFoundation.AVMediaType
-import class UIKit.UIImagePickerController
-import class UIKit.UIView
-import class UIKit.UIColor
-import PayCardsRecognizer
-import class CommonDataModelsKit_iOS.TapCard
+import AVFoundation
+import UIKit
+import CommonDataModelsKit_iOS
 
 
 @objc public protocol TapInlineScannerProtocl {
@@ -28,6 +24,9 @@ import class CommonDataModelsKit_iOS.TapCard
 /// This class represents the tap inline scanner UI controller.
 @objc public class TapInlineCardScanner:NSObject {
     
+    /// Analyzes text data for credit card info
+    private lazy var analyzer = ImageAnalyzer(delegate: self)
+    
     /// Delegate to listen to firing events from the scanner
     @objc public var delegate:TapInlineScannerProtocl?
     
@@ -38,7 +37,7 @@ import class CommonDataModelsKit_iOS.TapCard
     /// This is the color of scan the card border. Default is green
     internal lazy var scanningBorderColor:UIColor = .green
     /// This is the backbone of the scanner object
-    internal var cardScanner:PayCardsRecognizer?
+    private lazy var cameraView: CameraView = CameraView(delegate:self)
     /// Indicates whether to add a blur effect to the camera stream with a hole of the scanning area or not. Default is false
     internal var blurBackground:Bool = false
     /// Will be used to show the required corners by UI instead of the default pay cards corners view
@@ -240,33 +239,49 @@ import class CommonDataModelsKit_iOS.TapCard
         }
         
         // Configure and restart the recognizer
-        configureScanner()
-        
+        startScanning()
         
         
         // Double check all is good
-        if let _ = cardScanner {
-            startScanning()
-        }else {
-            //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
-            throw "Preview view is not defined"
-        }
+        /* if let _ = cardScanner {
+         startScanning()
+         }else {
+         //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
+         throw "Preview view is not defined"
+         }*/
     }
     
     /// This method is responsible for starting the camera feed logic
     internal func startScanning() {
-        cardScanner?.startCamera(with: .portrait)
+        configureScanner()
         configureBlurOverlay()
+        cameraView.startSession()
+        
     }
     
     /// This method is responsible for configuring the card scanner object and attach it inside the required view with the needed customisations
     internal func configureScanner() {
+        cameraView.translatesAutoresizingMaskIntoConstraints = false
         // Defensive code to check there is a holding view
         if let nonNullPreviewView = self.previewView {
-            cardScanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: nonNullPreviewView, frameColor: scanningBorderColor)
+            nonNullPreviewView.addSubview(cameraView)
+            //nonNullPreviewView.sendSubviewToBack(cameraView)
+            NSLayoutConstraint.activate([
+                cameraView.topAnchor.constraint(equalTo: nonNullPreviewView.topAnchor),
+                cameraView.bottomAnchor.constraint(equalTo: nonNullPreviewView.bottomAnchor),
+                cameraView.leadingAnchor.constraint(equalTo: nonNullPreviewView.leadingAnchor),
+                cameraView.trailingAnchor.constraint(equalTo: nonNullPreviewView.trailingAnchor),
+                //cameraView.heightAnchor.constraint(equalTo: cameraView.widthAnchor, multiplier: CreditCard.heightRatioAgainstWidth, constant: 100),
+            ])
+            
+            cameraView.layoutIfNeeded()
+            
+            cameraView.regionOfInterest = .init(x: 0, y: 0, width: nonNullPreviewView.frame.width, height: nonNullPreviewView.frame.height)
+            cameraView.setupRegionOfInterest()
+            cameraView.setupCamera()
             
         }else {
-            cardScanner = nil
+            //cardScanner = nil
         }
     }
     
@@ -412,32 +427,29 @@ import class CommonDataModelsKit_iOS.TapCard
      - Parameter stopCamera: If not set, then camera feed will still be shown in the view but no actual scanning, if set, it will destroy itself
      */
     @objc public func pauseScanner(stopCamera:Bool) {
-        if let nonNullScanner = cardScanner {
-            
-            nonNullScanner.pause()
-            if stopCamera {
-                stopScanner()
-            }
+        if stopCamera {
+            stopScanner()
         }
-        //cornersView?.updateCorners(with: .normal)
     }
     
     /**
      This method shall be called once the parent app wants to resume the scanner again.
      */
     @objc public func resumeScanner() {
-        if let nonNullScanner = cardScanner {
-            nonNullScanner.resumeRecognizer()
-        }
+        /*if let nonNullScanner = cardScanner {
+         nonNullScanner.resumeRecognizer()
+         }*/
+        cameraView.startSession()
         cornersView?.updateCorners(with: .normal)
     }
     
     internal func stopScanner() {
         //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called")
-        if let nonNullScanner = cardScanner {
-            nonNullScanner.stopCamera()
-        }
+        /*if let nonNullScanner = cardScanner {
+         nonNullScanner.stopCamera()
+         }*/
         //cornersView?.updateCorners(with: .normal)
+        cameraView.stopSession()
     }
     
     /**
@@ -463,16 +475,54 @@ import class CommonDataModelsKit_iOS.TapCard
     }
 }
 
-extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
-    public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
-        if result.isCompleted {
-            // Scanner captured semi/complete card details
-            scannerScanned(scannedCard: .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear))
-            pauseScanner(stopCamera: false)
+/*extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
+ public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
+ if result.isCompleted {
+ // Scanner captured semi/complete card details
+ scannerScanned(scannedCard: .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear))
+ pauseScanner(stopCamera: false)
+ }
+ }
+ }*/
+
+extension String: LocalizedError {
+    public var errorDescription: String? { return self }
+}
+
+
+extension TapInlineCardScanner: CameraViewDelegate {
+    internal func didCapture(image: CGImage) {
+        analyzer.analyze(image: image)
+    }
+    
+    internal func didError(with error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            //strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)
+            strongSelf.cameraView.stopSession()
         }
     }
 }
 
-extension String: LocalizedError {
-    public var errorDescription: String? { return self }
+
+extension TapInlineCardScanner: ImageAnalyzerProtocol {
+    internal func didFinishAnalyzation(with result: Result<TapCard, Error>) {
+        switch result {
+        case let .success(creditCard):
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.scannerScanned(scannedCard: creditCard)
+                strongSelf.pauseScanner(stopCamera: false)
+                print(creditCard.tapCardNumber ?? ":")
+            }
+            
+        case let .failure(error):
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                /*strongSelf.cameraView.stopSession()
+                 strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)*/
+                print(error)
+            }
+        }
+    }
 }

@@ -93,21 +93,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dXJ-ng-k60" detailTextLabel="mgV-HX-f32" style="IBUITableViewCellStyleSubtitle" id="Cnu-2g-S1K">
-                                        <rect key="frame" x="0.0" y="225.66666603088379" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="225.66666603088379" width="375" height="69.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cnu-2g-S1K" id="V2m-jo-kqQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="69.666664123535156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Scan from image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dXJ-ng-k60">
-                                                    <rect key="frame" x="16" y="2" width="128.66666666666666" height="20.333333333333332"/>
+                                                    <rect key="frame" x="16" y="7.9999999999999982" width="128.66666666666666" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="This is the first scanner to scan flat cards like KNET and MADA cards" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mgV-HX-f32">
-                                                    <rect key="frame" x="16" y="24.333333333333329" width="319" height="28.666666666666668"/>
+                                                    <rect key="frame" x="16" y="31.333333333333329" width="319" height="28.666666666666668"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -138,19 +138,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-el-9OF">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P3L-N8-teP">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-el-9OF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                        <color key="backgroundColor" systemColor="tintColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EBj-dS-QWB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="GLC-el-9OF" secondAttribute="bottom" id="0HO-Nc-si6"/>
-                            <constraint firstItem="GLC-el-9OF" firstAttribute="centerX" secondItem="eG5-gc-Vyv" secondAttribute="centerX" id="1dF-KS-gc3"/>
-                            <constraint firstItem="GLC-el-9OF" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" id="5Mq-O5-0OV"/>
-                            <constraint firstItem="GLC-el-9OF" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" id="RiN-Ip-mND"/>
-                            <constraint firstItem="EBj-dS-QWB" firstAttribute="trailing" secondItem="GLC-el-9OF" secondAttribute="trailing" id="qLd-i0-4Wh"/>
+                            <constraint firstItem="P3L-N8-teP" firstAttribute="top" secondItem="EBj-dS-QWB" secondAttribute="top" id="2Q0-5B-Hal"/>
+                            <constraint firstItem="P3L-N8-teP" firstAttribute="leading" secondItem="EBj-dS-QWB" secondAttribute="leading" id="HUD-uy-liZ"/>
+                            <constraint firstItem="P3L-N8-teP" firstAttribute="trailing" secondItem="EBj-dS-QWB" secondAttribute="trailing" id="U2Y-RQ-LQD"/>
+                            <constraint firstItem="EBj-dS-QWB" firstAttribute="bottom" secondItem="P3L-N8-teP" secondAttribute="bottom" id="tsY-O4-WTP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -353,6 +357,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

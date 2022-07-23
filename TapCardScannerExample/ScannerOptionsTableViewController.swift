@@ -10,15 +10,16 @@ import UIKit
 import TapCardScanner_iOS
 import SheetyColors
 import AVFoundation
+import CommonDataModelsKit_iOS
 
 class ScannerOptionsTableViewController: UITableViewController {
 
-    lazy var fullScanner:TapFullScreenCardScanner = TapFullScreenCardScanner()
+    var fullScanner:TapFullScreenScannerViewController?
     lazy var activityIndicatorBase : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x:0.0, y:0.0, width:60.0, height:60.0);
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .whiteLarge
+        activityIndicator.style = .large
         activityIndicator.color = UIColor.orange
         activityIndicator.startAnimating()
         return activityIndicator
@@ -166,22 +167,9 @@ class ScannerOptionsTableViewController: UITableViewController {
             if response {
                 //access granted
                 DispatchQueue.main.async {[weak self] in
-                    do {
-                        try self?.fullScanner.showModalScreen(presenter: self!,tapCardScannerDidFinish: { [weak self] (scannedCard) in
-                            
-                            let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
-                            let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
-                                
-                            }
-                            
-                            alert.addAction(stopAlertAction)
-                            DispatchQueue.main.async { [weak self] in
-                                self?.present(alert, animated: true, completion: nil)
-                            }
-                        },scannerUICustomization: customiser)
-                    }catch{
-                        print(error.localizedDescription)
-                    }
+                    self?.fullScanner = TapFullScreenScannerViewController()
+                    self?.fullScanner?.delegate = self
+                    self?.present((self?.fullScanner)!, animated: true)
                 }
             }else {
                 
@@ -237,61 +225,6 @@ class ScannerOptionsTableViewController: UITableViewController {
         }
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
@@ -322,3 +255,26 @@ extension ScannerOptionsTableViewController:UIImagePickerControllerDelegate,UINa
     }
 }
 
+extension ScannerOptionsTableViewController:TapCreditCardScannerViewControllerDelegate {
+    func creditCardScannerViewControllerDidCancel(_ viewController: TapFullScreenScannerViewController) {
+        viewController.dismiss(animated: true)
+    }
+    
+    func creditCardScannerViewController(_ viewController: TapFullScreenScannerViewController, didErrorWith error: Error) {
+        viewController.dismiss(animated: true)
+    }
+    
+    func creditCardScannerViewController(_ viewController: TapFullScreenScannerViewController, didFinishWith card: TapCard) {
+        let alert:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(card.tapCardNumber ?? "")\nCard Name : \(card.tapCardName ?? "")\nCard Expiry : \(card.tapCardExpiryMonth ?? "")/\(card.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
+        let stopAlertAction:UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
+            
+        }
+        
+        alert.addAction(stopAlertAction)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+}
