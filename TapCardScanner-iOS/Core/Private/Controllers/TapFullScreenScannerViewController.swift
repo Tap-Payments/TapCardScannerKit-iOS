@@ -9,7 +9,6 @@
 import class UIKit.UIView
 import class UIKit.UIButton
 import class UIKit.UIViewController
-import PayCardsRecognizer
 import class CommonDataModelsKit_iOS.TapCard
 
 /// The view controller handling the full screen scanner
@@ -87,7 +86,7 @@ internal class TapFullScreenScannerViewController: UIViewController {
     
     /// This method is responsible for configuring the scanner logic
     internal func configureScanner() {
-        scanner = PayCardsRecognizer(delegate: self, resultMode: .async, container: scanningPreviewView, frameColor: scannerUICustomization.tapFullScreenScanBorderColor)
+        scanner = PayCardsRecognizer(delegate: self, resultMode: .sync, container: scanningPreviewView, frameColor: scannerUICustomization.tapFullScreenScanBorderColor)
         scanner?.startCamera()
     }
     

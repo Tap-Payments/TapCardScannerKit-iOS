@@ -2307,19 +2307,52 @@ import Foundation
 
 
 
-public extension TapCurrencyCode {
+extension TapCurrencyCode:Encodable {
     /**
      Converts the self currency from the provided currency
      - Parameter from: The currency that originaly has the amount
      - Parameter amount: The value you want to convert
      - Returns: The converted value to the self currency
      */
-    func convert(from:TapCurrencyCode?,for amount:Double) -> Double {
+    public func convert(from:TapCurrencyCode?,for amount:Double) -> Double {
         let rates:[String:[String:Double]] = ["USD":["USD":1,"KWD":0.30785,"EGP":16.179599,"SAR":3.750992,"QAR":3.640994,"BHD":0.377234,"JOD":0.709799,"AED":3.673099,"OMR":0.384529]]
         
-        guard let fromCurrency = from, let fromCurrencyRates:[String:Double] = rates[fromCurrency.appleRawValue], let conversionRate:Double = fromCurrencyRates[self.appleRawValue] else { return amount }
+        guard let fromCurrency = from else {
+            return amount
+        }
         
+        guard let fromCurrencyRates:[String:Double] = rates[fromCurrency.appleRawValue], let conversionRate:Double = fromCurrencyRates[self.appleRawValue] else {
+            guard let fromUSDRate:Double = rates["USD"]?[fromCurrency.appleRawValue], let toUSDRate:Double = rates["USD"]?[self.appleRawValue] else {
+                return amount
+            }
+            
+            return (amount * toUSDRate) / fromUSDRate
+            
+        }
         return amount * conversionRate
+        
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case emvcoRawValue = "emvcoRawValue"
+        case appleRawValue = "appleRawValue"
+        //        case symbolRawValue = "symbolRawValue"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.singleValueContainer()
+        try container.encode(self.appleRawValue.lowercased())
+    }
+    
+}
+
+/// Making Tap Currency Code codable direct from json data
+extension TapCurrencyCode:Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        self = TapCurrencyCode.init(appleRawValue: rawValue) ??  TapCurrencyCode.undefined
     }
     
 }

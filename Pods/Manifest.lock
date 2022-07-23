@@ -1,28 +1,38 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.31)
-  - PayCardsRecognizer (1.1.7)
-  - SheetyColors (1.2.0):
+  - CommonDataModelsKit-iOS (1.0.49):
+    - TapAdditionsKitV2
+  - SheetyColors (1.2.1):
     - Capable/Colors (~> 1.1)
+  - TapAdditionsKitV2 (0.0.8):
+    - TapSwiftFixesV2
+  - TapSwiftFixesV2 (1.0.0):
+    - TapSwiftFixesV2/CoreGraphics (= 1.0.0)
+    - TapSwiftFixesV2/Exceptions (= 1.0.0)
+    - TapSwiftFixesV2/Threading (= 1.0.0)
+  - TapSwiftFixesV2/CoreGraphics (1.0.0)
+  - TapSwiftFixesV2/Exceptions (1.0.0)
+  - TapSwiftFixesV2/Threading (1.0.0)
 
 DEPENDENCIES:
   - CommonDataModelsKit-iOS
-  - PayCardsRecognizer
   - SheetyColors
 
 SPEC REPOS:
   trunk:
     - Capable
     - CommonDataModelsKit-iOS
-    - PayCardsRecognizer
     - SheetyColors
+    - TapAdditionsKitV2
+    - TapSwiftFixesV2
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: 4b1a33cd07686bcd8117f1f1ebe18373bda16af5
-  PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
-  SheetyColors: 8dc64a666415be8a81df3c5d44b9088d6f8bee2e
+  CommonDataModelsKit-iOS: f41f93e4a72212d14c67a1dbba990bb1719a48cd
+  SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
+  TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
+  TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
 
-PODFILE CHECKSUM: 7ba83c8dcf987e67ceecfdba5248031754b833ae
+PODFILE CHECKSUM: 310a35df07b4a737dcd3e19b7776222287f9238e
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.2

@@ -2,7 +2,7 @@
     "en": {
         "TapCardInputKit": {
             "cardNumberPlaceHolder": "0000 0000 0000 0000",
-            "cardNamePlaceHolder": "Holder name",
+            "cardNamePlaceHolder": "Card holder name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
             "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
@@ -22,12 +22,27 @@
             "hideDesc": "Hide Description",
             "Discount": "Discount"
         },
+        "ExtraFees":
+        {
+            "title": "Confirm Extra Charges",
+            "message": "You will be charged an additional fee of %@ for this type of payment, totalling an amount of %@",
+            "cancel": "Cancel",
+            "confirm": "Confirm"
+        },
+        "DeleteCard":
+        {
+            "title": "Delete Card",
+            "message": "Are you sure you would like to card %@?",
+            "cancel": "Cancel",
+            "confirm": "Delete"
+        },
         "Hints":
         {
             "Warning":
             {
                 "missingExpiryCVV": "Expiry date & CVV number are missing.",
-                "missingCVV": "CVV number is missing."
+                "missingCVV": "CVV number is missing.",
+                "missingName": "Card name should be greater than 3 charachters",
             },
             "Error":
             {
@@ -62,7 +77,7 @@
                 "notes": ""
             },
             "mainCards": {
-                "titleEmpty": "For faster and easier checkout,\nuse card scanner or NFC.",
+                "titleEmpty": "For faster and easier checkout,\nuse card scanner.",
                 "titleValid": "For faster and easier checkout,\nsave the card for later.",
                 "subtitle": "",
                 "notes": ""
@@ -90,7 +105,9 @@
             "email": "email",
             "phone": "phone",
             "password": "Password",
-            "change": "change"
+            "change": "change",
+            "cancel": "Cancel",
+            "confirm": "Confirm"
         },
         "GoPay": {
             "HintLabel": "You can access your saved cards from anywhere with goPay."
@@ -133,12 +150,27 @@
                 "Expired": ""
             }
         },
+        "ExtraFees":
+        {
+            "title": "تأكيد الرسوم الإضافية",
+            "message": "سوف تتم إضافة  %@ لهذا النوع العملية، إجمالي المبلغ المطلوب   %@",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
+        },
+        "DeleteCard":
+        {
+            "title": "مسح البطاقة",
+            "message": "هل أنت متأكد من مسح البطاقة %@؟",
+            "cancel": "إلغاء",
+            "confirm": "مسح"
+        },
         "Hints":
         {
             "Warning":
             {
                 "missingExpiryCVV": "تاريخ الإنتهاء و الرمز الأمني مطلوبين",
-                "missingCVV": "الرمز الأمني مطلوب"
+                "missingCVV": "الرمز الأمني مطلوب",
+                "missingName": "يجب إدخال ٣ أحرف على الاقل للإسم",
             },
             "Error":
             {

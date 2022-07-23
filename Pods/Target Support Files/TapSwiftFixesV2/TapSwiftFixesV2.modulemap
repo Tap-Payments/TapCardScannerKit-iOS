@@ -1,0 +1,6 @@
+framework module TapSwiftFixesV2 {
+  umbrella header "TapSwiftFixesV2-umbrella.h"
+
+  export *
+  module * { export * }
+}

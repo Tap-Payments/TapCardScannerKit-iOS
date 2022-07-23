@@ -6,7 +6,6 @@ target 'TapCardScanner-iOS' do
   use_frameworks!
 
   # Pods for TapCardScanner-iOS
-  pod 'PayCardsRecognizer'
   pod 'CommonDataModelsKit-iOS'
 end
 
