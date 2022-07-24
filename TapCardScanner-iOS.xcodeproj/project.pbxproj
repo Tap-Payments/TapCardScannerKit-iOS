@@ -261,10 +261,10 @@
 		E87C7D82242A0276009AD770 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				E8B1883F242A0D4D0045A72C /* models */,
 				E87C7D86242A0700009AD770 /* enum */,
 				E87C7D84242A0453009AD770 /* TapInlineCardScanner.swift */,
 				E8B1884D242B7CF20045A72C /* TapExtensions.swift */,
+				E83FD0C3288C709C00057F22 /* TapFullScreenScannerViewController.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -302,17 +302,9 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E8B1883F242A0D4D0045A72C /* models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
 		E8B18848242B15BC0045A72C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E83FD0C3288C709C00057F22 /* TapFullScreenScannerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

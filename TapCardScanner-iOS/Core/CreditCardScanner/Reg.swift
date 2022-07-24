@@ -1,5 +1,9 @@
 import Foundation
 
+//  Regex.swift
+//  Created by Osama Rabie on 24/07/2021.
+//  Copyright © 2021 Tap Payments. All rights reserved.
+
 /// A class to wrap and provide easy access to some of the common methods regarding dealing with regular expressions
 internal struct Regex: ExpressibleByStringLiteral {
     /// The pattern we are searching for

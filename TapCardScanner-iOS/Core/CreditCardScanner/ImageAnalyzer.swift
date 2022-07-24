@@ -1,8 +1,7 @@
 //
 //  ImageAnalyzer.swift
-//
-//
-//  Created by miyasaka on 2020/07/30.
+//  Created by Osama Rabie on 24/07/2021.
+//  Copyright © 2021 Tap Payments. All rights reserved.
 //
 
 import Foundation

@@ -21,7 +21,7 @@ import CommonDataModelsKit_iOS
 
 
 @available(iOS 13, *)
-open class TapFullScreenScannerViewController: UIViewController {
+@objc open class TapFullScreenScannerViewController: UIViewController {
 
     /*public var titleLabelText: String = "Add card"
     public var subtitleLabelText: String = "Line up card within the lines"
@@ -46,9 +46,13 @@ open class TapFullScreenScannerViewController: UIViewController {
 
     /// Analyzes text data for credit card info
     private lazy var analyzer = ImageAnalyzer(delegate: self)
-
+    
+    /// Conform to this delegate to get notified of key events
     @objc public weak var delegate: TapCreditCardScannerViewControllerDelegate?
 
+    /// uiCustomization: The UI customization object to theme the scanner
+    private var uiCustomization:TapFullScreenUICustomizer = .init()
+    
     /// The backgroundColor stack view that is below the camera preview view
     private var bottomStackView = UIStackView()
     private var titleLabel = UILabel()
@@ -57,7 +61,9 @@ open class TapFullScreenScannerViewController: UIViewController {
 
     // MARK: - Vision-related
 
-    public init(delegate: TapCreditCardScannerViewControllerDelegate? = nil) {
+    /// - Parameter delegate: Conform to this delegate to get notified of key events
+    /// - Parameter uiCustomization: The UI customization object to theme the scanner
+    public init(delegate: TapCreditCardScannerViewControllerDelegate? = nil, uiCustomization:TapFullScreenUICustomizer = .init()) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
@@ -71,16 +77,19 @@ open class TapFullScreenScannerViewController: UIViewController {
         super.viewDidLoad()
         layoutSubviews()
         //setupLabelsAndButtons()
+        // check if the consumer app did get an authoriation for cammera access or not
         AVCaptureDevice.authorize { [weak self] authoriazed in
             // This is on the main thread.
             guard let strongSelf = self else {
                 return
             }
             guard authoriazed else {
+                // Not athorized, then we inform the delegate that we canno start scanning :)
                 strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: "Authorization denied")
                 return
             }
-            strongSelf.cameraView.setupCamera()
+            // Authorized, hence we can start the scanning process
+            strongSelf.cameraView.setupCamera(with: strongSelf.uiCustomization)
         }
     }
 

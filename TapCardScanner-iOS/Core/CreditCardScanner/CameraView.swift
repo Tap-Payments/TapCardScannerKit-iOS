@@ -1,9 +1,10 @@
 //
 //  CameraView.swift
 //  CreditCardScannerPackageDescription
+//  Created by Osama Rabie on 24/07/2021.
+//  Copyright © 2021 Tap Payments. All rights reserved.
 //
-//  Created by josh on 2020/07/23.
-//
+
 #if canImport(UIKit)
 #if canImport(AVFoundation)
 
@@ -20,7 +21,7 @@ protocol CameraViewDelegate: AnyObject {
 @available(iOS 13, *)
 final class CameraView: UIView {
     weak var delegate: CameraViewDelegate?
-    private let creditCardFrameStrokeColor: UIColor
+    private var creditCardFrameStrokeColor: UIColor
     private let maskLayerColor: UIColor
     private let maskLayerAlpha: CGFloat
 
@@ -93,7 +94,8 @@ final class CameraView: UIView {
         videoSession?.startRunning()
     }
 
-    func setupCamera() {
+    func setupCamera(with uiCustomization:TapFullScreenUICustomizer = .init()) {
+        creditCardFrameStrokeColor = uiCustomization.tapFullScreenScanBorderColor
         captureSessionQueue.async { [weak self] in
             self?._setupCamera()
         }
@@ -152,11 +154,11 @@ final class CameraView: UIView {
         }
         backLayer.backgroundColor = maskLayerColor.withAlphaComponent(maskLayerAlpha).cgColor*/
 
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.prominent)
+        /*let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.prominent)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(blurEffectView)
+        addSubview(blurEffectView)*/
         
         //  culcurate cutoutted frame
         let cuttedWidth: CGFloat = bounds.width - 40.0
@@ -172,7 +174,7 @@ final class CameraView: UIView {
                                 height: cuttedHeight)
 
         
-        let maskLayer = CAShapeLayer()
+        /*let maskLayer = CAShapeLayer()
         let path = UIBezierPath(roundedRect: cuttedRect, cornerRadius: 10.0)
 
         path.append(UIBezierPath(rect: bounds))
@@ -180,7 +182,7 @@ final class CameraView: UIView {
         maskLayer.fillRule = .evenOdd
         //backLayer.mask = maskLayer
         //layer.addSublayer(backLayer)
-        blurEffectView.layer.mask = maskLayer
+        blurEffectView.layer.mask = maskLayer*/
 
         let strokeLayer = CAShapeLayer()
         strokeLayer.lineWidth = 1.0
@@ -229,7 +231,7 @@ extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
 
         guard let fullCameraImage = cgImage,
-            let croppedImage = fullCameraImage.cropping(to: regionOfInterest) else {
+            let _ = fullCameraImage.cropping(to: regionOfInterest) else {
             delegate?.didError(with: "Error capture camera")
             delegate = nil
             return
