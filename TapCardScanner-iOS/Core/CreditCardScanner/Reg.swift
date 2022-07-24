@@ -1,23 +1,33 @@
 import Foundation
 
-public struct Regex: ExpressibleByStringLiteral {
+/// A class to wrap and provide easy access to some of the common methods regarding dealing with regular expressions
+internal struct Regex: ExpressibleByStringLiteral {
+    /// The pattern we are searching for
     private let pattern: String
 
+    /// The regular expression object that holds the pattern
     private var nsRegularExpression: NSRegularExpression? {
         return try? NSRegularExpression(pattern: pattern)
     }
 
-    public typealias StringLiteralType = String
+    /// Define a nice name for the Regex format to be passed by the consumer
+     typealias StringLiteralType = String
 
-    public init(stringLiteral value: StringLiteralType) {
+    /// - Parameter stringLiteral: Define a nice name for the Regex format to be passed by the consumer
+     init(stringLiteral value: StringLiteralType) {
         pattern = value
     }
 
-    public init(_ string: String) {
+     init(_ string: String) {
         pattern = string
     }
 
-    public func matches(in string: String) -> [String] {
+    /**
+     Fetches all the matches in a given string
+     - Parameter in: The string we will search in
+     */
+     func matches(in string: String) -> [String] {
+         // Defensive coding to make sure all what we need is available
         let ranges = nsRegularExpression?
             .matches(in: string, options: [], range: searchRange(for: string))
             .compactMap { Range($0.range, in: string) }
@@ -28,11 +38,18 @@ public struct Regex: ExpressibleByStringLiteral {
             .map(String.init)
     }
 
-    public func hasMatch(in string: String) -> Bool {
+    /// Detects if the pattern exists in a given string
+    /// - Parameter in: The string we will seach in
+     func hasMatch(in string: String) -> Bool {
         return firstMatch(in: string) != nil
     }
 
-    public func firstMatch(in string: String) -> String? {
+    /**
+     Fetches  the 1st matches in a given string
+     - Parameter in: The string we will search in
+     */
+     func firstMatch(in string: String) -> String? {
+         // Defensive coding to make sure all what we need is available
         guard
             let match = nsRegularExpression?.firstMatch(
                 in: string,
@@ -57,20 +74,40 @@ public struct Regex: ExpressibleByStringLiteral {
 infix operator =~
 infix operator !~
 
-extension Regex {
-    public static func =~ (string: String, regex: Regex) -> Bool {
+internal extension Regex {
+     static func =~ (string: String, regex: Regex) -> Bool {
         return regex.hasMatch(in: string)
     }
 
-    public static func =~ (regex: Regex, string: String) -> Bool {
+     static func =~ (regex: Regex, string: String) -> Bool {
         return regex.hasMatch(in: string)
     }
 
-    public static func !~ (string: String, regex: Regex) -> Bool {
+     static func !~ (string: String, regex: Regex) -> Bool {
         return !regex.hasMatch(in: string)
     }
 
-    public static func !~ (regex: Regex, string: String) -> Bool {
+     static func !~ (regex: Regex, string: String) -> Bool {
         return !regex.hasMatch(in: string)
     }
+}
+
+/// An extension to include all needed regex throughout card analyzing process
+internal extension Regex {
+    
+    /// The card number regex
+    static let creditCardNumber: Regex = #"(?:\d[ -]*?){13,16}"#
+    /// The month regex
+    static let month: Regex = #"/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/"#
+    /// The year regex
+    static let year: Regex = #"\d{2}\/(\d{2})"#
+    // These may be contained in the date strings, so ignore them only for names
+    /// The words to skip always and may be there on a card
+    static let wordsToSkip = ["mastercard", "jcb", "visa", "express", "bank", "card", "platinum", "reward"]
+    /// The words to skip always and may be there on a card
+    static let invalidNames = ["expiration", "valid", "since", "from", "until", "month", "year"]
+    /// The name regex
+    static let name: Regex = #"^[\\p{L}'][\\p{L}' -]{1,25}$"#
+
+    
 }

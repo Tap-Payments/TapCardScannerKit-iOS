@@ -8,7 +8,8 @@
 import AVFoundation
 import Foundation
 
-enum ImageRatio {
+/// An enum to define the popular sizes to look into when fetching a card object from within a full screen camera feed
+internal enum ImageRatio {
     case cif352x288
     case vga640x480
     case iFrame960x540

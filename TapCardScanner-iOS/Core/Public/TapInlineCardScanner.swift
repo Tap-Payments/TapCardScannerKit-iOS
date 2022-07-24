@@ -11,7 +11,7 @@ import AVFoundation
 import UIKit
 import CommonDataModelsKit_iOS
 
-
+/// Delegate to listen to firing events from the scanner
 @objc public protocol TapInlineScannerProtocl {
     /// This block fires when the scanner finished scanning
     @objc func tapFullCardScannerDimissed()
@@ -93,121 +93,6 @@ import CommonDataModelsKit_iOS
     }
     
     /**
-     A method responsible for talking to google cloud vision API to exttact text from image
-     - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
-     - Parameter onTextExtracted: A block that will send back the extracted text
-     - Parameter onErrorOccured: A block that will send back any error occured dring any phase of the process
-     */
-    internal func googleCloudVisionApi(with imageBase64:String, onTextExtracted:((String)->())? = nil,onErrorOccured:((String)->())? = nil) {
-        // Create the request
-        let request = createGoogleCloudVisionRequest(with: imageBase64)
-        
-        // Perform HTTP Request
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            var errorMessage:String? = nil
-            // Check for Error
-            if let error = error {
-                errorMessage = "Error took place \(error)"
-            }else {
-                // Convert HTTP Response Data to a String
-                if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("Response data string:\n \(dataString)")
-                    do {
-                        // Check that google accepted the reqest and it did extract any peice of text from the given image
-                        let responseDict:[String:Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-                        if let response:[[String:Any]] = responseDict["responses"] as? [[String : Any]], response.count == 1,
-                           let fullAnotation:[String:Any] = response[0]["fullTextAnnotation"] as? [String:Any],
-                           let parsedText:String = fullAnotation["text"] as? String {
-                            if let onTextExtractedBlock = onTextExtracted {
-                                onTextExtractedBlock(parsedText)
-                            }
-                        }else {
-                            errorMessage = "Error took place Wrong data from google as follows : \(dataString)"
-                        }
-                    }catch{
-                        errorMessage = "Error took place \(error)"
-                    }
-                }else {
-                    errorMessage = "Unkown Error took place"
-                }
-            }
-            
-            if let nonNullErrorMessage = errorMessage,
-               let errorBlock = onErrorOccured {
-                //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"false","error":nonNullErrorMessage])
-                errorBlock(nonNullErrorMessage)
-            }
-        }
-        task.resume()
-    }
-    
-    /**
-     A method responsible for creating the URL request to be utilised in performing a POST to google cloud vision API
-     - Parameter imageBase64: The base64 encoding in ASCII representation of the uiimage
-     - Returns: The url request
-     */
-    internal func createGoogleCloudVisionRequest(with imageBase64:String)->URLRequest {
-        // Prepare URL
-        let url = URL(string: "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCZs_vdFd2lI7650JuXabYNJUh4ljzTFgk")
-        guard let requestUrl = url else { fatalError() }
-        // Prepare URL Request Object
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        // HTTP Request Parameters which will be sent in HTTP Request Body
-        let postString = "{'requests': [{'image': {'content': '\(imageBase64)' },'imageContext':{'languageHints':['en']}, 'features': [{'type': 'TEXT_DETECTION' }]}]}";
-        // Set HTTP Request Body
-        request.httpBody = postString.data(using: String.Encoding.utf8);
-        
-        return request
-    }
-    
-    /**
-     This method holds the logic for matching the text extracted from google vision cloud api to a potential card result
-     - Parameter extractedText: The extracted text by google cloud vision for the given image
-     - Returns: The potential scanned tap card from the extracted text.
-     */
-    internal func processGoogleVision(with extractedText:String) -> TapCard {
-        let scannedCard:TapCard = .init()
-        // Let us go through the extracted lines
-        extractedText.enumerateLines { [weak self] line, _ in
-            self?.match(string: line, to: scannedCard)
-        }
-        //FlurryLogger.endTimerForEvent(with: "Scan_From_Image_Called", params: ["success":"true","error":"","card_number":scannedCard.tapCardNumber ?? "","card_name":scannedCard.tapCardName ?? "","card_month":scannedCard.tapCardExpiryMonth ?? "","card_year":scannedCard.tapCardExpiryYear ?? ""])
-        return scannedCard
-    }
-    
-    /**
-     The methoid that holds the logic for trying to match a given string to any part of a credit card
-     - Parameter string: The textt we want to check if it matches any card details
-     - Parameter scannedCard: The scanned card object we need to add the details into
-     */
-    internal func match(string:String, to scannedCard:TapCard) {
-        // First check if we already parsed a card number
-        if let _ = scannedCard.tapCardNumber{
-            // Check For Card name
-            // We check for name after filling in the number to avoid bank names at the top of the cards
-            if let _ = scannedCard.tapCardName {}else{
-                if string.isaPotentialCardName() {
-                    scannedCard.tapCardName = string
-                }
-            }
-        } else {
-            // Check if it is a potential card number
-            if string.isPotentialCardNumber() {
-                scannedCard.tapCardNumber = string
-            }
-        }
-        if let _ = scannedCard.tapCardExpiryMonth{} else {
-            if let nonNullExpiryDateFound = string.extractCardExpiry() {
-                scannedCard.tapCardExpiryMonth = nonNullExpiryDateFound.components(separatedBy: "/")[0]
-                scannedCard.tapCardExpiryYear = nonNullExpiryDateFound.components(separatedBy: "/")[1]
-            }
-        }
-    }
-    
-    /**
      This interface starts the scanner by showing the camera feed in the given view with the customisation parameter.
      - Parameter previewView: This is the UIView that scanner/camera feed will show inside it
      - Parameter scanningBorderColor: This is the color of scan the card border. Default is green
@@ -227,7 +112,7 @@ import CommonDataModelsKit_iOS
             throw TapInlineCardScanner.CanScan().rawValue
         }
         
-        // hold the customisations
+        // apply the ui customisations
         self.previewView = previewView
         self.blurBackground = blurBackground
         self.scanningBorderColor = showTapCorners ? .clear : scanningBorderColor
@@ -240,15 +125,6 @@ import CommonDataModelsKit_iOS
         
         // Configure and restart the recognizer
         startScanning()
-        
-        
-        // Double check all is good
-        /* if let _ = cardScanner {
-         startScanning()
-         }else {
-         //FlurryLogger.endTimerForEvent(with: "Scan_Inline_Called", params: ["success":"false","error":"Preview view is not defined"])
-         throw "Preview view is not defined"
-         }*/
     }
     
     /// This method is responsible for starting the camera feed logic
@@ -265,17 +141,17 @@ import CommonDataModelsKit_iOS
         // Defensive code to check there is a holding view
         if let nonNullPreviewView = self.previewView {
             nonNullPreviewView.addSubview(cameraView)
-            //nonNullPreviewView.sendSubviewToBack(cameraView)
+            // Apply the needed UI layout constraints for the camer feed view to fill in the preview view
             NSLayoutConstraint.activate([
                 cameraView.topAnchor.constraint(equalTo: nonNullPreviewView.topAnchor),
                 cameraView.bottomAnchor.constraint(equalTo: nonNullPreviewView.bottomAnchor),
                 cameraView.leadingAnchor.constraint(equalTo: nonNullPreviewView.leadingAnchor),
                 cameraView.trailingAnchor.constraint(equalTo: nonNullPreviewView.trailingAnchor),
-                //cameraView.heightAnchor.constraint(equalTo: cameraView.widthAnchor, multiplier: CreditCard.heightRatioAgainstWidth, constant: 100),
             ])
             
             cameraView.layoutIfNeeded()
             
+            // instruct the camera view to grap card details from anywhere in the screen
             cameraView.regionOfInterest = .init(x: 0, y: 0, width: nonNullPreviewView.frame.width, height: nonNullPreviewView.frame.height)
             cameraView.setupRegionOfInterest()
             cameraView.setupCamera()
@@ -475,20 +351,12 @@ import CommonDataModelsKit_iOS
     }
 }
 
-/*extension TapInlineCardScanner:PayCardsRecognizerPlatformDelegate {
- public func payCardsRecognizer(_ payCardsRecognizer: PayCardsRecognizer, didRecognize result: PayCardsRecognizerResult) {
- if result.isCompleted {
- // Scanner captured semi/complete card details
- scannerScanned(scannedCard: .init(tapCardNumber: result.recognizedNumber, tapCardName: result.recognizedHolderName, tapCardExpiryMonth: result.recognizedExpireDateMonth, tapCardExpiryYear: result.recognizedExpireDateYear))
- pauseScanner(stopCamera: false)
- }
- }
- }*/
 
 extension String: LocalizedError {
     public var errorDescription: String? { return self }
 }
 
+// MARK: - CamerView delegate methods
 
 extension TapInlineCardScanner: CameraViewDelegate {
     internal func didCapture(image: CGImage) {
@@ -498,30 +366,27 @@ extension TapInlineCardScanner: CameraViewDelegate {
     internal func didError(with error: Error) {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
-            //strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)
             strongSelf.cameraView.stopSession()
         }
     }
 }
 
-
+// MARK: - Image analyzer delegate methods
 extension TapInlineCardScanner: ImageAnalyzerProtocol {
     internal func didFinishAnalyzation(with result: Result<TapCard, Error>) {
         switch result {
+            // In case of success we need to inform the delegate that we have scanned a card
         case let .success(creditCard):
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.scannerScanned(scannedCard: creditCard)
                 strongSelf.pauseScanner(stopCamera: false)
-                print(creditCard.tapCardNumber ?? ":")
             }
-            
-        case let .failure(error):
+            // In case of failuer for any reason we send back an empty card details
+        case .failure(_):
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                /*strongSelf.cameraView.stopSession()
-                 strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)*/
-                print(error)
+                strongSelf.delegate?.tapCardScannerDidFinish(with: .init())
             }
         }
     }

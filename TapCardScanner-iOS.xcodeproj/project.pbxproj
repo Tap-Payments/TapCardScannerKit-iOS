@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		E83FD0C5288C709C00057F22 /* ImageAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0BD288C709C00057F22 /* ImageAnalyzer.swift */; };
 		E83FD0C6288C709C00057F22 /* ImageRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0BE288C709C00057F22 /* ImageRatio.swift */; };
-		E83FD0C7288C709C00057F22 /* Sukar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0C0288C709C00057F22 /* Sukar.swift */; };
 		E83FD0C8288C709C00057F22 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0C1288C709C00057F22 /* CameraView.swift */; };
 		E83FD0CA288C709C00057F22 /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0C3288C709C00057F22 /* TapFullScreenScannerViewController.swift */; };
 		E83FD0D6288C978400057F22 /* Reg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0D5288C978300057F22 /* Reg.swift */; };
+		E83FD0D8288D2FC400057F22 /* GoogleVisionScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FD0D7288D2FC400057F22 /* GoogleVisionScanner.swift */; };
 		E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86450C92433314D00E3B4C9 /* FlurryLogger.swift */; };
 		E87C7D432429F418009AD770 /* TapCardScanner_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E87C7D412429F418009AD770 /* TapCardScanner_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E87C7D502429F487009AD770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C7D4F2429F487009AD770 /* AppDelegate.swift */; };
@@ -93,10 +93,10 @@
 		E8159E50243DB3AD0021B880 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flurry_iOS_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83FD0BD288C709C00057F22 /* ImageAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalyzer.swift; sourceTree = "<group>"; };
 		E83FD0BE288C709C00057F22 /* ImageRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRatio.swift; sourceTree = "<group>"; };
-		E83FD0C0288C709C00057F22 /* Sukar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sukar.swift; sourceTree = "<group>"; };
 		E83FD0C1288C709C00057F22 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		E83FD0C3288C709C00057F22 /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapFullScreenScannerViewController.swift; sourceTree = "<group>"; };
 		E83FD0D5288C978300057F22 /* Reg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reg.swift; sourceTree = "<group>"; };
+		E83FD0D7288D2FC400057F22 /* GoogleVisionScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionScanner.swift; sourceTree = "<group>"; };
 		E86450C92433314D00E3B4C9 /* FlurryLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlurryLogger.swift; sourceTree = "<group>"; };
 		E8784C542443546C00EB661D /* CommonDataModelsKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonDataModelsKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87C7D3E2429F418009AD770 /* TapCardScanner_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapCardScanner_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,18 +181,9 @@
 				E83FD0BD288C709C00057F22 /* ImageAnalyzer.swift */,
 				E83FD0BE288C709C00057F22 /* ImageRatio.swift */,
 				E83FD0D5288C978300057F22 /* Reg.swift */,
-				E83FD0BF288C709C00057F22 /* Sukar */,
 				E83FD0C1288C709C00057F22 /* CameraView.swift */,
 			);
 			path = CreditCardScanner;
-			sourceTree = "<group>";
-		};
-		E83FD0BF288C709C00057F22 /* Sukar */ = {
-			isa = PBXGroup;
-			children = (
-				E83FD0C0288C709C00057F22 /* Sukar.swift */,
-			);
-			path = Sukar;
 			sourceTree = "<group>";
 		};
 		E87C7D342429F418009AD770 = {
@@ -262,6 +253,7 @@
 				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
 				E8BE3FB724B854BD00F15C41 /* VisualEffectView.swift */,
 				E86450C92433314D00E3B4C9 /* FlurryLogger.swift */,
+				E83FD0D7288D2FC400057F22 /* GoogleVisionScanner.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -519,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E83FD0C8288C709C00057F22 /* CameraView.swift in Sources */,
+				E83FD0D8288D2FC400057F22 /* GoogleVisionScanner.swift in Sources */,
 				E86450CA2433314D00E3B4C9 /* FlurryLogger.swift in Sources */,
 				E83FD0C5288C709C00057F22 /* ImageAnalyzer.swift in Sources */,
 				E8B18845242A39010045A72C /* TapScannerProtocl.swift in Sources */,
@@ -530,7 +523,6 @@
 				E8BE3FB824B854BD00F15C41 /* VisualEffectView.swift in Sources */,
 				E8B1884E242B7CF20045A72C /* TapExtensions.swift in Sources */,
 				E83FD0CA288C709C00057F22 /* TapFullScreenScannerViewController.swift in Sources */,
-				E83FD0C7288C709C00057F22 /* Sukar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
