@@ -249,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				E88F9DF124BADBAF00A7B470 /* Views */,
-				E8B18848242B15BC0045A72C /* Controllers */,
 				E8B18844242A39010045A72C /* TapScannerProtocl.swift */,
 				E8BE3FB724B854BD00F15C41 /* VisualEffectView.swift */,
 				E86450C92433314D00E3B4C9 /* FlurryLogger.swift */,
@@ -300,13 +299,6 @@
 				E88F9DF224BADBD100A7B470 /* BlurHoleCorners.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E8B18848242B15BC0045A72C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
