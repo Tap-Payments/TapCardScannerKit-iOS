@@ -10,6 +10,13 @@ import Vision
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
 
+/// The data source needed to configure
+public protocol TapScannerDataSource: AnyObject {
+    func allowedCardBrands() -> [CardBrand]
+}
+
+
+
 ///  A delegate to pass callbacks from the image analyzer
 internal protocol ImageAnalyzerProtocol: AnyObject {
     func didFinishAnalyzation(with result: Result<TapCard, Error>)
@@ -32,12 +39,28 @@ internal final class ImageAnalyzer {
     private var predictedCardInfo: [Candidate: PredictedCount] = [:]
     ///  A delegate to pass callbacks from the image analyzer
     private weak var delegate: ImageAnalyzerProtocol?
+    /// The data source needed to configure
+    private weak var dataSource:TapScannerDataSource?
     
     /// - Parameter delegate: A delegate to pass callbacks from the image analyzer
-    init(delegate: ImageAnalyzerProtocol) {
+    /// /// - Parameter dataSource: The data source needed to configure
+    init(delegate: ImageAnalyzerProtocol, dataSource: TapScannerDataSource?) {
         self.delegate = delegate
+        self.dataSource = dataSource
     }
 
+    /// Computed variable to tell the analyzer which card brand schemes should be accepted while scanning
+    private var allowedCardBrands:[CardBrand] {
+        // If the caller needs specific brands we apply them
+        if let dataSourceFromBrands = dataSource?.allowedCardBrands(),
+           dataSourceFromBrands.count > 0 {
+            return dataSourceFromBrands
+        }else{
+            // Otherwise, we will allow any valid card
+            return CardBrand.allCases
+        }
+    }
+    
     // MARK: - Vision-related
 
     /// The request to pass to the vision api
@@ -86,7 +109,7 @@ internal final class ImageAnalyzer {
                 .replacingOccurrences(of: "-", with: "")
             {
                 // check again if it is a valid brand detected with this number
-                let definedCard = CardValidator.validate(cardNumber: cardNumber,preferredBrands: CardBrand.allCases)
+                let definedCard = CardValidator.validate(cardNumber: cardNumber,preferredBrands: self?.allowedCardBrands)
                 
                 if let definedBrand = definedCard.cardBrand,
                    definedCard.validationState != .invalid {

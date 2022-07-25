@@ -11,8 +11,13 @@ import TapCardScanner_iOS
 import SheetyColors
 import AVFoundation
 import CommonDataModelsKit_iOS
+import TapCardVlidatorKit_iOS
 
-class ScannerOptionsTableViewController: UITableViewController {
+class ScannerOptionsTableViewController: UITableViewController, TapScannerDataSource {
+    func allowedCardBrands() -> [CardBrand] {
+        return CardBrand.allCases
+    }
+    
 
     var fullScanner:TapFullScreenScannerViewController?
     lazy var activityIndicatorBase : UIActivityIndicatorView = {
@@ -167,7 +172,7 @@ class ScannerOptionsTableViewController: UITableViewController {
             if response {
                 //access granted
                 DispatchQueue.main.async {[weak self] in
-                    self?.fullScanner = TapFullScreenScannerViewController()
+                    self?.fullScanner = TapFullScreenScannerViewController(dataSource: self!)
                     self?.fullScanner?.delegate = self
                     self?.present((self?.fullScanner)!, animated: true)
                 }
@@ -200,7 +205,7 @@ class ScannerOptionsTableViewController: UITableViewController {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.backgroundView = self?.activityIndicatorBase
             self?.tableView.isUserInteractionEnabled = false
-            let staticInlineScanner:TapInlineCardScanner = .init()
+            let staticInlineScanner:TapInlineCardScanner = .init(dataSource: self)
             staticInlineScanner.ScanCard(from: pickedImage,maxDataSize: 250,minCompression: 0.4,cardScanned: { scannedCard in
                 let alertControl:UIAlertController = UIAlertController(title: "Scanned", message: "Card Number : \(scannedCard.tapCardNumber ?? "")\nCard Name : \(scannedCard.tapCardName ?? "")\nCard Expiry : \(scannedCard.tapCardExpiryMonth ?? "")/\(scannedCard.tapCardExpiryYear ?? "")\n", preferredStyle: .alert)
                 

@@ -12,6 +12,7 @@ import AVFoundation
 import UIKit
 import VideoToolbox
 import CommonDataModelsKit_iOS
+import TapCardVlidatorKit_iOS
 
 protocol CameraViewDelegate: AnyObject {
     func didCapture(image: CGImage)

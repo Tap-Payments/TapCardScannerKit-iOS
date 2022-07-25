@@ -25,7 +25,10 @@ import CommonDataModelsKit_iOS
 @objc public class TapInlineCardScanner:NSObject {
     
     /// Analyzes text data for credit card info
-    private lazy var analyzer = ImageAnalyzer(delegate: self)
+    private lazy var analyzer = ImageAnalyzer(delegate: self, dataSource: dataSource)
+    
+    /// The data source needed to configure
+    private weak var dataSource:TapScannerDataSource?
     
     /// Delegate to listen to firing events from the scanner
     @objc public var delegate:TapInlineScannerProtocl?
@@ -63,6 +66,11 @@ import CommonDataModelsKit_iOS
         }else {
             return .CameraPermissionMissing
         }
+    }
+    
+   public init(dataSource:TapScannerDataSource?) {
+        self.dataSource = dataSource
+        super.init()
     }
     
     /**

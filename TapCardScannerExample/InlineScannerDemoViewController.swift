@@ -8,13 +8,18 @@
 
 import UIKit
 import TapCardScanner_iOS
-import class CommonDataModelsKit_iOS.TapCard
+import CommonDataModelsKit_iOS
+import TapCardVlidatorKit_iOS
 
-class InlineScannerDemoViewController: UIViewController {
+class InlineScannerDemoViewController: UIViewController, TapScannerDataSource {
+    func allowedCardBrands() -> [CardBrand] {
+        return []
+    }
+    
 
     lazy var scannerBorderColor:UIColor = .green
     lazy var timeout:Int = -1
-    lazy var tapInlineScanner:TapInlineCardScanner = .init()
+    lazy var tapInlineScanner:TapInlineCardScanner = .init(dataSource:self)
     
    
     @IBOutlet weak var previewView: UIView!

@@ -5,6 +5,7 @@
 import AVFoundation
 import UIKit
 import CommonDataModelsKit_iOS
+import TapCardVlidatorKit_iOS
 
 /// Conform to this delegate to get notified of key events
 @available(iOS 13, *)
@@ -43,9 +44,10 @@ import CommonDataModelsKit_iOS
         maskLayerColor: self.cameraViewMaskLayerColor,
         maskLayerAlpha: self.cameraViewMaskAlpha
     )
-    
+    /// The data source needed to configure
+    private weak var dataSource:TapScannerDataSource?
     /// Analyzes text data for credit card info
-    private lazy var analyzer = ImageAnalyzer(delegate: self)
+    private lazy var analyzer = ImageAnalyzer(delegate: self, dataSource: dataSource)
     
     /// Conform to this delegate to get notified of key events
     @objc public weak var delegate: TapCreditCardScannerViewControllerDelegate?
@@ -59,12 +61,14 @@ import CommonDataModelsKit_iOS
     private var subtitleLabel = UILabel()
     private var cancelButton = UIButton(type: .system)
     
+    private var allowedCardBrands:[CardBrand] = CardBrand.allCases
     // MARK: - Vision-related
     
     /// - Parameter delegate: Conform to this delegate to get notified of key events
     /// - Parameter uiCustomization: The UI customization object to theme the scanner
-    public init(delegate: TapCreditCardScannerViewControllerDelegate? = nil, uiCustomization:TapFullScreenUICustomizer = .init()) {
+    public init(delegate: TapCreditCardScannerViewControllerDelegate? = nil, uiCustomization:TapFullScreenUICustomizer = .init(), dataSource: TapScannerDataSource?) {
         self.delegate = delegate
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
     
