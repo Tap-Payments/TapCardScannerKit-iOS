@@ -8,6 +8,7 @@ import Foundation
 #if canImport(Vision)
 import Vision
 import CommonDataModelsKit_iOS
+import TapCardVlidatorKit_iOS
 
 ///  A delegate to pass callbacks from the image analyzer
 internal protocol ImageAnalyzerProtocol: AnyObject {
@@ -82,9 +83,15 @@ internal final class ImageAnalyzer {
             // check if it is  valid caard number
             if let cardNumber = Regex.creditCardNumber.firstMatch(in: string)?
                 .replacingOccurrences(of: " ", with: "")
-                .replacingOccurrences(of: "-", with: "") {
-                creditCard.tapCardNumber = cardNumber
-
+                .replacingOccurrences(of: "-", with: "")
+            {
+                // check again if it is a valid brand detected with this number
+                let definedCard = CardValidator.validate(cardNumber: cardNumber,preferredBrands: CardBrand.allCases)
+                
+                if let definedBrand = definedCard.cardBrand,
+                   definedCard.validationState != .invalid {
+                    creditCard.tapCardNumber = cardNumber
+                }
                 // the first capture is the entire regex match, so using the last
             } else if let expiry:String = Regex.year.matches(in: string).last,
                       expiry.components(separatedBy: "/").count == 2 {
