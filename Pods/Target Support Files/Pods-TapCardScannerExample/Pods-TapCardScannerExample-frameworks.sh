@@ -181,6 +181,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SheetyColors/SheetyColors.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
@@ -188,6 +189,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SheetyColors/SheetyColors.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

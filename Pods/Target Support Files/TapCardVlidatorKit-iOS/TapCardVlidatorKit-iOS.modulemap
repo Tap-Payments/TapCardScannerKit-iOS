@@ -1,0 +1,6 @@
+framework module TapCardVlidatorKit_iOS {
+  umbrella header "TapCardVlidatorKit-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
