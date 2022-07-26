@@ -105,7 +105,6 @@ import TapCardVlidatorKit_iOS
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cameraView.stopSession()
-        cameraView = nil
     }
 }
 
