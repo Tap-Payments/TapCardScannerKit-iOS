@@ -94,20 +94,6 @@ internal final class ImageAnalyzer {
 
         let maxCandidates = 1
         
-        let printValues:[String] = results.filter { result in
-            
-            guard
-                let candidate = result.topCandidates(maxCandidates).first,
-                candidate.confidence > 0.1
-            else { return false }
-            
-            return true
-        }.map { $0.topCandidates(maxCandidates).first?.string ?? "" }
-        
-        if printValues.count > 0 {
-            print("RESULTS : \(printValues.reduce(""){ "\($0) \($1)" } )")
-        }
-        
         for result in results {
                         
             guard
@@ -150,7 +136,12 @@ internal final class ImageAnalyzer {
                 continue
             }
         }
-
+        
+        // Check vertical card number
+        if let verticalCardNumber:String = self?.checkVerticalCardNumber(maxCandidates: maxCandidates, results: results) {
+            creditCard.tapCardNumber = verticalCardNumber
+        }
+        
         // Name
         if let name = creditCard.tapCardName {
             let count = strongSelf.predictedCardInfo[.name(name), default: 0]
@@ -177,6 +168,45 @@ internal final class ImageAnalyzer {
             strongSelf.delegate?.didFinishAnalyzation(with: .success(strongSelf.selectedCard))
             strongSelf.delegate = nil
         }
+    }
+    
+    
+    /**
+     Parses given extracted strings to check the possibility of a card number in vertical format
+     - Parameter maxCandidates: How many candidates we are looking to
+     - Parameter results: The extracted text snippets we are looking into
+     - returns : A valid defined card number and null otherwise
+     */
+    internal func checkVerticalCardNumber(maxCandidates:Int = 1,results:[VNRecognizedTextObservation]) -> String? {
+        
+        // Let us filte ronly text peices that have digits only
+        let filteredValues:[String] = results.filter { result in
+            
+            guard
+                let candidate = result.topCandidates(maxCandidates).first,
+                candidate.confidence > 0.1,
+                candidate.string.tap_containsOnlyDigits
+            else { return false }
+            
+            return true
+            // Then let us merge them togeter
+        }.map { $0.topCandidates(maxCandidates).first?.string ?? "" }
+        
+        // For every detected line let us scan it get it all possible card number Regex matches
+        if filteredValues.count > 0 {
+            let joinedString = filteredValues.reduce(""){ "\($0)\($1)" }
+            let matches = Regex.creditCardNumber.matches(in: joinedString)
+            for match in matches {
+                // Check if there is a match, that is can be validated as an accepted card brand from the allowed brands
+                let definedCard = CardValidator.validate(cardNumber: match,preferredBrands: self.allowedCardBrands)
+                
+                if let _ = definedCard.cardBrand,
+                   definedCard.validationState != .invalid {
+                    return match
+                }
+            }
+        }
+        return nil
     }
 }
 #endif
