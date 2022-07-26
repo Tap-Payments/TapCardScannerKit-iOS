@@ -93,12 +93,28 @@ internal final class ImageAnalyzer {
         var creditCard = TapCard()
 
         let maxCandidates = 1
+        
+        let printValues:[String] = results.filter { result in
+            
+            guard
+                let candidate = result.topCandidates(maxCandidates).first,
+                candidate.confidence > 0.1
+            else { return false }
+            
+            return true
+        }.map { $0.topCandidates(maxCandidates).first?.string ?? "" }
+        
+        if printValues.count > 0 {
+            print("RESULTS : \(printValues.reduce(""){ "\($0) \($1)" } )")
+        }
+        
         for result in results {
+                        
             guard
                 let candidate = result.topCandidates(maxCandidates).first,
                 candidate.confidence > 0.1
             else { continue }
-
+            
             let string = candidate.string
             // If the detected string is one of the to skip values, then we simply Skip!
             if Regex.wordsToSkip.contains(where: { string.lowercased().contains($0) }) { continue }

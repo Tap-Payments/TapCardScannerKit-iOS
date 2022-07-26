@@ -101,6 +101,12 @@ import TapCardVlidatorKit_iOS
         super.viewDidLayoutSubviews()
         cameraView.setupRegionOfInterest()
     }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cameraView.stopSession()
+        cameraView = nil
+    }
 }
 
 @available(iOS 13, *)
