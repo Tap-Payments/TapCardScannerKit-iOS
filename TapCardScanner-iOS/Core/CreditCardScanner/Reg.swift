@@ -111,7 +111,7 @@ internal extension Regex {
     /// The words to skip always and may be there on a card
     static let invalidNames = ["expiration", "valid", "since", "from", "until", "month", "year"]
     /// The name regex
-    static let name: Regex = #"^[\\p{L}'][\\p{L}' -]{1,25}$"#
+    static let name: Regex = #"^(?=.{3,26}$)[A-Za-zÀ-ú][A-Za-zÀ-ú.'-]+(?: [A-Za-zÀ-ú.'-]+)* *$"#
 
     
 }

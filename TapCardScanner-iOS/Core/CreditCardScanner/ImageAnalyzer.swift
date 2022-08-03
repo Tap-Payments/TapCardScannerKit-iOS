@@ -130,8 +130,12 @@ internal final class ImageAnalyzer {
             } else if let name = Regex.name.firstMatch(in: string) {
                 let containsInvalidName = Regex.invalidNames.contains { name.lowercased().contains($0) }
                 if containsInvalidName { continue }
-                creditCard.tapCardName = name
-
+                //creditCard.tapCardName = name
+                let count = strongSelf.predictedCardInfo[.name(name), default: 0]
+                strongSelf.predictedCardInfo[.name(name)] = count + 1
+                if count > 2 {
+                    print("POSSIBLE NAME : \(name)")
+                }
             } else {
                 continue
             }
@@ -165,8 +169,8 @@ internal final class ImageAnalyzer {
 
         // If we detected a valid card number, it is time to callback the delegate with what we got!
         if strongSelf.selectedCard.tapCardNumber != nil {
-            strongSelf.delegate?.didFinishAnalyzation(with: .success(strongSelf.selectedCard))
-            strongSelf.delegate = nil
+            //strongSelf.delegate?.didFinishAnalyzation(with: .success(strongSelf.selectedCard))
+            //strongSelf.delegate = nil
         }
     }
     

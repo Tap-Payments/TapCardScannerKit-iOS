@@ -38,12 +38,7 @@ import TapCardVlidatorKit_iOS
     // MARK: - Subviews and layers
     
     /// View representing live camera
-    private lazy var cameraView: CameraView = CameraView(
-        delegate: self,
-        creditCardFrameStrokeColor: self.cameraViewCreditCardFrameStrokeColor,
-        maskLayerColor: self.cameraViewMaskLayerColor,
-        maskLayerAlpha: self.cameraViewMaskAlpha
-    )
+    private var cameraView: CameraView?
     /// The data source needed to configure
     private weak var dataSource:TapScannerDataSource?
     /// Analyzes text data for credit card info
@@ -53,7 +48,11 @@ import TapCardVlidatorKit_iOS
     @objc public weak var delegate: TapCreditCardScannerViewControllerDelegate?
     
     /// uiCustomization: The UI customization object to theme the scanner
-    private var uiCustomization:TapFullScreenUICustomizer = .init()
+    private var uiCustomization:TapFullScreenUICustomizer = .init() {
+        didSet {
+            self.cameraViewCreditCardFrameStrokeColor = uiCustomization.tapFullScreenScanBorderColor
+        }
+    }
     
     /// The backgroundColor stack view that is below the camera preview view
     private var bottomStackView = UIStackView()
@@ -69,6 +68,7 @@ import TapCardVlidatorKit_iOS
     public init(delegate: TapCreditCardScannerViewControllerDelegate? = nil, uiCustomization:TapFullScreenUICustomizer = .init(), dataSource: TapScannerDataSource?) {
         self.delegate = delegate
         self.dataSource = dataSource
+        self.uiCustomization = uiCustomization
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -79,6 +79,13 @@ import TapCardVlidatorKit_iOS
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        cameraView = CameraView(
+            delegate: self,
+            creditCardFrameStrokeColor: self.uiCustomization.tapFullScreenScanBorderColor,
+            maskLayerColor: self.cameraViewMaskLayerColor,
+            maskLayerAlpha: self.cameraViewMaskAlpha,
+            showBlur: self.uiCustomization.blurCardScannerBackground
+        )
         layoutSubviews()
         //setupLabelsAndButtons()
         // check if the consumer app did get an authoriation for cammera access or not
@@ -93,18 +100,18 @@ import TapCardVlidatorKit_iOS
                 return
             }
             // Authorized, hence we can start the scanning process
-            strongSelf.cameraView.setupCamera(with: strongSelf.uiCustomization)
+            strongSelf.cameraView?.setupCamera(with: strongSelf.uiCustomization)
         }
     }
     
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        cameraView.setupRegionOfInterest()
+        cameraView?.setupRegionOfInterest()
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        cameraView.stopSession()
+        cameraView?.stopSession()
     }
 }
 
@@ -117,7 +124,8 @@ private extension TapFullScreenScannerViewController {
     func layoutSubviews() {
         view.backgroundColor = textBackgroundColor
         // TODO: test screen rotation cameraView, cutoutView
-        cameraView.translatesAutoresizingMaskIntoConstraints = false
+        cameraView?.translatesAutoresizingMaskIntoConstraints = false
+        guard let cameraView = cameraView else { return }
         view.addSubview(cameraView)
         NSLayoutConstraint.activate([
             cameraView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -178,7 +186,7 @@ extension TapFullScreenScannerViewController: CameraViewDelegate {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)
-            strongSelf.cameraView.stopSession()
+            strongSelf.cameraView?.stopSession()
         }
     }
 }
@@ -190,7 +198,7 @@ extension TapFullScreenScannerViewController: ImageAnalyzerProtocol {
         case let .success(creditCard):
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.cameraView.stopSession()
+                strongSelf.cameraView?.stopSession()
                 strongSelf.dismiss(animated: true,completion: {
                     strongSelf.delegate?.creditCardScannerViewController(strongSelf, didFinishWith: creditCard)
                 })
@@ -199,7 +207,7 @@ extension TapFullScreenScannerViewController: ImageAnalyzerProtocol {
         case let .failure(error):
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.cameraView.stopSession()
+                strongSelf.cameraView?.stopSession()
                 strongSelf.delegate?.creditCardScannerViewController(strongSelf, didErrorWith: error)
             }
         }

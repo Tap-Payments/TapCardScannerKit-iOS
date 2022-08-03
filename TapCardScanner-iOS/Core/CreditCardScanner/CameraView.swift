@@ -43,12 +43,14 @@ final class CameraView: UIView {
         delegate: CameraViewDelegate? = nil,
         creditCardFrameStrokeColor: UIColor = .green,
         maskLayerColor: UIColor = .black,
-        maskLayerAlpha: CGFloat = 0.3
+        maskLayerAlpha: CGFloat = 0.3,
+        showBlur:Bool = true
     ) {
         self.delegate = delegate
         self.creditCardFrameStrokeColor = creditCardFrameStrokeColor
         self.maskLayerColor = maskLayerColor
         self.maskLayerAlpha = maskLayerAlpha
+        self.showBlur = showBlur
         super.init(frame: .zero)
     }
     
