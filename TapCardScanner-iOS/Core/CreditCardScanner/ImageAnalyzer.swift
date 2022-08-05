@@ -30,9 +30,9 @@ internal final class ImageAnalyzer {
         case number(String), name(String)
         case expireDate(DateComponents)
     }
-
+    
     typealias PredictedCount = Int
-
+    
     /// The fetched card after confirming the extracted data
     private var selectedCard = TapCard()
     /// A predicate based logic to give a trust value for a detected text with regards its type
@@ -48,7 +48,7 @@ internal final class ImageAnalyzer {
         self.delegate = delegate
         self.dataSource = dataSource
     }
-
+    
     /// Computed variable to tell the analyzer which card brand schemes should be accepted while scanning
     private var allowedCardBrands:[CardBrand] {
         // If the caller needs specific brands we apply them
@@ -62,7 +62,7 @@ internal final class ImageAnalyzer {
     }
     
     // MARK: - Vision-related
-
+    
     /// The request to pass to the vision api
     lazy var request = VNRecognizeTextRequest(completionHandler: requestHandler)
     
@@ -75,7 +75,7 @@ internal final class ImageAnalyzer {
             orientation: .up,
             options: [:]
         )
-
+        
         do {
             try requestHandler.perform([request])
         } catch {
@@ -83,7 +83,7 @@ internal final class ImageAnalyzer {
             delegate = nil
         }
     }
-
+    
     /// The handler that takes in the result fro the vision api and tries to extract card retated info from it
     lazy var requestHandler: ((VNRequest, Error?) -> Void)? = { [weak self] request, _ in
         guard let strongSelf = self else { return }
@@ -91,11 +91,15 @@ internal final class ImageAnalyzer {
         guard let results = request.results as? [VNRecognizedTextObservation] else { return }
         // A temp card object to hold detecting data, will be used to confirm before calling the callback
         var creditCard = TapCard()
-
+        
         let maxCandidates = 1
         
+        if strongSelf.selectedCard.tapCardNumber?.tap_length ?? 0 != 0 {
+            return
+        }
+        
         for result in results {
-                        
+            
             guard
                 let candidate = result.topCandidates(maxCandidates).first,
                 candidate.confidence > 0.1
@@ -104,7 +108,7 @@ internal final class ImageAnalyzer {
             let string = candidate.string
             // If the detected string is one of the to skip values, then we simply Skip!
             if Regex.wordsToSkip.contains(where: { string.lowercased().contains($0) }) { continue }
-
+            
             // check if it is  valid caard number
             if let cardNumber = Regex.creditCardNumber.firstMatch(in: string)?
                 .replacingOccurrences(of: " ", with: "")
@@ -126,19 +130,19 @@ internal final class ImageAnalyzer {
                     creditCard.tapCardExpiryYear = components[1]
                     creditCard.tapCardExpiryMonth = components[0]
                 }
-
-            } else if let name = Regex.name.firstMatch(in: string) {
-                let containsInvalidName = Regex.invalidNames.contains { name.lowercased().contains($0) }
-                if containsInvalidName { continue }
-                //creditCard.tapCardName = name
-                let count = strongSelf.predictedCardInfo[.name(name), default: 0]
-                strongSelf.predictedCardInfo[.name(name)] = count + 1
-                if count > 2 {
-                    print("POSSIBLE NAME : \(name)")
-                }
-            } else {
-                continue
-            }
+                
+            } /*else if let name = Regex.name.firstMatch(in: string) {
+               let containsInvalidName = Regex.invalidNames.contains { name.lowercased().contains($0) }
+               if containsInvalidName { continue }
+               //creditCard.tapCardName = name
+               let count = strongSelf.predictedCardInfo[.name(name), default: 0]
+               strongSelf.predictedCardInfo[.name(name)] = count + 1
+               if count > 2 {
+               print("POSSIBLE NAME : \(name)")
+               }
+               }*/ else {
+                   continue
+               }
         }
         
         // Check vertical card number
@@ -147,17 +151,18 @@ internal final class ImageAnalyzer {
         }
         
         // Name
-        if let name = creditCard.tapCardName {
-            let count = strongSelf.predictedCardInfo[.name(name), default: 0]
-            strongSelf.predictedCardInfo[.name(name)] = count + 1
-            if count > 2 {
-                strongSelf.selectedCard.tapCardName = name
-            }
-        }
+        /*if let name = creditCard.tapCardName {
+         let count = strongSelf.predictedCardInfo[.name(name), default: 0]
+         strongSelf.predictedCardInfo[.name(name)] = count + 1
+         if count > 2 {
+         strongSelf.selectedCard.tapCardName = name
+         }
+         }*/
+        
         // ExpireDate
         strongSelf.selectedCard.tapCardExpiryYear   = creditCard.tapCardExpiryYear
         strongSelf.selectedCard.tapCardExpiryMonth  = creditCard.tapCardExpiryMonth
-
+        
         // Number
         if let number = creditCard.tapCardNumber {
             let count = strongSelf.predictedCardInfo[.number(number), default: 0]
@@ -166,11 +171,11 @@ internal final class ImageAnalyzer {
                 strongSelf.selectedCard.tapCardNumber = number
             }
         }
-
+        
         // If we detected a valid card number, it is time to callback the delegate with what we got!
         if strongSelf.selectedCard.tapCardNumber != nil {
-            //strongSelf.delegate?.didFinishAnalyzation(with: .success(strongSelf.selectedCard))
-            //strongSelf.delegate = nil
+            strongSelf.delegate?.didFinishAnalyzation(with: .success(strongSelf.selectedCard))
+            strongSelf.delegate = nil
         }
     }
     

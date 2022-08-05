@@ -113,10 +113,27 @@ import TapCardVlidatorKit_iOS
         super.viewWillDisappear(animated)
         cameraView?.stopSession()
     }
+    
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        cameraView?.regionOfInterest = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+            if UIDevice.current.orientation.isLandscape {
+                print("Landscape")
+                self?.cameraView?.setupRegionOfInterest()
+            } else {
+                print("Portrait")
+                self?.cameraView?.setupRegionOfInterest()
+            }
+        }
+    }
 }
 
 @available(iOS 13, *)
 private extension TapFullScreenScannerViewController {
+    
+    
+    
     @objc func cancel(_ sender: UIButton) {
         delegate?.creditCardScannerViewControllerDidCancel(self)
     }

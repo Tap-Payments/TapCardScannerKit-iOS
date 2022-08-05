@@ -160,22 +160,32 @@ final class CameraView: UIView {
          }
          backLayer.backgroundColor = maskLayerColor.withAlphaComponent(maskLayerAlpha).cgColor*/
         
+        if let addedBlurView = viewWithTag(123123123) {
+            addedBlurView.removeFromSuperview()
+        }
+        
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.prominent)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = bounds
+        blurEffectView.frame = .init(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        print("FRAME : \(blurEffectView.frame)")
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.tag = 123123123
         
         if showBlur {
             addSubview(blurEffectView)
         }
         
         //  culcurate cutoutted frame
-        let cuttedWidth: CGFloat = bounds.width - 40.0
+        var cuttedWidth: CGFloat = bounds.width - 40
+        if UIDevice.current.orientation.isLandscape {
+            cuttedWidth = 400
+        }
         let cuttedHeight: CGFloat = cuttedWidth * TapCard.heightRatioAgainstWidth
         
         let centerVertical = (bounds.height / 2.0)
+        let centerHorizontal = (bounds.width / 2.0)
         let cuttedY: CGFloat = centerVertical - (cuttedHeight / 2.0)
-        let cuttedX: CGFloat = 20.0
+        let cuttedX: CGFloat = centerHorizontal - (cuttedWidth / 2.0)
         
         let cuttedRect = CGRect(x: cuttedX,
                                 y: cuttedY,
@@ -200,6 +210,15 @@ final class CameraView: UIView {
         strokeLayer.strokeColor = creditCardFrameStrokeColor.cgColor
         strokeLayer.path = UIBezierPath(roundedRect: cuttedRect, cornerRadius: 10.0).cgPath
         strokeLayer.fillColor = nil
+        layer.sublayers?.removeAll(where: { layer in
+            if let isStrokeLayer:CAShapeLayer = layer as? CAShapeLayer,
+               isStrokeLayer.lineWidth == 1.0,
+               isStrokeLayer.strokeColor == creditCardFrameStrokeColor.cgColor {
+                return true
+            }
+            return false
+        })
+        
         layer.addSublayer(strokeLayer)
         
         let imageHeight: CGFloat = imageRatio.imageHeight
