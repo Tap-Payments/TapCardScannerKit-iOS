@@ -20,8 +20,8 @@ internal final class CardBINRange {
     /// Required card number length.
     internal private(set) var cardNumberLengths: [Int]
     
-    /// Required card number length.
-    internal private(set) var cardNumberSpaces: [Int]
+    /// Required card number spacing formats
+    internal var cardNumberSpaces: [Int]
     
     /// Card brand.
     internal private(set) var cardBrand: CardBrand

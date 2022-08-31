@@ -115,6 +115,10 @@ public final class CardValidator {
         
         guard cardBrand != .unknown else { return defaultSpacing }
         
+        if cardBrand == .americanExpress {
+            binRange.cardNumberSpaces = [4,6,6]
+        }
+        
         return binRange.cardNumberSpaces
     }
     

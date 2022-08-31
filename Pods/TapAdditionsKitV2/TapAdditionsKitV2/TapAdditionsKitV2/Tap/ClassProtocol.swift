@@ -6,4 +6,4 @@
 //
 
 /// Base protocol for protocols that require class conformance
-public protocol ClassProtocol: class {}
+public protocol ClassProtocol: AnyObject {}

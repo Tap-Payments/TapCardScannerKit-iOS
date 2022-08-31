@@ -2,10 +2,10 @@
     "en": {
         "TapCardInputKit": {
             "cardNumberPlaceHolder": "0000 0000 0000 0000",
-            "cardNamePlaceHolder": "Card holder name",
+            "cardNamePlaceHolder": "Card Holder Name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
-            "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
+            "cardSaveLabel": "For faster and easier checkout,\nsave the card for later.",
             "emailPlaceHolder": "email@email.com"
         },
         "TapMerchantSection": {
@@ -32,7 +32,7 @@
         "DeleteCard":
         {
             "title": "Delete Card",
-            "message": "Are you sure you would like to card %@?",
+            "message": "Are you sure you would like to delete card ending with %@?",
             "cancel": "Cancel",
             "confirm": "Delete"
         },
@@ -99,9 +99,9 @@
             "done": "Done",
             "recent": "Recent",
             "edit": "Edit",
-            "close": "Close",
-            "items": "Items",
-            "item": "Item",
+            "close": "CLOSE",
+            "items": "ITEMS",
+            "item": "ITEM",
             "email": "email",
             "phone": "phone",
             "password": "Password",

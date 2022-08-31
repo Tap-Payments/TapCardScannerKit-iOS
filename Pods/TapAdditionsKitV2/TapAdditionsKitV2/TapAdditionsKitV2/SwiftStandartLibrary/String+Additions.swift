@@ -5,11 +5,11 @@
 //  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct	CoreGraphics.CGGeometry.CGRect
-import struct	CoreGraphics.CGGeometry.CGSize
+import struct    CoreGraphics.CGGeometry.CGRect
+import struct    CoreGraphics.CGGeometry.CGSize
 import Foundation
-import class	UIKit.NSStringDrawingContext
-import struct	UIKit.NSStringDrawingOptions
+import class    UIKit.NSStringDrawingContext
+import struct    UIKit.NSStringDrawingOptions
 
 /// Useful extension to String.
 public extension String {
@@ -40,14 +40,14 @@ public extension String {
     
     /// Returns last path component of the receiver.
     var tap_lastPathComponent: String {
-
-		let reversedString = self.tap_reversed
-		
+        
+        let reversedString = self.tap_reversed
+        
         if let range = reversedString.range(of: Constants.slashCharacter) {
-
+            
             return String(reversedString[..<range.lowerBound]).tap_reversed
         }
-
+        
         return .tap_empty
     }
     
@@ -61,6 +61,12 @@ public extension String {
     var tap_containsOnlyDigits: Bool {
         
         return self.tap_isValid(for: Constants.digitsOnlyRegex)
+    }
+    
+    /// Defines if the receiver contains only digits with the exception of (,),[,] because the numbers in the vertical credit card can detect these charachters
+    var tap_containsOnlyDigitsVerticalCardNumber: Bool {
+        
+        return self.tap_isValid(for: Constants.internationalDigitsOnlyRegex)
     }
     
     /// Defines if receiver contains only international digits.
@@ -110,7 +116,7 @@ public extension String {
     
     /// Defines if receiver passes Luhn algorithm.
     var tap_isValidLuhn: Bool {
-
+        
         guard self.tap_containsOnlyInternationalDigits else { return false }
         
         var sum = 0
@@ -191,18 +197,18 @@ public extension String {
             }
         }
     }
-	
-	/// Trims whitespaces and newlines.
-	///
-	/// - Parameter nullifyIfResultIsEmpty: If resulting string is empty, nil will be returned.
-	/// - Returns: Trimmed string or nil.
-	func tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: Bool = false) -> String? {
-		
-		let result = self.trimmingCharacters(in: .whitespacesAndNewlines)
-		
-		return (nullifyIfResultIsEmpty && result.tap_length == 0) ? nil : result
-	}
-	
+    
+    /// Trims whitespaces and newlines.
+    ///
+    /// - Parameter nullifyIfResultIsEmpty: If resulting string is empty, nil will be returned.
+    /// - Returns: Trimmed string or nil.
+    func tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: Bool = false) -> String? {
+        
+        let result = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return (nullifyIfResultIsEmpty && result.tap_length == 0) ? nil : result
+    }
+    
     /// Returns a string by appending path component to the receiver.
     ///
     /// - Parameter path: Path component to append.
@@ -245,7 +251,7 @@ public extension String {
             print("Failed to create regular expression from the pattern '\(nonnullPattern)'.")
             return false
         }
-    
+        
         let selfLength = self.tap_length
         
         let textRange = NSRange(location: 0, length: selfLength)
@@ -484,7 +490,7 @@ public extension String {
     /// - Parameter nsRange: NSRange
     /// - Returns: Swift range.
     func tap_range(from nsRange: NSRange) -> Range<String.Index>? {
-
+        
         let utf16View = self.utf16
         let endIndex = utf16View.endIndex
         
@@ -504,7 +510,7 @@ public extension String {
         fileprivate static let slashCharacter = "/"
         fileprivate static let numberRegex = "^[\\p{N}]*[.,٬·٫]{0,1}[\\p{N}]*$"
         fileprivate static let digitsOnlyRegex = "^[\\p{N}]*$"
-        fileprivate static let internationalDigitsOnlyRegex = "^[0-9]*$"
+        fileprivate static let internationalDigitsOnlyRegex = "^[0-9\\(\\)\\[\\]]*$"
         fileprivate static let validEmailRegex = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
         fileprivate static let validCardholderNameRegex = "^[\\x20-\\x5F]{3,26}$"
         

@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+/// A dictionary to allow any caller to set the custom currency symbols as per his demand. By settin a dictionary where keys are currency raw values and values are the needed symbol
+
+
 /// The methods to be implemented by the Currency Formatter
 public protocol TapAmountedCurrencyFormatterProtocol {
     var numberFormatter: NumberFormatter! { get }
@@ -28,11 +32,13 @@ public protocol TapAmountedCurrencyFormatterProtocol {
 
 @objcMembers public class TapAmountedCurrencyFormatter:NSObject, TapAmountedCurrencyFormatterProtocol {
     
-    public var localizeCurrencySymbol: Bool = false
+    @objc public static var customCurrencySymbols:[Int:String]?
+    
+    @objc public var localizeCurrencySymbol: Bool = false
     
     
     /// Indicates a space between currency code and amount or not. $ 100 or $100
-    public var currencyCodeSpace: Bool = false
+    @objc public var currencyCodeSpace: Bool = true
     
     
     /// Set the locale to retrieve the currency from
@@ -274,7 +280,12 @@ extension TapAmountedCurrencyFormatter {
             // Set the currency symbol back
             numberFormatter.currencySymbol = currentSymbol
         }else {
-            // Not forced by the caller, hence we leave it to the default formatting for this currency as per Apple development
+            // Then we check if the user set a custom code for this currency, we have to use it
+            if let customCurrencySymbols:[Int:String] = TapAmountedCurrencyFormatter.customCurrencySymbols,
+               let customCurrencySymbol:String = customCurrencySymbols[currency.rawValue] {
+                numberFormatter.currencySymbol = "\(customCurrencySymbol) "
+            }
+            // Not forced by the caller, hence we leave it to the default formatting for this currency as per Apple development.
             formattedValue = numberFormatter.string(from: validValue)
         }
         

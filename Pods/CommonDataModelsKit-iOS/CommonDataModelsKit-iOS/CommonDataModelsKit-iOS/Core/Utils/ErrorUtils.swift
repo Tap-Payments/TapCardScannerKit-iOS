@@ -1,18 +1,38 @@
 //
-//  ErrorConstants.swift
-//  CheckoutSDK-iOS
+//  ErrorUtils.swift
+//  goSellSDK
 //
-//  Created by Osama Rabie on 11/15/20.
-//  Copyright © 2020 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
+ public class ErrorUtils {
+    
+    // MARK: - Internal -
+    // MARK: Methods
+    
+    internal static func createEnumStringInitializationError<T>(for enumerationType: T.Type, value: String) -> TapSDKError {
+        
+        let userInfo: [String: String] = [
+            
+            ErrorConstants.UserInfoKeys.enumName: String(describing: enumerationType),
+            ErrorConstants.UserInfoKeys.enumValue: value
+        ]
+        
+        let underlyingError = NSError(domain: ErrorConstants.internalErrorDomain, code: InternalError.invalidEnumValue.rawValue, userInfo: userInfo)
+		return TapSDKKnownError(type: .internal, error: underlyingError, response: nil, body: nil)
+    }
+    
+    // MARK: - Private -
+    // MARK: Methods
+    
+    //@available(*, unavailable) private init() { }
+}
 
-import Foundation
 
-internal struct ErrorConstants {
+public struct ErrorConstants {
     
     internal static let internalErrorDomain = "company.tap.gosellsdk"
     
-    internal struct UserInfoKeys {
+    public struct UserInfoKeys {
         
         internal static let addressType             = "address_type"
         internal static let tokenType               = "token_type"
