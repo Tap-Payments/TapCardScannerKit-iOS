@@ -189,28 +189,57 @@ internal final class ImageAnalyzer {
     internal func checkVerticalCardNumber(maxCandidates:Int = 1,results:[VNRecognizedTextObservation]) -> String? {
         
         // Let us filte ronly text peices that have digits only
-        let filteredValues:[String] = results.filter { result in
+        var filteredValues:[String] = results.filter { result in
             
             guard
                 let candidate = result.topCandidates(maxCandidates).first,
                 candidate.confidence > 0.1,
-                candidate.string.tap_containsOnlyDigits
+                candidate.string.tap_containsOnlyDigitsVerticalCardNumber
             else { return false }
             
             return true
             // Then let us merge them togeter
         }.map { $0.topCandidates(maxCandidates).first?.string ?? "" }
         
+        // The vertical numbers has a structure that confuses with digit 1 because it shows the numbers like this
+        // |2222|
+        // |2222| etc
+        // So for vertical detection only, if a peice of text is of lenght 5 and ends or starts with 1, we will remove this 1
+        
+        filteredValues = filteredValues.map { filteredValue -> String in
+            // remove (,),[,] which comes because of confusion happens in vertical number format
+            // |2222|
+            // |2222|
+            let onlyDigitsValue = filteredValue.components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
+            if onlyDigitsValue.count == 5 {
+                if onlyDigitsValue.hasPrefix("1") {
+                    return onlyDigitsValue.tap_substring(from: 1)
+                }else if onlyDigitsValue.hasSuffix("1") {
+                    return onlyDigitsValue.tap_substring(to: onlyDigitsValue.count - 1)
+                }
+            }
+            return onlyDigitsValue
+        }
+        
         // For every detected line let us scan it get it all possible card number Regex matches
         if filteredValues.count > 0 {
-            let joinedString = filteredValues.reduce(""){ "\($0)\($1)" }
+            let joinedString = (filteredValues.reduce(""){ "\($0)\($1)" }).components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
             let matches = Regex.creditCardNumber.matches(in: joinedString)
+            /*let validNumbers = matches.filter({ match in
+             let definedCard = CardValidator.validate(cardNumber: match,preferredBrands: self.allowedCardBrands)
+             
+             if let _ = definedCard.cardBrand,
+             definedCard.validationState == .valid {
+             return true
+             }
+             return false
+             })*/
             for match in matches {
                 // Check if there is a match, that is can be validated as an accepted card brand from the allowed brands
                 let definedCard = CardValidator.validate(cardNumber: match,preferredBrands: self.allowedCardBrands)
                 
                 if let _ = definedCard.cardBrand,
-                   definedCard.validationState != .invalid {
+                   definedCard.validationState == .valid {
                     return match
                 }
             }
