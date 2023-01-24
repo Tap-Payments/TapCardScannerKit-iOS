@@ -91,11 +91,15 @@ final class CameraView: UIView {
     }
     
     func stopSession() {
-        videoSession?.stopRunning()
+        DispatchQueue.main.async { [weak self] in
+            self?.videoSession?.stopRunning()
+        }
     }
     
     func startSession() {
-        videoSession?.startRunning()
+        DispatchQueue.main.async { [weak self] in
+            self?.videoSession?.startRunning()
+        }
     }
     
     func setupCamera(with uiCustomization:TapFullScreenUICustomizer = .init()) {
